@@ -7,11 +7,17 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  *  Recipe class.
  *
  * @ORM\Entity(repositoryClass="App\Repository\RecipeRepository")
+ *
+ * @UniqueEntity(fields={"title"})
  */
 class Recipe
 {
@@ -36,25 +42,15 @@ class Recipe
     private $id;
 
     /**
-     * Title.
-     *
-     * @var string
-     *
-     * @ORM\Column(
-     *     type="string",
-     *     length=255,
-     * )
-     */
-    private $title;
-
-    /**
      * Created at.
      *
      * @var \DateTime
      *
+     * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(type="datetime")
      *
-     * @Gedmo\Timestampable(on="create")
+     * @Assert\DateTime
      */
     private $createdAt;
 
@@ -63,11 +59,31 @@ class Recipe
      *
      * @var \DateTime
      *
+     * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(type="datetime")
      *
-     * @Gedmo\Timestampable(on="update")
+     * @Assert\DateTime
      */
     private $updatedAt;
+
+    /**
+     * Title.
+     *
+     * @var string
+     *
+     * @ORM\Column(
+     *     type="string",
+     *     length=255
+     * )
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min="3",
+     *     max="255",
+     * )
+     */
+    private $title;
 
     /**
      * Description
@@ -77,6 +93,11 @@ class Recipe
      * @ORM\Column(
      *     type="string",
      *     length=700
+     * )
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min="10",
+     *     max="700",
      * )
      */
     private $description;
@@ -90,6 +111,10 @@ class Recipe
      *     type="string",
      *     length=128
      * )
+     * @Assert\Length(
+     *     min="3",
+     *     max="128",
+     * )
      */
     private $photo;
 
@@ -97,9 +122,15 @@ class Recipe
      *  Time
      *
      * @var string
-     *
+     * @Assert\NotBlank
      * @ORM\Column(
      *     type="integer"
+     * )
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 240,
+     *      minMessage = "Time must be more than {{ limit }} min",
+     *      maxMessage = "Time must be less than {{ limit }} min"
      * )
      */
     private $time;
@@ -112,8 +143,35 @@ class Recipe
      * @ORM\Column(
      *     type="integer"
      * )
+     * @Assert\NotBlank
+     *
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 6,
+     *      minMessage = "People amount must be more than {{ limit }}",
+     *      maxMessage = "People amount be less than {{ limit }}"
+     * )
      */
     private $people_amount;
+
+    /**
+     * Code.
+     *
+     * @var string
+     *
+     * @ORM\Column(
+     *     type="string",
+     *     length=255
+     * )
+     *
+     * @Gedmo\Slug(fields={"title"})
+     *
+     * @Assert\Length(
+     *     min="3",
+     *     max="255",
+     * )
+     */
+    private $code;
 
     /**
      * Getter for Id.
@@ -275,6 +333,18 @@ class Recipe
     public function setPeopleAmount(int $people_amount): self
     {
         $this->people_amount = $people_amount;
+
+        return $this;
+    }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(string $code): self
+    {
+        $this->code = $code;
 
         return $this;
     }
