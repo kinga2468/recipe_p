@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.recipe_view'|trans({'%id%': recipe.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.recipe_view'|trans({'%id%': recipe.id|default('')}) }}</h1>
+    {% if recipe is defined and recipe|length %}
+        <dl class="dl-horizontal">
+            <dt>{{ 'label.id'|trans }}</dt>
+            <dd>{{ recipe.id }}</dd>
+            <dt>{{ 'label.created_at'|trans }}</dt>
+            <dd>{{ recipe.createdAt|localizeddate }}</dd>
+            <dt>{{ 'label.updated_at'|trans }}</dt>
+            <dd>{{ recipe.updatedAt|localizeddate }}</dd>
+            <dt>{{ 'label.title'|trans }}</dt>
+            <dd>{{  recipe.title }}</dd>
+            <dt>{{ 'label.description'|trans }}</dt>
+            <dd>{{  recipe.description }}</dd>
+            <dt>{{ 'label.photo'|trans }}</dt>
+            <dd>{{  recipe.photo }}</dd>
+            <dt>{{ 'label.time'|trans }}</dt>
+            <dd>{{  recipe.time }}</dd>
+            <dt>{{ 'label.peopleAmount'|trans }}</dt>
+            <dd>{{  recipe.peopleAmount }}</dd>
+        </dl>
+    {% else %}
+        {% include 'default/_single_flash_message.html.twig' with {
+            type: 'warning',
+            message: 'message.empty_list'|trans
+        } %}
+    {% endif %}
+{% endblock %}
