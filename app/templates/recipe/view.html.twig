@@ -31,4 +31,9 @@
             message: 'message.empty_list'|trans
         } %}
     {% endif %}
+    <div class="form-group row float-sm-left">
+        <a href="{{ url('recipe_index') }}" class="btn btn-link">
+            {{ 'action.back_to_list'|trans }}
+        </a>
+    </div>
 {% endblock %}
