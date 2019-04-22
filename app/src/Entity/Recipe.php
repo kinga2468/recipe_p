@@ -174,6 +174,21 @@ class Recipe
     private $code;
 
     /**
+     * Tags.
+     * @var array
+     *
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="recipes", orphanRemoval=true)
+     *
+     * @ORM\JoinTable(name="recipes_tags")
+     */
+    private $tags;
+
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
+
+    /**
      * Getter for Id.
      *
      * @return int|null Id
@@ -345,6 +360,32 @@ class Recipe
     public function setCode(string $code): self
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+        }
 
         return $this;
     }
