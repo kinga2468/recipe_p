@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'main.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="containter-fluid">
+        <img src="{{ asset('img/breakfast1.jpg') }}" alt="main_photo" height="auto" width="100%">
+    </div>
+    <div class="search">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control" type="search" placeholder="{{ 'ingredients.search'|trans }}" aria-label="Search">
+        </form>
+    </div>
+    <div class="containter last_recipe">
+        <p class="headline">{{ 'last_recipe_headline'|trans }}</p>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="photo_border">
+                    <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
+                </div>
+                <p class="caption">Schab w sosie musztarodwym</p>
+            </div>
+            <div class="col-md-3">
+                <div class="photo_border">
+                    <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
+                </div>
+                <p class="caption">Schab w sosie musztarodwym</p>
+            </div>
+            <div class="col-md-3">
+                <div class="photo_border">
+                    <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
+                </div>
+                <p class="caption">Schab w sosie musztarodwym</p>
+            </div>
+            <div class="col-md-3">
+                <div class="photo_border">
+                    <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
+                </div>
+                <p class="caption">Schab w sosie musztarodwym</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

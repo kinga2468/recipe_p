@@ -1,25 +1,23 @@
 <?php
 /**
- * Recipe type.
+ * Ingredient type.
  */
 
 namespace App\Form;
 
-use App\Entity\Recipe;
-use App\Entity\Tag;
+use App\Entity\Ingredient;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Form\DataTransformer\TagsDataTransformer;
-use App\Repository\TagRepository;
+use App\Repository\IngredientRepository;
 
 /**
- * Class RecipeType.
+ * Class IngredientType.
  */
-class RecipeType extends AbstractType
+class IngredientType extends AbstractType
 {
     /**
      * Tags data transformer.
@@ -29,7 +27,7 @@ class RecipeType extends AbstractType
     private $tagsDataTransformer = null;
 
     /**
-     * RecipeType constructor.
+     * IngredientType constructor.
      *
      * @param \App\Form\DataTransformer\TagsDataTransformer $tagsDataTransformer Tags data transformer
      */
@@ -52,64 +50,22 @@ class RecipeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'title',
+            'name',
             TextType::class,
             [
-                'label' => 'label.title',
+                'label' => 'label.name',
                 'required' => true,
-                'attr' => ['max_length' => 64],
+                'attr' => ['max_length' => 100],
             ]
         );
         $builder->add(
-            'description',
+            'amount',
             TextType::class,
             [
-                'label' => 'label.description',
+                'label' => 'label.amount',
                 'required' => true,
-                'attr' => ['max_length' => 700],
+                'attr' => ['max_length' => 25],
             ]
-        );
-        $builder->add(
-            'photo',
-            TextType::class,
-            [
-                'label' => 'label.photo',
-                'required' => true,
-                'attr' => ['max_length' => 128],
-            ]
-        );
-        $builder->add(
-            'time',
-            NumberType::class,
-            [
-                'label' => 'label.time',
-                'required' => true,
-                'scale' => 0,
-            ]
-        );
-        $builder->add(
-            'peopleAmount',
-            NumberType::class,
-            [
-                'label' => 'label.peopleAmount',
-                'required' => true,
-                'scale' => 0,
-            ]
-        );
-        $builder->add(
-            'tags',
-            TextType::class,
-            [
-                'label' => 'label.tags',
-                'required' => false,
-                'attr' => [
-                    'max_length' => 255,
-                ],
-            ]
-        );
-
-        $builder->get('tags')->addModelTransformer(
-            $this->tagsDataTransformer
         );
     }
 
@@ -120,7 +76,7 @@ class RecipeType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => Recipe::class]);
+        $resolver->setDefaults(['data_class' => Ingredient::class]);
     }
 
     /**
@@ -133,6 +89,6 @@ class RecipeType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'recipe';
+        return 'Ingredient';
     }
 }
