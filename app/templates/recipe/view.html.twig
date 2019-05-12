@@ -28,6 +28,10 @@
             {% for tag in recipe.tags %}
                 <dd>{{  tag.title }}</dd>
             {% endfor %}
+            <dt>{{ 'label.ingredients'|trans }}</dt>
+            {% for ingredient in recipe.ingredients %}
+                <dd>{{  ingredient.title }}</dd>
+            {% endfor %}
         </dl>
     {% else %}
         {% include 'default/_single_flash_message.html.twig' with {

@@ -11,8 +11,8 @@
             <thead>
             <tr>
                 <th>{{ 'label.id'|trans }}</th>
-                <th>{{ 'label.name'|trans }}</th>
-                <th>{{ 'label.amount'|trans }}</th>
+                <th>{{ 'label.title'|trans }}</th>
+                {#<th>{{ 'label.amount'|trans }}</th>#}
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -23,8 +23,8 @@
             {% for ingredient in ingredient %}
                 <tr>
                     <td>{{ ingredient.id }}</td>
-                    <td>{{ ingredient.name }}</td>
-                    <td>{{ ingredient.amount }}</td>
+                    <td>{{ ingredient.title }}</td>
+                    {#<td>{{ ingredient.amount }}</td>#}
                     <td>
                         <a href="{{ url('ingredient_view', {id: ingredient.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}

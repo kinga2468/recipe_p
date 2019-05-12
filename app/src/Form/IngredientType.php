@@ -50,23 +50,23 @@ class IngredientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'name',
+            'title',
             TextType::class,
             [
-                'label' => 'label.name',
+                'label' => 'label.title',
                 'required' => true,
                 'attr' => ['max_length' => 100],
             ]
         );
-        $builder->add(
-            'amount',
-            TextType::class,
-            [
-                'label' => 'label.amount',
-                'required' => true,
-                'attr' => ['max_length' => 25],
-            ]
-        );
+//        $builder->add(
+//            'amount',
+//            TextType::class,
+//            [
+//                'label' => 'label.amount',
+//                'required' => true,
+//                'attr' => ['max_length' => 25],
+//            ]
+//        );
     }
 
     /**

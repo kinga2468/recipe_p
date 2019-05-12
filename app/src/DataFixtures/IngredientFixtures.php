@@ -24,7 +24,7 @@ class IngredientFixtures extends AbstractBaseFixtures
         for ($i = 0; $i < 10; ++$i) {
             $ingredient = new Ingredient();
             $ingredient->setName($this->faker->sentence);
-            $ingredient->setAmount($this->faker->sentence($nbWords = 1));
+//            $ingredient->setAmount($this->faker->sentence($nbWords = 1));
             $this->manager->persist($ingredient);
         }
 

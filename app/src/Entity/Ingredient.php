@@ -34,13 +34,13 @@ class Ingredient
     private $id;
 
     /**
-     * Name
+     * Title
      *
      * @var string
      *
      * @ORM\Column(type="string", length=100)
      */
-    private $name;
+    private $title;
 
     /**
      * Amount
@@ -48,8 +48,8 @@ class Ingredient
      * @var string
      *
      * @ORM\Column(type="string", length=25)
-     */
-    private $amount;
+     *//**
+    private $amount;**/
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Recipe", mappedBy="ingredients")
@@ -72,23 +72,23 @@ class Ingredient
     }
 
     /**
-     * Getter for Name.
+     * Getter for Title.
      *
-     * @return string|null Name
+     * @return string|null Title
      */
-    public function getName(): ?string
+    public function getTitle(): ?string
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
-     * Setter for Name.
+     * Setter for Title.
      *
-     * @param string $title Name
+     * @param string $title Title
      */
-    public function setName(string $name): self
+    public function setTitle(string $title): self
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
@@ -97,23 +97,23 @@ class Ingredient
      * Getter for Amount.
      *
      * @return string|null Amount
-     */
+     **//**
     public function getAmount(): ?string
     {
         return $this->amount;
-    }
+    }**/
 
     /**
      * Setter for Amount.
      *
      * @param string $title Amount
-     */
+     *//**
     public function setAmount(string $amount): self
     {
         $this->amount = $amount;
 
         return $this;
-    }
+    }**/
 
     /**
      * @return Collection|Recipe[]
