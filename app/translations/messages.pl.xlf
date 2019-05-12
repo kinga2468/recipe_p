@@ -46,6 +46,14 @@
                 <source>footer.text</source>
                 <target>Zaawansowane techniki programowania 2, Kinga Bożęcka, 2019.</target>
             </trans-unit>
+            <trans-unit id="title.recipe_list">
+                <source>title.recipe_list</source>
+                <target>Przepisy</target>
+            </trans-unit>
+            <trans-unit id="action.add">
+                <source>action.add</source>
+                <target>Dodaj nowy przepis</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

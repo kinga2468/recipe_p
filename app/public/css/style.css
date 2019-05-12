@@ -2,7 +2,7 @@ html, body {margin:0; padding:0; height:100%;}
 .main_body{min-height:80%; position:relative;}
 *{font-family: "Gabriola", Lato, arial, sans-serif; font-size: 24px;}
 .container-fluid.main{padding-left:0; padding-right:0;}
-.header{background-color: #f6f0ea;}
+.header{background-color: white;}
 .form-group label{
     font-weight: bold;
 }
@@ -32,9 +32,25 @@ html, body {margin:0; padding:0; height:100%;}
 footer{clear:both; background-color: #61969E; }
 footer p{text-align:center; padding:8px; margin-bottom: 0;}
 
+.last_recipe{float:left;}
 .last_recipe a{color:black;}
 .last_recipe .photo_border:hover{opacity:0.9;}
-.icons{background-color: #61969E; position: absolute; bottom:286px;}
-.icons .fas{float: left; padding:5px;}
-.icon{float:left; padding:0 4px 0 4px;}
+.icons{background-color: #61969E; position: absolute; bottom:87%; }
+.icons .fas{float: left; padding:6px 2px 6px 9px; font-size: 90%;}
+.icon{float:left; padding:0 8px 0 4px; font-size: 100%;}
 
+.section_title{width:100%; background-color: #f6f0ea; margin:0 0 30px 0; }
+h1{text-align: center; font-size: 40px;}
+.page-item.active .page-link{background-color: #61969E; border-color: #61969E;}
+.page-link{color:#61969E;}
+.page-link:hover{color:#41666B;}
+.navigation.text-center{margin:5px 20px 20px 0; float: right;}
+
+.aside{background-color: green;float: left; }
+.add_recipe{background-color: #e9662a; width: 60%; margin:0 auto;}
+.add_recipe a:hover{text-decoration: none;}
+.add_recipe:hover{opacity: 0.9;}
+.add_recipe p{text-align: center; margin:5px;}
+.add_recipe a{color:black; }
+
+.popular_tags{clear:both; width:100%;}

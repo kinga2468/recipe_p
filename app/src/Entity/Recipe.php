@@ -28,7 +28,7 @@ class Recipe
      *
      * @constant int NUMBER_OF_ITEMS
      */
-    const NUMBER_OF_ITEMS = 5;
+    const NUMBER_OF_ITEMS = 9;
 
     /**
      * Primary key.

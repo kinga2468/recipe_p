@@ -39,7 +39,7 @@ class RecipeController extends AbstractController
     public function index(Request $request, RecipeRepository $repository, PaginatorInterface $paginator): Response
     {
         $pagination = $paginator->paginate(
-            $repository->queryAll(),
+            $repository->allRecipeByUpdateDate(),
             $request->query->getInt('page', 1),
             Recipe::NUMBER_OF_ITEMS
         );
@@ -48,7 +48,7 @@ class RecipeController extends AbstractController
             'recipe/index.html.twig',
             [
                 'pagination' => $pagination,
-                'allNewestRecipe' => $repository -> allRecipeByUpdateDate()
+//                'allNewestRecipe' => $repository -> allRecipeByUpdateDate()
             ]
         );
     }
