@@ -34,4 +34,7 @@ footer p{text-align:center; padding:8px; margin-bottom: 0;}
 
 .last_recipe a{color:black;}
 .last_recipe .photo_border:hover{opacity:0.9;}
+.icons{background-color: #61969E; position: absolute; bottom:286px;}
+.icons .fas{float: left; padding:5px;}
+.icon{float:left; padding:0 4px 0 4px;}
 

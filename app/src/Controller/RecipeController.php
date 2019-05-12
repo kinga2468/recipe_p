@@ -46,7 +46,10 @@ class RecipeController extends AbstractController
 
         return $this->render(
             'recipe/index.html.twig',
-            ['pagination' => $pagination]
+            [
+                'pagination' => $pagination,
+                'allNewestRecipe' => $repository -> allRecipeByUpdateDate()
+            ]
         );
     }
 

@@ -56,11 +56,19 @@ class RecipeRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('r')
             ->orderBy('r.updatedAt', 'DESC')
-            ->setMaxResults(4)
+            ->setMaxResults(8)
             ->getQuery()
             ->getResult()
         ;
+    }
 
+    public function allRecipeByUpdateDate()
+    {
+        return $this->createQueryBuilder('r')
+            ->orderBy('r.updatedAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
 //     /**
