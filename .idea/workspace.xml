@@ -15,45 +15,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="view.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/templates/ingredient/view.html.twig">
+      <file leaf-file-name="RecipeRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/Repository/RecipeRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+            <state relative-caret-position="214">
+              <caret line="59" column="24" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ingredient.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Entity/Ingredient.php">
+      <file leaf-file-name="MainController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/Controller/MainController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="4" selection-start-line="4" selection-end-line="4" selection-end-column="4" />
-              <folding>
-                <element signature="e#6#35#0#PHP" expanded="true" />
-                <element signature="e#59#107#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="281">
+              <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/ingredient/index.html.twig">
+        <entry file="file://$PROJECT_DIR$/app/templates/main/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+            <state relative-caret-position="221">
+              <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IngredientType.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Form/IngredientType.php">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/public/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="82" column="52" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="52" />
-              <folding>
-                <element signature="e#6#33#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="282">
+              <caret line="35" column="42" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -75,6 +68,8 @@
       <find>amount</find>
       <find>getname</find>
       <find>name</find>
+      <find>findnew</find>
+      <find>last_recipe_headline</find>
     </findStrings>
     <replaceStrings>
       <replace>name</replace>
@@ -86,7 +81,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/composer.json" />
         <option value="$PROJECT_DIR$/app/config/packages/translation.yaml" />
-        <option value="$PROJECT_DIR$/app/src/Repository/RecipeRepository.php" />
         <option value="$PROJECT_DIR$/app/config/packages/knp_paginator.yml" />
         <option value="$PROJECT_DIR$/app/config/packages/twig_extensions.yaml" />
         <option value="$PROJECT_DIR$/app/config/packages/twig.yaml" />
@@ -100,19 +94,14 @@
         <option value="$PROJECT_DIR$/app/src/Form/DataTransformer/TagsDataTransformer.php" />
         <option value="$PROJECT_DIR$/app/src/Controller/TagController.php" />
         <option value="$PROJECT_DIR$/app/.env" />
-        <option value="$PROJECT_DIR$/app/src/Controller/MainController.php" />
-        <option value="$PROJECT_DIR$/app/templates/main/index.html.twig" />
-        <option value="$PROJECT_DIR$/app/translations/messages.pl.xlf" />
         <option value="$PROJECT_DIR$/app/translations/messages.en.xlf" />
         <option value="$PROJECT_DIR$/app/src/Repository/IngredientRepository.php" />
         <option value="$PROJECT_DIR$/app/src/DataFixtures/RecipeFixtures.php" />
-        <option value="$PROJECT_DIR$/app/templates/recipe/view.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Controller/IngredientController.php" />
         <option value="$PROJECT_DIR$/app/templates/ingredient/new.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/ingredient/edit.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/ingredient/delete.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/base.html.twig" />
-        <option value="$PROJECT_DIR$/app/public/css/style.css" />
         <option value="$PROJECT_DIR$/app/src/Entity/Recipe.php" />
         <option value="$PROJECT_DIR$/app/src/DataFixtures/IngredientFixtures.php" />
         <option value="$PROJECT_DIR$/app/src/Form/RecipeType.php" />
@@ -121,6 +110,12 @@
         <option value="$PROJECT_DIR$/app/src/Form/IngredientType.php" />
         <option value="$PROJECT_DIR$/app/templates/ingredient/index.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/ingredient/view.html.twig" />
+        <option value="$PROJECT_DIR$/app/templates/recipe/view.html.twig" />
+        <option value="$PROJECT_DIR$/app/src/Controller/MainController.php" />
+        <option value="$PROJECT_DIR$/app/src/Repository/RecipeRepository.php" />
+        <option value="$PROJECT_DIR$/app/templates/main/index.html.twig" />
+        <option value="$PROJECT_DIR$/app/translations/messages.pl.xlf" />
+        <option value="$PROJECT_DIR$/app/public/css/style.css" />
       </list>
     </option>
   </component>
@@ -330,6 +325,12 @@
               <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="recipe" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="recipe_p" type="b2602c69:ProjectViewProjectNode" />
+              <item name="recipe_p" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="translations" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -384,12 +385,12 @@
       <workItem from="1557411449868" duration="970000" />
       <workItem from="1557432954543" duration="898000" />
       <workItem from="1557606316388" duration="597000" />
-      <workItem from="1557671090588" duration="6133000" />
+      <workItem from="1557671090588" duration="7415000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34934000" />
+    <option name="totallyTimeSpent" value="36216000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -425,13 +426,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/config/packages/twig_extensions.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/packages/twig.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -533,20 +527,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../figure_skating/app/src/Controller/MainController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
-          <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Controller/MainController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="43" column="10" selection-start-line="43" selection-start-column="10" selection-end-line="43" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../figure_skating/app/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -568,20 +548,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../figure_skating/app/templates/main/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="133" column="28" selection-start-line="133" selection-start-column="28" selection-end-line="133" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/translations/messages.pl.xlf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="47" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/translations/messages.en.xlf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
@@ -589,31 +555,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/main/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="38" column="61" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Repository/RecipeRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="111" column="5" lean-forward="true" selection-start-line="83" selection-start-column="4" selection-end-line="111" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/RecipeFixtures.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
           <caret line="24" column="52" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/recipe/view.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -659,13 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -763,10 +701,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Entity/Recipe.php">
+    <entry file="file://$PROJECT_DIR$/app/templates/ingredient/view.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="195" column="26" selection-start-line="195" selection-start-column="22" selection-end-line="195" selection-end-column="26" />
+        <state relative-caret-position="196">
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -781,6 +719,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/ingredient/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Form/IngredientType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
@@ -791,17 +736,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/ingredient/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/templates/recipe/view.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+        <state relative-caret-position="243">
+          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/ingredient/view.html.twig">
+    <entry file="file://$PROJECT_DIR$/../figure_skating/app/src/Repository/VideoRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        <state relative-caret-position="123">
+          <caret line="177" column="27" selection-start-line="177" selection-start-column="20" selection-end-line="177" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Entity/Recipe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../figure_skating/app/src/Controller/MainController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="67" column="36" selection-start-line="67" selection-start-column="36" selection-end-line="67" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Repository/RecipeRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="59" column="24" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Controller/MainController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../figure_skating/app/templates/main/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="142" column="50" selection-start-line="142" selection-end-line="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/translations/messages.pl.xlf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/main/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="35" column="42" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
         </state>
       </provider>
     </entry>

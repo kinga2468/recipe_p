@@ -45,7 +45,10 @@ class MainController extends AbstractController
 
         return $this->render(
             'main/index.html.twig',
-            ['pagination' => $pagination]
+            [
+                'pagination' => $pagination,
+                'newestRecipe' => $repository -> findRecipeByUpdateDate()
+            ]
         );
     }
 }

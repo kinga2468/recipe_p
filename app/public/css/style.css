@@ -32,5 +32,6 @@ html, body {margin:0; padding:0; height:100%;}
 footer{clear:both; background-color: #61969E; }
 footer p{text-align:center; padding:8px; margin-bottom: 0;}
 
-
+.last_recipe a{color:black;}
+.last_recipe .photo_border:hover{opacity:0.9;}
 

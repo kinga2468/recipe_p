@@ -14,30 +14,16 @@
     <div class="containter last_recipe">
         <p class="headline">{{ 'last_recipe_headline'|trans }}</p>
         <div class="row">
-            <div class="col-md-3">
-                <div class="photo_border">
-                    <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
+            {% for item in newestRecipe %}
+                <div class="col-md-3">
+                    <a href="{{ url('recipe_view', {'id': item.id}) }}" title="{{ 'label.view'|trans }}">
+                        <div class="photo_border">
+                            <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
+                        </div>
+                        <p class="caption">{{ item.title }}</p>
+                    </a>
                 </div>
-                <p class="caption">Schab w sosie musztarodwym</p>
-            </div>
-            <div class="col-md-3">
-                <div class="photo_border">
-                    <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
-                </div>
-                <p class="caption">Schab w sosie musztarodwym</p>
-            </div>
-            <div class="col-md-3">
-                <div class="photo_border">
-                    <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
-                </div>
-                <p class="caption">Schab w sosie musztarodwym</p>
-            </div>
-            <div class="col-md-3">
-                <div class="photo_border">
-                    <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
-                </div>
-                <p class="caption">Schab w sosie musztarodwym</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

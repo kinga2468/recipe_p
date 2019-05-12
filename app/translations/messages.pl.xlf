@@ -40,7 +40,7 @@
             </trans-unit>
             <trans-unit id="last_recipe_headline">
                 <source>last_recipe_headline</source>
-                <target>Ostatnio dodane</target>
+                <target>Ostatnio dodane:</target>
             </trans-unit>
             <trans-unit id="footer.text">
                 <source>footer.text</source>
