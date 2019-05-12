@@ -183,9 +183,24 @@ class Recipe
      */
     private $tags;
 
+    /**
+     * Ingredients.
+     *
+     * @var array
+     *
+     * @ORM\ManyToMany(
+     *     targetEntity="App\Entity\Ingredient",
+     *     inversedBy="recipes",
+     *     orphanRemoval=true
+     * )
+     * @ORM\JoinTable(name="recipes_ingredients")
+     */
+    private $ingredients;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->ingredients = new ArrayCollection();
     }
 
     /**
@@ -385,6 +400,32 @@ class Recipe
     {
         if ($this->tags->contains($tag)) {
             $this->tags->removeElement($tag);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ingredient[]
+     */
+    public function getIngredients(): Collection
+    {
+        return $this->ingredients;
+    }
+
+    public function addIngredient(Ingredient $ingredient): self
+    {
+        if (!$this->ingredients->contains($ingredient)) {
+            $this->ingredients[] = $ingredient;
+        }
+
+        return $this;
+    }
+
+    public function removeIngredient(Ingredient $ingredient): self
+    {
+        if ($this->ingredients->contains($ingredient)) {
+            $this->ingredients->removeElement($ingredient);
         }
 
         return $this;

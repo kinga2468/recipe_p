@@ -17,6 +17,9 @@
             </tr>
             </thead>
             <tbody>
+            <a href="{{ url('ingredient_new') }}" title="{{ 'action.add'|trans }}">
+                {{ 'action.add'|trans }}
+            </a>
             {% for ingredient in ingredient %}
                 <tr>
                     <td>{{ ingredient.id }}</td>
@@ -25,6 +28,12 @@
                     <td>
                         <a href="{{ url('ingredient_view', {id: ingredient.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
+                        </a>
+                        <a href="{{ url('ingredient_edit', {id: ingredient.id}) }}" title="{{ 'action.edit'|trans }}">
+                            {{ 'action.edit'|trans }}
+                        </a>
+                        <a href="{{ url('ingredient_delete', {id: ingredient.id}) }}" title="{{ 'action.delete'|trans }}">
+                            {{ 'action.delete'|trans }}
                         </a>
                     </td>
                 </tr>

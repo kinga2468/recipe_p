@@ -1,4 +1,8 @@
+html, body {margin:0; padding:0; height:100%;}
+.main_body{min-height:80%; position:relative;}
 *{font-family: "Gabriola", Lato, arial, sans-serif; font-size: 24px;}
+.container-fluid.main{padding-left:0; padding-right:0;}
+.header{background-color: #f6f0ea;}
 .form-group label{
     font-weight: bold;
 }
@@ -10,7 +14,7 @@
 .row{margin-right:0; margin-left:0;}
 
 .main_body{padding: 0;}
-.slogan{margin-top:12px; margin-left:15px;}
+.slogan{margin-top:17px; margin-left:15px;}
 .slogan a{font-size: 36px; color:#3A595E; text-decoration: none;}
 
 /*.navbar{font-size:24px;}*/
@@ -25,7 +29,7 @@
 .photo_border img{height:auto; width:100%; padding:10px;}
 .caption{text-align: center; padding:5px;}
 
-footer{background-color: #61969E; }
+footer{clear:both; background-color: #61969E; }
 footer p{text-align:center; padding:8px; margin-bottom: 0;}
 
 

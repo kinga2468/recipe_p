@@ -24,6 +24,10 @@
             <dd>{{  recipe.time }}</dd>
             <dt>{{ 'label.peopleAmount'|trans }}</dt>
             <dd>{{  recipe.peopleAmount }}</dd>
+            <dt>{{ 'label.tags'|trans }}</dt>
+            {% for tag in recipe.tags %}
+                <dd>{{  tag.title }}</dd>
+            {% endfor %}
         </dl>
     {% else %}
         {% include 'default/_single_flash_message.html.twig' with {
