@@ -52,20 +52,46 @@ class RecipeRepository extends ServiceEntityRepository
         return $queryBuilder ?: $this->createQueryBuilder('r');
     }
 
+    /**
+     * @return mixed
+     * funckja zwracająca 8 ostatnio dodanych przepisów, na stronę główną
+     */
     public function findRecipeByUpdateDate()
     {
         return $this->createQueryBuilder('r')
-            ->orderBy('r.updatedAt', 'DESC')
+            ->orderBy('r.createdAt', 'DESC')
             ->setMaxResults(8)
             ->getQuery()
             ->getResult()
         ;
     }
 
+    /**
+     * @return mixed
+     * funckja zwracająca wszysktie przepisy posortowane po dacie aktualizacji, na podstanę wszystkiech przepisów
+     */
     public function allRecipeByUpdateDate()
     {
         return $this->createQueryBuilder('r')
             ->orderBy('r.updatedAt', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    /**
+     * @return mixed
+     * funkcja zwracająca najbardziej popularne tagi, na podstronie z przepisami
+     */
+    public function findMostPopularTag()
+    {
+        return $this->createQueryBuilder('r')
+            ->innerJoin('r.tags','g')
+            ->addSelect('g')
+            ->select('g.title', 'g.id')
+            ->groupBy('g.id')
+            ->orderBy('COUNT(r.id)', 'DESC')
+            ->setMaxResults(20)
             ->getQuery()
             ->getResult()
             ;

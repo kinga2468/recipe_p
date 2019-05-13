@@ -45,6 +45,13 @@
                     </div>
                     <div class="popular_tags">
                         <p>{{ 'popular.tag'|trans }}</p>
+                        {% for tag in mostPopularTag %}
+                            <div class="tag">
+                                <a href="{{ url('tag_view', {id: tag.id}) }}" title=" {{ tag.title }}">
+                                    {{ tag.title }}
+                                </a>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

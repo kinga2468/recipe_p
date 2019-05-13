@@ -7,6 +7,7 @@ namespace App\Controller;
 
 use App\Entity\Recipe;
 use App\Repository\RecipeRepository;
+use App\Repository\TagRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +37,7 @@ class RecipeController extends AbstractController
      *     name="recipe_index",
      * )
      */
-    public function index(Request $request, RecipeRepository $repository, PaginatorInterface $paginator): Response
+    public function index(Request $request, RecipeRepository $repository, TagRepository $tagRepository, PaginatorInterface $paginator): Response
     {
         $pagination = $paginator->paginate(
             $repository->allRecipeByUpdateDate(),
@@ -48,6 +49,7 @@ class RecipeController extends AbstractController
             'recipe/index.html.twig',
             [
                 'pagination' => $pagination,
+                'mostPopularTag' => $repository -> findMostPopularTag()
 //                'allNewestRecipe' => $repository -> allRecipeByUpdateDate()
             ]
         );

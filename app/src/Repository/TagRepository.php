@@ -69,4 +69,21 @@ class TagRepository extends ServiceEntityRepository
         $this->_em->remove($tag);
         $this->_em->flush($tag);
     }
+
+    /**
+     * @return mixed
+     * chiwlowa funckja
+     */
+    public function findMostPopularTag()
+    {
+        return $this->createQueryBuilder('g')
+            ->select('g.id', 'g.title')
+//            ->select('g.tag_id', count('g.recipes_id'))
+//            ->groupBy('g.tag_id')
+//            ->orderBy(count('g.recipes_id'), 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

@@ -54,6 +54,10 @@
                 <source>action.add</source>
                 <target>Add new recipe</target>
             </trans-unit>
+            <trans-unit id="popular.tag">
+                <source>popular.tag</source>
+                <target>Most popular tags</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

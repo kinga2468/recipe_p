@@ -46,7 +46,7 @@ h1{text-align: center; font-size: 40px;}
 .page-link:hover{color:#41666B;}
 .navigation.text-center{margin:5px 20px 20px 0; float: right;}
 
-.aside{background-color: green;float: left; }
+.aside{float: left; }
 .add_recipe{background-color: #e9662a; width: 60%; margin:0 auto;}
 .add_recipe a:hover{text-decoration: none;}
 .add_recipe:hover{opacity: 0.9;}
@@ -54,3 +54,7 @@ h1{text-align: center; font-size: 40px;}
 .add_recipe a{color:black; }
 
 .popular_tags{clear:both; width:100%;}
+.popular_tags p{margin-bottom: 5px; margin-top: 20px;}
+.popular_tags .tag{background-color: #f6f0ea; padding: 5px; margin:5px; width:auto; float:left; border-radius: 3px;}
+.popular_tags .tag:hover{opacity: 0.7;}
+.popular_tags .tag a{text-decoration: none; color:black;}
