@@ -1,8 +1,9 @@
 html, body {margin:0; padding:0; height:100%;}
 .main_body{min-height:80%; position:relative;}
 *{font-family: "Gabriola", Lato, arial, sans-serif; font-size: 24px;}
+p{margin-bottom:0;}
 .container-fluid.main{padding-left:0; padding-right:0;}
-.header{background-color: white;}
+.header{background-color: #f6f0ea;}
 .form-group label{
     font-weight: bold;
 }
@@ -24,7 +25,7 @@ html, body {margin:0; padding:0; height:100%;}
 .search{width:40%; background-color: red; margin:0 auto; position: relative; bottom: 300px; height:60px; color:red;}
 .search .form-control{width:100%; height:60px; border-radius: 0; border:none; padding-top:15px;}
 
-.headline{font-size: 26px; color:#3A595E; padding-left:45px; }
+.headline{font-size: 26px; color:#3A595E; padding-left:45px; margin-bottom: 10px;}
 .photo_border{width:90%; margin:0 auto; background-color: #61969E;}
 .photo_border img{height:auto; width:100%; padding:10px;}
 .caption{text-align: center; padding:5px;}
@@ -32,21 +33,21 @@ html, body {margin:0; padding:0; height:100%;}
 footer{clear:both; background-color: #61969E; }
 footer p{text-align:center; padding:8px; margin-bottom: 0;}
 
-.last_recipe{float:left;}
+.last_recipe{float:left; }
 .last_recipe a{color:black;}
 .last_recipe .photo_border:hover{opacity:0.9;}
 .icons{background-color: #61969E; position: absolute; bottom:87%; }
 .icons .fas{float: left; padding:6px 2px 6px 9px; font-size: 90%;}
 .icon{float:left; padding:0 8px 0 4px; font-size: 100%;}
 
-.section_title{width:100%; background-color: #f6f0ea; margin:0 0 30px 0; }
+.section_title{width:100%; background-color: #f6f0ea; margin:0 0 30px 0; padding-top:4px;}
 h1{text-align: center; font-size: 40px;}
 .page-item.active .page-link{background-color: #61969E; border-color: #61969E;}
 .page-link{color:#61969E;}
 .page-link:hover{color:#41666B;}
 .navigation.text-center{margin:5px 20px 20px 0; float: right;}
 
-.aside{float: left; }
+.aside{float: left; margin-top:40px;}
 .add_recipe{background-color: #e9662a; width: 60%; margin:0 auto;}
 .add_recipe a:hover{text-decoration: none;}
 .add_recipe:hover{opacity: 0.9;}
@@ -58,3 +59,25 @@ h1{text-align: center; font-size: 40px;}
 .popular_tags .tag{background-color: #f6f0ea; padding: 5px; margin:5px; width:auto; float:left; border-radius: 3px;}
 .popular_tags .tag:hover{opacity: 0.7;}
 .popular_tags .tag a{text-decoration: none; color:black;}
+
+/*.data_recipe{width:100%; float:left; margin-top:40px; }*/
+/*.data_recipe .ingredients_list{width:70%; background-color: #61969E; margin:0 auto; height: 100%; padding-bottom:10px;}*/
+/*.data_recipe .center{text-align: center; font-size:34px;}*/
+/*.photo_recipe{float:left; width:100%; margin-top:40px;}*/
+/*.photo_recipe img{height:auto; width:100%;}*/
+
+/*.info_recipe{margin-left:30px;}*/
+/*.info_recipe i{padding:6px 0 6px 0;}*/
+
+/*.fa-circle{font-size: 10px; clear:both;}*/
+/*.ingredients_list .fas{float: left;}*/
+/*.ingredients{clear:both; margin-left:30px; margin-top:20px;}*/
+/*.ingredients i{margin:12px 10px 0 10px;}*/
+
+.photo_recipe{position: fixed; top: 86px; bottom: 0; left: 0; width: 46%; height: auto; padding:0}
+.photo_recipe img{width:100%; }
+.data_recipe{position: fixed; top: 86px; bottom: 0; left: 46%; width: 54%;}
+.recipe_list{margin:30px 0 0 30px;}
+.data_recipe .recipe_name{font-size:34px;}
+
+.fa-circle{font-size: 10px; clear:both;}

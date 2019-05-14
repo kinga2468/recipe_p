@@ -19,6 +19,12 @@
                     <a href="{{ url('recipe_view', {'id': item.id}) }}" title="{{ 'label.view'|trans }}">
                         <div class="photo_border">
                             <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
+                            <div class="icons">
+                                <i class="fas fa-clock"></i>
+                                <div class="icon">{{ item.time }}</div>
+                                <i class="fas fa-user"></i>
+                                <div class="icon">{{ item.peopleAmount }}</div>
+                            </div>
                         </div>
                         <p class="caption">{{ item.title }}</p>
                     </a>
@@ -26,4 +32,7 @@
             {% endfor %}
         </div>
     </div>
+    <footer>
+        <p>{{ 'footer.text'|trans }}</p>
+    </footer>
 {% endblock %}

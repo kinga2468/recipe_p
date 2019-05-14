@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.recipe_new'|trans }}</h1>
+    <div class="section_title">
+        <h1>{{ 'title.recipe_new'|trans }}</h1>
+    </div>
     {{ form_start(form, { method: 'POST', action: url('recipe_new') }) }}
     {{ form_widget(form) }}
     <div class="form-group row float-sm-right">

@@ -5,34 +5,54 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.recipe_view'|trans({'%id%': recipe.id|default('')}) }}</h1>
+    {#<div class="section_title">#}
+        {#<h1>{{ 'title.recipe_view'|trans({'%id%': recipe.id|default('')}) }}</h1>#}
+    {#</div>#}
     {% if recipe is defined and recipe|length %}
-        <dl class="dl-horizontal">
-            <dt>{{ 'label.id'|trans }}</dt>
-            <dd>{{ recipe.id }}</dd>
-            <dt>{{ 'label.created_at'|trans }}</dt>
-            <dd>{{ recipe.createdAt|localizeddate }}</dd>
-            <dt>{{ 'label.updated_at'|trans }}</dt>
-            <dd>{{ recipe.updatedAt|localizeddate }}</dd>
-            <dt>{{ 'label.title'|trans }}</dt>
-            <dd>{{  recipe.title }}</dd>
-            <dt>{{ 'label.description'|trans }}</dt>
-            <dd>{{  recipe.description }}</dd>
-            <dt>{{ 'label.photo'|trans }}</dt>
-            <dd>{{  recipe.photo }}</dd>
-            <dt>{{ 'label.time'|trans }}</dt>
-            <dd>{{  recipe.time }}</dd>
-            <dt>{{ 'label.peopleAmount'|trans }}</dt>
-            <dd>{{  recipe.peopleAmount }}</dd>
-            <dt>{{ 'label.tags'|trans }}</dt>
-            {% for tag in recipe.tags %}
-                <dd>{{  tag.title }}</dd>
-            {% endfor %}
-            <dt>{{ 'label.ingredients'|trans }}</dt>
-            {% for ingredient in recipe.ingredients %}
-                <dd>{{  ingredient.title }}</dd>
-            {% endfor %}
-        </dl>
+        <div class="col-md-12">
+            <div class="col-md-6 photo_recipe">
+                <img src="{{ asset('img/ciasto.png') }}" alt="recipe_photo">
+            </div>
+            <div class="col-md-6 data_recipe">
+                <div class="recipe_list">
+                    <p class="recipe_name">{{  recipe.title }}</p>
+                    <div class="icon_recipe">
+                        <i class="fas fa-clock"></i>
+                        <div class="icon">{{ recipe.time }}</div>
+                        <i class="fas fa-user"></i>
+                        <div class="icon">{{ recipe.peopleAmount }}</div>
+                    </div>
+                    <div class="ingredients_list">
+                        <p>{{ 'ingredient'|trans }}</p>
+                        {% for ingredient in recipe.ingredients %}
+                            <i class="fas fa-circle"></i><div>{{  ingredient.title }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        {#<dt>{{ 'label.description'|trans }}</dt>#}
+            {#<dd>{{  recipe.description }}</dd>#}
+            {#<dt>{{ 'label.photo'|trans }}</dt>#}
+            {#<dd>{{  recipe.photo }}</dd>#}
+            {#<dt>{{ 'label.time'|trans }}</dt>#}
+            {#<dd>{{  recipe.time }}</dd>#}
+            {#<dt>{{ 'label.peopleAmount'|trans }}</dt>#}
+            {#<dd>{{  recipe.peopleAmount }}</dd>#}
+            {#<dt>{{ 'label.tags'|trans }}</dt>#}
+            {#{% for tag in recipe.tags %}#}
+                {#<dd>{{  tag.title }}</dd>#}
+            {#{% endfor %}#}
+            {#<dt>{{ 'label.ingredients'|trans }}</dt>#}
+            {#{% for ingredient in recipe.ingredients %}#}
+                {#<dd>{{  ingredient.title }}</dd>#}
+            {#{% endfor %}#}
+        {#</dl>#}
     {% else %}
         {% include 'default/_single_flash_message.html.twig' with {
             type: 'warning',

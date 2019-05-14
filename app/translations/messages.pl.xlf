@@ -58,6 +58,39 @@
                 <source>popular.tag</source>
                 <target>Popularne tagi: </target>
             </trans-unit>
+
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>Opis przygotowania</target>
+            </trans-unit>
+            <trans-unit id="label.time">
+                <source>label.time</source>
+                <target>Czas</target>
+            </trans-unit>
+            <trans-unit id="label.peopleAmount">
+                <source>label.peopleAmount</source>
+                <target>Liczba osób</target>
+            </trans-unit>
+            <trans-unit id="label.ingredients">
+                <source>label.ingredients</source>
+                <target>Składniki</target>
+            </trans-unit>
+            <trans-unit id="action.save">
+                <source>action.save</source>
+                <target>Zapisz</target>
+            </trans-unit>
+            <trans-unit id="action.back_to_list">
+                <source>action.back_to_list</source>
+                <target>Wróć</target>
+            </trans-unit>
+            <trans-unit id="title.recipe_new">
+                <source>title.recipe_new</source>
+                <target>Dodawanie nowego przepisu</target>
+            </trans-unit>
+            <trans-unit id="ingredient">
+                <source>ingredient</source>
+                <target>Składniki</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
