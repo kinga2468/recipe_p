@@ -11,7 +11,7 @@
     {% if recipe is defined and recipe|length %}
         <div class="col-md-12">
             <div class="col-md-6 photo_recipe">
-                <img src="{{ asset('img/ciasto.png') }}" alt="recipe_photo">
+                <img src="{{ asset('img/muffiny.png') }}" alt="recipe_photo">
             </div>
             <div class="col-md-6 data_recipe">
                 <div class="recipe_list">
@@ -28,6 +28,22 @@
                             <i class="fas fa-circle"></i><div>{{  ingredient.title }}</div>
                         {% endfor %}
                     </div>
+                    <div class="recipe_description">
+                        <p>{{ 'label.description'|trans }}</p>
+                        <div>
+                            {{  recipe.description }}
+                        </div>
+                    </div>
+                    <div class="recipe_tags">
+                        <p>{{ 'label.tags'|trans }}</p>
+                        {% for tag in recipe.tags %}
+                            <div class="tag">
+                                <a href="{{ url('tag_view', {id: tag.id}) }}" title=" {{ tag.title }}">
+                                    {{ tag.title }}
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,23 +51,12 @@
 
 
 
-
-        {#<dt>{{ 'label.description'|trans }}</dt>#}
-            {#<dd>{{  recipe.description }}</dd>#}
-            {#<dt>{{ 'label.photo'|trans }}</dt>#}
-            {#<dd>{{  recipe.photo }}</dd>#}
-            {#<dt>{{ 'label.time'|trans }}</dt>#}
-            {#<dd>{{  recipe.time }}</dd>#}
-            {#<dt>{{ 'label.peopleAmount'|trans }}</dt>#}
-            {#<dd>{{  recipe.peopleAmount }}</dd>#}
+        {#<dl>#}
             {#<dt>{{ 'label.tags'|trans }}</dt>#}
             {#{% for tag in recipe.tags %}#}
                 {#<dd>{{  tag.title }}</dd>#}
             {#{% endfor %}#}
-            {#<dt>{{ 'label.ingredients'|trans }}</dt>#}
-            {#{% for ingredient in recipe.ingredients %}#}
-                {#<dd>{{  ingredient.title }}</dd>#}
-            {#{% endfor %}#}
+
         {#</dl>#}
     {% else %}
         {% include 'default/_single_flash_message.html.twig' with {
@@ -59,9 +64,9 @@
             message: 'message.empty_list'|trans
         } %}
     {% endif %}
-    <div class="form-group row float-sm-left">
-        <a href="{{ url('recipe_index') }}" class="btn btn-link">
-            {{ 'action.back_to_list'|trans }}
-        </a>
-    </div>
+    {#<div class="form-group row float-sm-left">#}
+        {#<a href="{{ url('recipe_index') }}" class="btn btn-link">#}
+            {#{{ 'action.back_to_list'|trans }}#}
+        {#</a>#}
+    {#</div>#}
 {% endblock %}
