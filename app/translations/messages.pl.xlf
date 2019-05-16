@@ -58,7 +58,6 @@
                 <source>popular.tag</source>
                 <target>Popularne tagi: </target>
             </trans-unit>
-
             <trans-unit id="label.description">
                 <source>label.description</source>
                 <target>Opis przygotowania</target>
@@ -90,6 +89,14 @@
             <trans-unit id="ingredient">
                 <source>ingredient</source>
                 <target>Składniki</target>
+            </trans-unit>
+            <trans-unit id="recipe_with_tag">
+                <source>recipe_with_tag</source>
+                <target>Przepisy zawierające tag: </target>
+            </trans-unit>
+            <trans-unit id="action.home.index">
+                <source>action.home.index</source>
+                <target>Wróć na stronę główną</target>
             </trans-unit>
         </body>
     </file>

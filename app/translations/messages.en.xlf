@@ -90,6 +90,14 @@
                 <source>ingredient</source>
                 <target>Ingredients</target>
             </trans-unit>
+            <trans-unit id="recipe_with_tag">
+                <source>recipe_with_tag</source>
+                <target>Recipes with tag: </target>
+            </trans-unit>
+            <trans-unit id="action.home.index">
+                <source>action.home.index</source>
+                <target>Come back to home page</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

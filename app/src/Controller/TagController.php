@@ -63,11 +63,14 @@ class TagController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      * )
      */
-    public function view(Tag $tag): Response
+    public function view(Tag $tag, $id, TagRepository $tagRepository): Response
     {
         return $this->render(
             'tag/view.html.twig',
-            ['tag' => $tag]
+            [
+                'tag' => $tag,
+                'videos' =>$tagRepository -> findRecipeWithThisTag($id)
+            ]
         );
     }
     /**

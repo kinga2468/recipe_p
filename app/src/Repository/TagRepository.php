@@ -72,18 +72,21 @@ class TagRepository extends ServiceEntityRepository
 
     /**
      * @return mixed
-     * chiwlowa funckja
+     * funkcja zwracająca najbardziej przepisy z tym tagiem
      */
-    public function findMostPopularTag()
+    public function findRecipeWithThisTag($tagId)
     {
         return $this->createQueryBuilder('g')
-            ->select('g.id', 'g.title')
-//            ->select('g.tag_id', count('g.recipes_id'))
-//            ->groupBy('g.tag_id')
-//            ->orderBy(count('g.recipes_id'), 'DESC')
-            ->setMaxResults(10)
+            ->andWhere('g.id = :val')
+            ->setParameter('val', $tagId)
+            ->innerJoin('g.recipes','r')
+            ->addSelect('r')
+            ->select('r.title', 'r.id', 'r.photo, r.time, r.people_amount')
+//            ->groupBy('g.id')
+//            ->orderBy('COUNT(r.id)', 'DESC')
+//            ->setMaxResults(20)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 }
