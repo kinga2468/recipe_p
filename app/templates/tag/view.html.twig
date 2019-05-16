@@ -7,46 +7,45 @@
 {% block body %}
     {#<h1>{{ 'title.tag_view'|trans({'%id%': tag.id|default('')}) }}</h1>#}
     {% if tag is defined and tag|length %}
-        <div class="title">
-            <p>{{ 'recipe_with_tag'|trans }}{{  tag.title }}</p>
-        </div>
-        <div class="row">
-            {% for video in videos %}
-                <div class="col-md-3">
-                    <a href="{{ url('recipe_view', {'id': video.id}) }}" title="{{ 'label.view'|trans }}">
-                        <div class="photo_border">
-                            <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
-                            <div class="icons">
-                                <i class="fas fa-clock"></i>
-                                <div class="icon">{{ video.time }}</div>
-                                <i class="fas fa-user"></i>
-                                <div class="icon">{{ video.people_amount }}</div>
+        {% if pagination is defined and pagination|length %}
+
+            <div class="title">
+                <p>{{ 'recipe_with_tag'|trans }}{{  tag.title }}</p>
+            </div>
+            <div class="row">
+                {% for video in pagination %}
+                    <div class="col-md-3">
+                        <a href="{{ url('recipe_view', {'id': video.id}) }}" title="{{ 'label.view'|trans }}">
+                            <div class="photo_border">
+                                <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
+                                <div class="icons">
+                                    <i class="fas fa-clock"></i>
+                                    <div class="icon">{{ video.time }}</div>
+                                    <i class="fas fa-user"></i>
+                                    <div class="icon">{{ video.people_amount }}</div>
+                                </div>
                             </div>
-                        </div>
-                        <p class="caption">{{ video.title }}</p>
-                    </a>
-                </div>
-            {% endfor %}
-        </div>
-
-
-
-        {#<dl class="dl-horizontal">#}
-            {#<dt>{{ 'label.id'|trans }}</dt>#}
-            {#<dd>{{ tag.id }}</dd>#}
-            {#<dt>{{ 'label.created_at'|trans }}</dt>#}
-            {#<dd>{{ tag.createdAt|localizeddate }}</dd>#}
-            {#<dt>{{ 'label.updated_at'|trans }}</dt>#}
-            {#<dd>{{ tag.updatedAt|localizeddate }}</dd>#}
-            {#<dt>{{ 'label.title'|trans }}</dt>#}
-            {#<dd>{{  tag.title }}</dd>#}
-        {#</dl>#}
+                            <p class="caption">{{ video.title }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="navigation text-center">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        {% else %}
+            <p>
+                {{ 'message.item_not_found'|trans }}
+            </p>
+        {% endif %}
     {% else %}
         <p>
             {{ 'message.item_not_found'|trans }}
         </p>
     {% endif %}
-    <a href="{{ url('main_index') }}" title="{{ 'action.home.index'|trans }}">
-        {{ 'action.home.index'|trans }}
-    </a>
+    <div class="back_button">
+        <p><a href="{{ url('main_index') }}" title="{{ 'action.back_to_list'|trans }}">
+            {{ 'action.back_to_list'|trans }}
+        </a></p>
+    </div>
 {% endblock %}

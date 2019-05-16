@@ -40,7 +40,7 @@ footer p{text-align:center; padding:8px; margin-bottom: 0;}
 .last_recipe{float:left; }
 .last_recipe a{color:black;}
 .photo_border:hover{opacity:0.9;}
-.icons{color:black; background-color: #61969E; position: absolute; bottom:85%; }
+.icons{color:black; background-color: #61969E; position: absolute; top:2%; left:10%; }
 .icons .fas{float: left; padding:6px 2px 6px 9px; font-size: 90%;}
 .icon{float:left; padding:0 8px 0 4px; font-size: 100%;}
 
@@ -81,3 +81,13 @@ h1{text-align: center; font-size: 40px;}
 /*.recipe_description{padding-top: 20px;}*/
 
 .title p{text-align: center; font-size: 34px; padding-top:30px; padding-bottom: 30px;}
+.back_button{clear:both; background-color: #e9662a; width:10%; border-radius: 3px; margin:10px 10px 10px 30px;}
+.back_button p{text-align: center; }
+
+
+
+
+
+
+
+

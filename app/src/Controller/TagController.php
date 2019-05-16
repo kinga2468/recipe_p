@@ -63,13 +63,20 @@ class TagController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      * )
      */
-    public function view(Tag $tag, $id, TagRepository $tagRepository): Response
+    public function view(Request $request, TagRepository $tagRepository, Tag $tag, $id,  PaginatorInterface $paginator): Response
     {
+        $pagination = $paginator->paginate(
+            $tagRepository->findRecipeWithThisTag($id),
+            $request->query->getInt('page', 1),
+            Tag::NUMBER_OF_ITEMS
+        );
+
         return $this->render(
             'tag/view.html.twig',
             [
+                'pagination' => $pagination,
                 'tag' => $tag,
-                'videos' =>$tagRepository -> findRecipeWithThisTag($id)
+//                'videos' =>$tagRepository -> findRecipeWithThisTag($id)
             ]
         );
     }
