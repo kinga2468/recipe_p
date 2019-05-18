@@ -1,65 +1,73 @@
 <?php
 /**
- * Ingredient controller.
+ * Comment controller.
  */
 
 namespace App\Controller;
 
-use App\Entity\Ingredient;
-use App\Repository\IngredientRepository;
+use App\Entity\Comment;
+use App\Repository\CommentRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Form\IngredientType;
+use App\Form\CommentType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 
 /**
- * Class IngredientController.
+ * Class CommentController.
  *
- * @Route("/ingredient")
+ * @Route("/comment")
  */
-class IngredientController extends AbstractController
+class CommentController extends AbstractController
 {
     /**
      * Index action.
      *
-     * @param \App\Repository\IngredientRepository $repository Ingredient repository
+     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+     * @param \App\Repository\CommentRepository            $repository Repository
+     * @param \Knp\Component\Pager\PaginatorInterface   $paginator  Paginator
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
      * @Route(
      *     "/",
-     *     name="ingredient_index",
+     *     name="comment_index",
      * )
      */
-    public function index(IngredientRepository $repository): Response
+    public function index(Request $request, CommentRepository $repository, PaginatorInterface $paginator): Response
     {
+        $pagination = $paginator->paginate(
+            $repository->queryAll(),
+            $request->query->getInt('page', 1),
+            Comment::NUMBER_OF_ITEMS
+        );
+
         return $this->render(
-            'ingredient/index.html.twig',
-            ['ingredients' => $repository->findAll()]
+            'comment/index.html.twig',
+            ['pagination' => $pagination]
         );
     }
 
     /**
      * View action.
      *
-     * @param \App\Entity\Ingredient $ingredient Ingredient entity
+     * @param \App\Entity\Comment $comment Comment entity
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
      * @Route(
      *     "/{id}",
-     *     name="ingredient_view",
+     *     name="comment_view",
      *     requirements={"id": "[1-9]\d*"},
      * )
      */
-    public function view(Ingredient $ingredient): Response
+    public function view(Comment $comment): Response
     {
         return $this->render(
-            'ingredient/view.html.twig',
-            ['ingredient' => $ingredient]
+            'comment/view.html.twig',
+            ['comment' => $comment]
         );
     }
 
@@ -67,7 +75,7 @@ class IngredientController extends AbstractController
      * New action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Repository\IngredientRepository        $repository Ingredient repository
+     * @param \App\Repository\CommentRepository        $repository Comment repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -77,25 +85,25 @@ class IngredientController extends AbstractController
      * @Route(
      *     "/new",
      *     methods={"GET", "POST"},
-     *     name="ingredient_new",
+     *     name="comment_new",
      * )
      */
-    public function new(Request $request, IngredientRepository $repository): Response
+    public function new(Request $request, CommentRepository $repository): Response
     {
-        $ingredient = new Ingredient();
-        $form = $this->createForm(IngredientType::class, $ingredient);
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $repository->save($ingredient);
+            $repository->save($comment);
 
             $this->addFlash('success', 'message.created_successfully');
 
-            return $this->redirectToRoute('ingredient_index');
+            return $this->redirectToRoute('comment_index');
         }
 
         return $this->render(
-            'ingredient/new.html.twig',
+            'comment/new.html.twig',
             ['form' => $form->createView()]
         );
     }
@@ -104,8 +112,8 @@ class IngredientController extends AbstractController
      * Edit action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Entity\Ingredient                      $ingredient   Ingredient entity
-     * @param \App\Repository\IngredientRepository        $repository Ingredient repository
+     * @param \App\Entity\Comment                      $comment   Comment entity
+     * @param \App\Repository\CommentRepository        $repository Comment repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -116,27 +124,27 @@ class IngredientController extends AbstractController
      *     "/{id}/edit",
      *     methods={"GET", "PUT"},
      *     requirements={"id": "[1-9]\d*"},
-     *     name="ingredient_edit",
+     *     name="comment_edit",
      * )
      */
-    public function edit(Request $request, Ingredient $ingredient, IngredientRepository $repository): Response
+    public function edit(Request $request, Comment $comment, CommentRepository $repository): Response
     {
-        $form = $this->createForm(IngredientType::class, $ingredient, ['method' => 'PUT']);
+        $form = $this->createForm(CommentType::class, $comment, ['method' => 'PUT']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $repository->save($ingredient);
+            $repository->save($comment);
 
             $this->addFlash('success', 'message.updated_successfully');
 
-            return $this->redirectToRoute('ingredient_index');
+            return $this->redirectToRoute('comment_index');
         }
 
         return $this->render(
-            'ingredient/edit.html.twig',
+            'comment/edit.html.twig',
             [
                 'form' => $form->createView(),
-                'ingredient' => $ingredient,
+                'comment' => $comment,
             ]
         );
     }
@@ -145,8 +153,8 @@ class IngredientController extends AbstractController
      * Delete action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Entity\Ingredient                      $ingredient   Ingredient entity
-     * @param \App\Repository\IngredientRepository        $repository Ingredient repository
+     * @param \App\Entity\Comment                      $comment   Comment entity
+     * @param \App\Repository\CommentRepository        $repository Comment repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -157,12 +165,12 @@ class IngredientController extends AbstractController
      *     "/{id}/delete",
      *     methods={"GET", "DELETE"},
      *     requirements={"id": "[1-9]\d*"},
-     *     name="ingredient_delete",
+     *     name="comment_delete",
      * )
      */
-    public function delete(Request $request, Ingredient $ingredient, IngredientRepository $repository): Response
+    public function delete(Request $request, Comment $comment, CommentRepository $repository): Response
     {
-        $form = $this->createForm(FormType::class, $ingredient, ['method' => 'DELETE']);
+        $form = $this->createForm(FormType::class, $comment, ['method' => 'DELETE']);
         $form->handleRequest($request);
 
         if ($request->isMethod('DELETE') && !$form->isSubmitted()) {
@@ -170,17 +178,17 @@ class IngredientController extends AbstractController
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $repository->delete($ingredient);
+            $repository->delete($comment);
             $this->addFlash('success', 'message.deleted_successfully');
 
-            return $this->redirectToRoute('ingredient_index');
+            return $this->redirectToRoute('comment_index');
         }
 
         return $this->render(
-            'ingredient/delete.html.twig',
+            'comment/delete.html.twig',
             [
                 'form' => $form->createView(),
-                'ingredient' => $ingredient,
+                'comment' => $comment,
             ]
         );
     }

@@ -20,10 +20,10 @@
             <a href="{{ url('ingredient_new') }}" title="{{ 'action.add'|trans }}">
                 {{ 'action.add'|trans }}
             </a>
-            {% for ingredient in ingredient %}
+            {% for ingredient in ingredients %}
                 <tr>
                     <td>{{ ingredient.id }}</td>
-                    <td>{{ ingredient.title }}</td>
+                    <td>{{ ingredient.name }}</td>
                     {#<td>{{ ingredient.amount }}</td>#}
                     <td>
                         <a href="{{ url('ingredient_view', {id: ingredient.id}) }}" title="{{ 'action.view'|trans }}">
