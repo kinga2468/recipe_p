@@ -34,13 +34,13 @@ class Ingredient
     private $id;
 
     /**
-     * Title
+     * Name
      *
      * @var string
      *
      * @ORM\Column(type="string", length=100)
      */
-    private $title;
+    private $name;
 
     /**
      * Amount
@@ -72,23 +72,23 @@ class Ingredient
     }
 
     /**
-     * Getter for Title.
+     * Getter for Name.
      *
-     * @return string|null Title
+     * @return string|null Name
      */
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
     /**
-     * Setter for Title.
+     * Setter for Name.
      *
-     * @param string $title Title
+     * @param string $name Name
      */
-    public function setTitle(string $title): self
+    public function setName(string $name): self
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
@@ -106,7 +106,7 @@ class Ingredient
     /**
      * Setter for Amount.
      *
-     * @param string $title Amount
+     * @param string $name Amount
      *//**
     public function setAmount(string $amount): self
     {

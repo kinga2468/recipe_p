@@ -25,7 +25,7 @@
                     <div class="ingredients_list">
                         <p>{{ 'ingredient'|trans }}</p>
                         {% for ingredient in recipe.ingredients %}
-                            <i class="fas fa-circle"></i><div>{{  ingredient.title }}</div>
+                            <i class="fas fa-circle"></i><div>{{  ingredient.name }}</div>
                         {% endfor %}
                     </div>
                     <div class="recipe_description">

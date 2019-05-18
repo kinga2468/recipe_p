@@ -72,6 +72,8 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/process" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/property-access" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/security" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/security-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/stopwatch" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/twig-bridge" />
