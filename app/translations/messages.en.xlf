@@ -98,6 +98,10 @@
                 <source>action.home.index</source>
                 <target>Come back to home page</target>
             </trans-unit>
+            <trans-unit id="label.comments">
+                <source>label.comments</source>
+                <target>Comments</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -6,8 +6,11 @@
 namespace App\Controller;
 
 use App\Entity\Recipe;
+use App\Entity\Comment;
 use App\Repository\RecipeRepository;
 use App\Repository\TagRepository;
+use App\Repository\CommentRepository;
+use App\Form\CommentType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -59,6 +62,11 @@ class RecipeController extends AbstractController
      * View action.
      *
      * @param \App\Entity\Recipe $recipe Recipe entity
+     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+     * @param \App\Repository\RecipeRepository        $repository Recipe repository
+     **
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -68,11 +76,32 @@ class RecipeController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      * )
      */
-    public function view(Recipe $recipe): Response
+    public function view(Recipe $recipe, Request $request, RecipeRepository $repository, CommentRepository $commentRepository, $id): Response
     {
+        $comment = new Comment();
+        $commentForm = $this->createForm(CommentType::class, $comment);
+        $commentForm->handleRequest($request);
+
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            dump($id);
+//            $recipe=$comment->getRecipe();
+            $comment['recipe_id']=$id;
+//            $comment['recipe_id'] = $id;
+            $commentRepository->save($comment);
+
+            $this->addFlash('success', 'message.created_successfully');
+
+            return $this->redirectToRoute('recipe_index');
+        }
+
         return $this->render(
             'recipe/view.html.twig',
-            ['recipe' => $recipe]
+            [
+                'id' => $id,
+                'recipe' => $recipe,
+                'recipesComments' => $repository -> findRecipeComments($id),
+                'form_comment' => $commentForm->createView(),
+            ]
         );
     }
 

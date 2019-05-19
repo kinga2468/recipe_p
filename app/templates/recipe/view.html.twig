@@ -44,6 +44,43 @@
                             </div>
                         {% endfor %}
                     </div>
+                    <div class="comments">
+                        <p>{{ 'label.comments'|trans }}</p>
+                        <div class="add_comment">
+                            {% if recipe|length %}
+                                {{ form_start(form_comment, { method: 'post', action: url('recipe_view', {'id':id}) }) }}
+                                {{ form_widget(form_comment.text, { 'value': '' }) }}
+                                <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success"/>
+                                {{ form_end(form_comment) }}
+                            {% endif %}
+                            {% for comment in recipesComments %}
+                                <div class="row comment">
+                                    <div class="col-md-3 login">
+                                        {#<div class="login2">#}
+                                            {#{{ comment.login }}#}
+                                        {#</div>#}
+                                        <div class="date">
+                                            {{ comment.createdAt|localizeddate }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 text">
+                                        {{ comment.text }}
+                                    </div>
+                                    <div class="col-md-1 link">
+                                            {#{% if is_granted('IS_AUTHENTICATED_FULLY') and user_id==line.users_id or is_granted('ROLE_ADMIN')%}#}
+                                                {#<a class="edit" href="{{ url('comment_delete', {'id': line.id, 'videoId': line.video_id}) }}" title="{{ 'delete'|trans }}">#}
+                                                    {#{{ 'delete'|trans }}#}
+                                                {#</a>#}
+                                                {#<a class="edit" href="{{ url('comment_edit', {'id': line.id, 'videoId': line.video_id}) }}" title="{{ 'edit'|trans }}">#}
+                                                    {#{{ 'edit'|trans }}#}
+                                                {#</a>#}
+                                            {#{% endif %}#}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {#{% endif %}#}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

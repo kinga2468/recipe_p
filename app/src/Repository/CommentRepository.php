@@ -53,32 +53,33 @@ class CommentRepository extends ServiceEntityRepository
     /**
      * Save record.
      *
-     * @param \App\Entity\Recipe $recipe Recipe entity
+     * @param \App\Entity\Comment $recipe Comment entity
      *
      * @return void
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save(Comment $recipe): void
+    public function save(Comment $comment): void
     {
-        $this->_em->persist($recipe);
-        $this->_em->flush($recipe);
+        $this->_em->persist($comment);
+        $this->_em->flush($comment);
     }
 
     /**
      * Delete record.
      *
-     * @param \App\Entity\Recipe $recipe Recipe entity
+     * @param \App\Entity\Comment $comment Comment entity
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function delete(Comment $recipe): void
+    public function delete(Comment $comment): void
     {
-        $this->_em->remove($recipe);
-        $this->_em->flush($recipe);
+        $this->_em->remove($comment);
+        $this->_em->flush($comment);
     }
+
 
 
 

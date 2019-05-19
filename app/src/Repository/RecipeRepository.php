@@ -154,4 +154,20 @@ class RecipeRepository extends ServiceEntityRepository
         $this->_em->remove($recipe);
         $this->_em->flush($recipe);
     }
+
+
+    /*
+     *  funkcja znajdujące komentarze do danego przepisu
+     */
+    public function findRecipeComments($recipeId)
+    {
+        return $this->createQueryBuilder('r')
+            ->innerJoin('r.comments','c')
+            ->andWhere('r.id = :val')
+            ->setParameter('val', $recipeId)
+            ->select('c.id, c.text, c.createdAt')
+            ->getQuery()
+            ->getResult();
+
+    }
 }
