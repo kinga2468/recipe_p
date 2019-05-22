@@ -83,15 +83,14 @@ class RecipeController extends AbstractController
         $commentForm->handleRequest($request);
 
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
-            dump($id);
-//            $recipe=$comment->getRecipe();
-            $comment['recipe_id']=$id;
-//            $comment['recipe_id'] = $id;
+            $comment->setCreatedAt(new \DateTime());
+            $comment->setUpdatedAt(new \DateTime());
+            $comment->setRecipe($recipe);
             $commentRepository->save($comment);
 
             $this->addFlash('success', 'message.created_successfully');
 
-            return $this->redirectToRoute('recipe_index');
+            return $this->redirectToRoute('recipe_view', ['id' => $id]);
         }
 
         return $this->render(

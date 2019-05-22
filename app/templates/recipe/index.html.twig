@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+    {% include 'default/_flash_messages.html.twig' %}
     {% if pagination is defined and pagination|length %}
 
         <div class="containter index_recipe">

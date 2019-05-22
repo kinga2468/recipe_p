@@ -47,7 +47,7 @@ class IngredientsDataTransformer implements DataTransformerInterface
         $ingredientNames = [];
 
         foreach ($ingredients as $ingredient) {
-            $ingredientNames[] = $ingredient->getTitle();
+            $ingredientNames[] = $ingredient->getName();
         }
 
         return implode(',', $ingredientNames);
@@ -65,16 +65,16 @@ class IngredientsDataTransformer implements DataTransformerInterface
      */
     public function reverseTransform($value): array
     {
-        $ingredientTitles = explode(',', $value);
+        $ingredientNames = explode(',', $value);
 
         $ingredients = [];
 
-        foreach ($ingredientTitles as $ingredientTitle) {
-            if ('' !== trim($ingredientTitle)) {
-                $ingredient = $this->repository->findOneByTitle(strtolower($ingredientTitle));
+        foreach ($ingredientNames as $ingredientName) {
+            if ('' !== trim($ingredientName)) {
+                $ingredient = $this->repository->findOneByName(strtolower($ingredientName));
                 if (null == $ingredient) {
                     $ingredient = new Ingredient();
-                    $ingredient->setTitle($ingredientTitle);
+                    $ingredient->setName($ingredientName);
                     $this->repository->save($ingredient);
                 }
                 $ingredients[] = $ingredient;

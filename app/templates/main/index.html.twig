@@ -3,6 +3,7 @@
 {% block title %}{{ 'main.title'|trans }}{% endblock %}
 
 {% block body %}
+    {% include 'default/_flash_messages.html.twig' %}
     <div class="containter-fluid">
         <img src="{{ asset('img/breakfast1.jpg') }}" alt="main_photo" height="auto" width="100%">
     </div>

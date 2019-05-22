@@ -5,15 +5,14 @@
 {% endblock %}
 
 {% block body %}
-    {#<div class="section_title">#}
-        {#<h1>{{ 'title.recipe_view'|trans({'%id%': recipe.id|default('')}) }}</h1>#}
-    {#</div>#}
+    {% include 'default/_flash_messages.html.twig' %}
     {% if recipe is defined and recipe|length %}
         <div class="col-md-12">
             <div class="col-md-6 photo_recipe">
                 <img src="{{ asset('img/ciasto.png') }}" alt="recipe_photo">
             </div>
             <div class="col-md-6 data_recipe">
+                {% include 'default/_flash_messages.html.twig' %}
                 <div class="recipe_list">
                     <p class="recipe_name">{{  recipe.title }}</p>
                     <div class="icon_recipe">
@@ -50,12 +49,12 @@
                             {% if recipe|length %}
                                 {{ form_start(form_comment, { method: 'post', action: url('recipe_view', {'id':id}) }) }}
                                 {{ form_widget(form_comment.text, { 'value': '' }) }}
-                                <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-success"/>
+                                <input type="submit" value="{{ 'action.save'|trans }}" class="button"/>
                                 {{ form_end(form_comment) }}
                             {% endif %}
                             {% for comment in recipesComments %}
                                 <div class="row comment">
-                                    <div class="col-md-3 login">
+                                    <div class="col-md-4 login">
                                         {#<div class="login2">#}
                                             {#{{ comment.login }}#}
                                         {#</div>#}
@@ -63,7 +62,7 @@
                                             {{ comment.createdAt|localizeddate }}
                                         </div>
                                     </div>
-                                    <div class="col-md-8 text">
+                                    <div class="col-md-7 text">
                                         {{ comment.text }}
                                     </div>
                                     <div class="col-md-1 link">
@@ -84,17 +83,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-        {#<dl>#}
-            {#<dt>{{ 'label.tags'|trans }}</dt>#}
-            {#{% for tag in recipe.tags %}#}
-                {#<dd>{{  tag.title }}</dd>#}
-            {#{% endfor %}#}
-
-        {#</dl>#}
     {% else %}
         {% include 'default/_single_flash_message.html.twig' with {
             type: 'warning',

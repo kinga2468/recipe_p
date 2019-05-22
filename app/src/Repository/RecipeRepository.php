@@ -157,7 +157,7 @@ class RecipeRepository extends ServiceEntityRepository
 
 
     /*
-     *  funkcja znajdujące komentarze do danego przepisu
+     *  funkcja znajdująca komentarze do danego przepisu
      */
     public function findRecipeComments($recipeId)
     {
