@@ -26,13 +26,13 @@ p{margin-bottom:0;}
 .navbar li a {color:black; }
 .navbar li a:hover {color: black; text-decoration: underline; }
 .navbar-expand-lg{padding-top:8px;}
-.search{width:40%; background-color: red; margin:0 auto; position: relative; bottom: 300px; height:60px; color:red;}
+.search{width:40%; margin:0 auto; position: relative; bottom: 300px; height:60px; }
 .search .form-control{width:100%; height:60px; border-radius: 0; border:none; padding-top:15px;}
 
 .headline{font-size: 26px; color:#3A595E; padding-left:45px; margin-bottom: 10px;}
 .photo_border{width:90%; margin:0 auto; background-color: #61969E;}
 .photo_border img{max-height:220px; width:100%; padding:10px;}
-.caption{text-align: center; padding:5px;}
+.caption{text-align: center; padding:5px; }
 
 footer{clear:both; background-color: #61969E; }
 footer p{text-align:center; padding:8px; margin-bottom: 0;}
@@ -44,7 +44,14 @@ footer p{text-align:center; padding:8px; margin-bottom: 0;}
 .icons .fas{float: left; padding:6px 2px 6px 9px; font-size: 90%;}
 .icon{float:left; padding:0 8px 0 4px; font-size: 100%;}
 
-.section_title{width:100%; background-color: #f6f0ea; margin:0 0 30px 0; padding-top:4px;}
+/*.icons_edit{position: relative; bottom: 38px; left:10px;}*/
+.icon.cog{background-color: #61969E; padding:6px;}
+.icon.cog:hover{color: #f6f0ea;}
+.icon.trash{background-color: #61969E; padding:6px;}
+.icon.trash:hover{color: #f6f0ea;}
+.icons_edit .fas{font-size: 20px;}
+
+.section_title{width:100%; margin:0 0 30px 0; padding-top:20px;}
 h1{text-align: center; font-size: 40px;}
 .page-item.active .page-link{background-color: #61969E; border-color: #61969E;}
 .page-link{color:#61969E;}
@@ -86,7 +93,7 @@ h1{text-align: center; font-size: 40px;}
 
 .comments p{clear:both;}
 .comment{border:1px solid #ddd; border-radius: 4px; padding:10px; margin:10px 0 10px 0; }
-.button{background-color: #e9662a; border:none; color:black; border-radius: 3px; margin-top:15px; padding:3px 8px;}
+.button{background-color: #e9662a; border:none; color:black; border-radius: 3px; padding:3px 8px; margin:15px 15px 15px 0;}
 .button:hover{opacity: 0.9;}
 
 

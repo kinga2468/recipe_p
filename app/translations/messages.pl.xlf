@@ -102,6 +102,14 @@
                 <source>label.comments</source>
                 <target>Komentarze</target>
             </trans-unit>
+            <trans-unit id="title.recipe_delete">
+                <source>title.recipe_delete</source>
+                <target>Usuń przepis</target>
+            </trans-unit>
+            <trans-unit id="title.recipe_edit">
+                <source>title.recipe_edit</source>
+                <target>Edytuj przepis</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
