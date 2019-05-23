@@ -30,7 +30,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <li class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
                                 <a class="nav-link" href="{{ url('main_index') }}" title="{{ 'menu.home'|trans }}">
@@ -42,16 +42,25 @@
                                     {{ 'menu.rules'|trans }}
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('main_index') }}" title="{{ 'log_in'|trans }}">
-                                    {{ 'log_in'|trans }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ url('main_index') }}" title="{{ 'register'|trans }}">
-                                    {{ 'register'|trans }}
-                                </a>
-                            </li>
+                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                {#<div>{{ app.user.firstName }}</div>#}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('security_logout') }}" title="{{ 'action.logout'|trans }}">
+                                        {{ 'action.logout'|trans }}
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('security_login') }}" title="{{ 'action.login'|trans }}">
+                                        {{ 'action.login'|trans }}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('main_index') }}" title="{{ 'register'|trans }}">
+                                        {{ 'register'|trans }}
+                                    </a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </nav>
