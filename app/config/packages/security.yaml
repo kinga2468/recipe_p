@@ -51,4 +51,5 @@ security:
 #        - { path: ^/recipe, roles: IS_AUTHENTICATED_ANONYMOUSLY}
 #        - { path: ^/tag, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - { path: ^/user/new, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/, roles: ROLE_USER}

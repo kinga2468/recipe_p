@@ -43,7 +43,11 @@
                                 </a>
                             </li>
                             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                                {#<div>{{ app.user.firstName }}</div>#}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('main_index') }}" title="{{ app.user.firstName }}">
+                                        {{ app.user.firstName }}
+                                    </a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('security_logout') }}" title="{{ 'action.logout'|trans }}">
                                         {{ 'action.logout'|trans }}
@@ -56,7 +60,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('main_index') }}" title="{{ 'register'|trans }}">
+                                    <a class="nav-link" href="{{ url('user_new') }}" title="{{ 'register'|trans }}">
                                         {{ 'register'|trans }}
                                     </a>
                                 </li>
