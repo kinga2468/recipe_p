@@ -128,6 +128,7 @@ class RecipeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $recipe->setAuthor($this->getUser());
             $repository->save($recipe);
 
             $this->addFlash('success', 'message.created_successfully');

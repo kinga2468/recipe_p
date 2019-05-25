@@ -126,6 +126,10 @@
                 <source>title.login</source>
                 <target>Logowanie</target>
             </trans-unit>
+            <trans-unit id="author.label">
+                <source>author.label</source>
+                <target>Autor: </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

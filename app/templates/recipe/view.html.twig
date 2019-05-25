@@ -21,6 +21,9 @@
                         <i class="fas fa-user"></i>
                         <div class="icon">{{ recipe.peopleAmount }}</div>
                     </div>
+                    <div class="recipe_author">
+                        <p>{{ 'author.label'|trans }}{{ recipe.author.firstName }}</p>
+                    </div>
                     <div class="ingredients_list">
                         <p>{{ 'ingredient'|trans }}</p>
                         {% for ingredient in recipe.ingredients %}

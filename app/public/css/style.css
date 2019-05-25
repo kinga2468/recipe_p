@@ -80,10 +80,12 @@ h1{text-align: center; font-size: 40px;}
 .data_recipe .recipe_name{font-size:34px; padding-top:0;}
 
 .fa-circle{font-size: 10px; clear:both;}
-.icon_recipe{margin-top:10px }
+.icon_recipe{margin-top:10px; width:20%; float: left;}
 .icon-recipe .fas{float:left; }
 .ingredients_list p{clear:both;}
 .ingredients_list i{margin:12px 10px 0 10px;}
+.recipe_author{width:80%; float:left; margin-top:5px;}
+.recipe_author p{font-weight: normal; padding:0;}
 .recipe_tags .tag{background-color: #61969E;}
 /*.recipe_description{padding-top: 20px;}*/
 

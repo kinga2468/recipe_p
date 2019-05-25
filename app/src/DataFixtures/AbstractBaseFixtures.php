@@ -66,7 +66,7 @@ abstract class AbstractBaseFixtures extends Fixture
      *      });
      *
      * @param int      $count     Number of object to create
-     * @param string   $groupName Tag these created objects with this group name,
+     * @param string   $groupName User these created objects with this group name,
      *                            and use this later with getRandomReference(s)
      *                            to fetch only from this specific group
      * @param callable $factory   Defines method of creating objects
