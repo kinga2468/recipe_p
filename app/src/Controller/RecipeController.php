@@ -76,7 +76,7 @@ class RecipeController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      * )
      */
-    public function view(Recipe $recipe, Request $request, RecipeRepository $repository, CommentRepository $commentRepository, $id): Response
+    public function view(Recipe $recipe, PaginatorInterface $paginator, Request $request, RecipeRepository $repository, CommentRepository $commentRepository, $id): Response
     {
         $comment = new Comment();
         $commentForm = $this->createForm(CommentType::class, $comment);
@@ -86,6 +86,7 @@ class RecipeController extends AbstractController
             $comment->setCreatedAt(new \DateTime());
             $comment->setUpdatedAt(new \DateTime());
             $comment->setRecipe($recipe);
+            $comment->setAuthor($this->getUser());
             $commentRepository->save($comment);
 
             $this->addFlash('success', 'message.created_successfully');
@@ -93,12 +94,18 @@ class RecipeController extends AbstractController
             return $this->redirectToRoute('recipe_view', ['id' => $id]);
         }
 
+        $comment_pagination = $paginator->paginate(
+            $commentRepository->findByRecipe($recipe->getId()),
+            $request->query->getInt('page', 1),
+            Recipe::NUMBER_OF_ITEMS
+        );
+
         return $this->render(
             'recipe/view.html.twig',
             [
                 'id' => $id,
                 'recipe' => $recipe,
-                'recipesComments' => $repository -> findRecipeComments($id),
+                'recipesComments' => $comment_pagination,
                 'form_comment' => $commentForm->createView(),
             ]
         );

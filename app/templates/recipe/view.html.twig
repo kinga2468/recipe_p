@@ -5,7 +5,6 @@
 {% endblock %}
 
 {% block body %}
-    {% include 'default/_flash_messages.html.twig' %}
     {% if recipe is defined and recipe|length %}
         <div class="col-md-12">
             <div class="col-md-6 photo_recipe">
@@ -57,10 +56,10 @@
                             {% endif %}
                             {% for comment in recipesComments %}
                                 <div class="row comment">
-                                    <div class="col-md-4 login">
-                                        {#<div class="login2">#}
-                                            {#{{ comment.login }}#}
-                                        {#</div>#}
+                                    <div class="col-md-4 comment_author">
+                                        <div class="login">
+                                            {{ comment.author.firstName }}
+                                        </div>
                                         <div class="date">
                                             {{ comment.createdAt|localizeddate }}
                                         </div>
