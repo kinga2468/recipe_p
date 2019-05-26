@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Form\UserTypeData;
+use App\Form\UserTypePassword;
 
 /**
  * Class UserController.
@@ -122,7 +123,7 @@ class UserController extends AbstractController
         );
     }
     /**
-     * Edit action.
+     * EditData action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
      * @param \App\Entity\User                      $user   User entity
@@ -134,7 +135,7 @@ class UserController extends AbstractController
      * @throws \Doctrine\ORM\OptimisticLockException
      *
      * @Route(
-     *     "/{id}/edit",
+     *     "/{id}/editData",
      *     methods={"GET", "PUT"},
      *     requirements={"id": "[1-9]\d*"},
      *     name="user_editData",
@@ -155,6 +156,47 @@ class UserController extends AbstractController
 
         return $this->render(
             'user/editData.html.twig',
+            [
+                'form' => $form->createView(),
+                'user' => $user,
+            ]
+        );
+    }
+    /**
+     * EditPassword action.
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+     * @param \App\Entity\User                      $user   User entity
+     * @param \App\Repository\UserRepository        $repository User repository
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @Route(
+     *     "/{id}/editPassword",
+     *     methods={"GET", "PUT"},
+     *     requirements={"id": "[1-9]\d*"},
+     *     name="user_editPassword",
+     * )
+     */
+    public function editPassword(Request $request, User $user, UserRepository $repository, UserPasswordEncoderInterface $passwordEncoder): Response
+    {
+        $form = $this->createForm(UserTypePassword::class, $user, ['method' => 'PUT']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword($passwordEncoder->encodePassword($user, $user->getPassword()));
+            $repository->save($user);
+
+            $this->addFlash('success', 'message.updated_successfully');
+
+            return $this->redirectToRoute('user_index');
+        }
+
+        return $this->render(
+            'user/editPassword.html.twig',
             [
                 'form' => $form->createView(),
                 'user' => $user,

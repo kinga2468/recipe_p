@@ -175,6 +175,19 @@
                 <source>action.editData</source>
                 <target>edit</target>
             </trans-unit>
+            <trans-unit id="label.repeatedPassword">
+                <source>label.repeatedPassword</source>
+                <target>Repeate password</target>
+            </trans-unit>
+            <trans-unit id="title.user_editPassword">
+                <source>title.user_editPassword</source>
+                <target>Edit password of user </target>
+            </trans-unit>
+            <trans-unit id="action.editPassword">
+                <source>action.editPassword</source>
+                <target>edit password</target>
+            </trans-unit>
+
 
         </body>
     </file>
