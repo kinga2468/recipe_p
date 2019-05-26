@@ -133,7 +133,7 @@ class IngredientController extends AbstractController
         }
 
         return $this->render(
-            'ingredient/edit.html.twig',
+            'ingredient/editData.html.twig',
             [
                 'form' => $form->createView(),
                 'ingredient' => $ingredient,

@@ -167,6 +167,14 @@
                 <source>action.index</source>
                 <target>Back</target>
             </trans-unit>
+            <trans-unit id="title.user_editData">
+                <source>title.user_editData</source>
+                <target>Editing data of user </target>
+            </trans-unit>
+            <trans-unit id="action.editData">
+                <source>action.editData</source>
+                <target>edit</target>
+            </trans-unit>
 
         </body>
     </file>

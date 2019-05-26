@@ -166,6 +166,14 @@
                 <source>action.index</source>
                 <target>powrót</target>
             </trans-unit>
+            <trans-unit id="title.user_editData">
+                <source>title.user_editData</source>
+                <target>Edytowanie danych użytkownika </target>
+            </trans-unit>
+            <trans-unit id="action.editData">
+                <source>action.editData</source>
+                <target>edytuj</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
