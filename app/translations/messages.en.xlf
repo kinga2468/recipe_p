@@ -187,6 +187,10 @@
                 <source>action.editPassword</source>
                 <target>edit password</target>
             </trans-unit>
+            <trans-unit id="action.editRole">
+                <source>action.editRole</source>
+                <target>change role</target>
+            </trans-unit>
 
 
         </body>

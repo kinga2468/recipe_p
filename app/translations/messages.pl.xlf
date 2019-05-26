@@ -186,6 +186,10 @@
                 <source>action.editPassword</source>
                 <target>edytuj hasło</target>
             </trans-unit>
+            <trans-unit id="action.editRole">
+                <source>action.editRole</source>
+                <target>zmień role</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
