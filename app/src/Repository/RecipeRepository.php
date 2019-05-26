@@ -16,6 +16,7 @@ use Doctrine\ORM\QueryBuilder;
  * @method Recipe|null findOneBy(array $criteria, array $orderBy = null)
  * @method Recipe[]    findAll()
  * @method Recipe[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Recipe[]    findByAuthor($value)
  */
 class RecipeRepository extends ServiceEntityRepository
 {

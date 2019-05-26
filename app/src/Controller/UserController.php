@@ -6,7 +6,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Recipe;
 use App\Form\UserType;
+use App\Repository\RecipeRepository;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -64,12 +66,19 @@ class UserController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      * )
      */
-    public function view(Request $request, UserRepository $userRepository, User $user, $id,  PaginatorInterface $paginator): Response
+    public function view(Request $request, UserRepository $userRepository, RecipeRepository $recipeRepository, User $user, $id,  PaginatorInterface $paginator): Response
     {
+        $recipe_pagination = $paginator->paginate(
+            $recipeRepository->findByAuthor($user->getId()),
+            $request->query->getInt('page', 1),
+            Recipe::NUMBER_OF_RECIPES
+        );
+
         return $this->render(
             'user/view.html.twig',
             [
                 'user' => $user,
+                'usersRecipes' => $recipe_pagination,
             ]
         );
     }

@@ -130,6 +130,42 @@
                 <source>author.label</source>
                 <target>Autor: </target>
             </trans-unit>
+            <trans-unit id="title.user_list">
+                <source>title.user_list</source>
+                <target>Lista użytkowników</target>
+            </trans-unit>
+            <trans-unit id="label.createdAt">
+                <source>label.createdAt</source>
+                <target>Utworzno</target>
+            </trans-unit>
+            <trans-unit id="label.updatedAt">
+                <source>label.updatedAt</source>
+                <target>Zaktualizowano</target>
+            </trans-unit>
+            <trans-unit id="label.firstName">
+                <source>label.firstName</source>
+                <target>Imię</target>
+            </trans-unit>
+            <trans-unit id="label.actions">
+                <source>label.actions</source>
+                <target>Akcje</target>
+            </trans-unit>
+            <trans-unit id="action.view">
+                <source>action.view</source>
+                <target>zobacz</target>
+            </trans-unit>
+            <trans-unit id="title.user_view">
+                <source>title.user_view</source>
+                <target>Użytkownik: </target>
+            </trans-unit>
+            <trans-unit id="usersRecipes">
+                <source>usersRecipes</source>
+                <target>Przepisy dodane przez użytkownika</target>
+            </trans-unit>
+            <trans-unit id="action.index">
+                <source>action.index</source>
+                <target>powrót</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

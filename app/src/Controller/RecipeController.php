@@ -97,7 +97,7 @@ class RecipeController extends AbstractController
         $comment_pagination = $paginator->paginate(
             $commentRepository->findByRecipe($recipe->getId()),
             $request->query->getInt('page', 1),
-            Recipe::NUMBER_OF_ITEMS
+            Comment::NUMBER_OF_ITEMS
         );
 
         return $this->render(
