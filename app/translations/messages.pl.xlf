@@ -180,15 +180,19 @@
             </trans-unit>
             <trans-unit id="title.user_editPassword">
                 <source>title.user_editPassword</source>
-                <target>Edytuj hasło użytkownika </target>
+                <target>Zmień hasło użytkownika </target>
             </trans-unit>
             <trans-unit id="action.editPassword">
                 <source>action.editPassword</source>
-                <target>edytuj hasło</target>
+                <target>zmień hasło</target>
             </trans-unit>
             <trans-unit id="action.editRole">
                 <source>action.editRole</source>
                 <target>zmień role</target>
+            </trans-unit>
+            <trans-unit id="action.delete">
+                <source>action.delete</source>
+                <target>usuń</target>
             </trans-unit>
         </body>
     </file>

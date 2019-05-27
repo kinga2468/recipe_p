@@ -36,8 +36,8 @@ class UserTypeRole extends AbstractType
                 'label' => 'label.role',
                 'required' => true,
                 'choices'  => [
-                    'admin' => 'a:2:{i:0;s:9:"ROLE_USER";i:1;s:10:"ROLE_ADMIN";}',
-                    'user' => 'a:1:{i:0;s:9:"ROLE_USER";}',
+                    'admin' => [],
+                    'user' => [],
                 ],
             ]
         );

@@ -191,7 +191,10 @@
                 <source>action.editRole</source>
                 <target>change role</target>
             </trans-unit>
-
+            <trans-unit id="action.delete">
+                <source>action.delete</source>
+                <target>delete</target>
+            </trans-unit>
 
         </body>
     </file>
