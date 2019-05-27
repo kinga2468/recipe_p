@@ -210,6 +210,10 @@
                 <source>title.user_editRole</source>
                 <target>Zmień rolę użytkownika: </target>
             </trans-unit>
+            <trans-unit id="title.user_delete">
+                <source>title.user_delete</source>
+                <target>Usuń użytkownika: </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

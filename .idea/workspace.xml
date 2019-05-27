@@ -29,6 +29,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/public/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="97" column="127" selection-start-line="97" selection-start-column="127" selection-end-line="97" selection-end-column="127" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/user/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
@@ -41,29 +50,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/user/view.html.twig">
+      <file leaf-file-name="editRole.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/user/editRole.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
+            <state relative-caret-position="119">
+              <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="9" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="messages.en.xlf" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/translations/messages.en.xlf">
+      <file leaf-file-name="delete.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/templates/user/delete.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="198" column="12" selection-start-line="198" selection-start-column="12" selection-end-line="209" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages.pl.xlf" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/translations/messages.pl.xlf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="206" column="37" selection-start-line="206" selection-start-column="37" selection-end-line="206" selection-end-column="37" />
+            <state relative-caret-position="170">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -94,7 +94,6 @@
       <find>roletype</find>
       <find>save</find>
       <find>save3</find>
-      <find>button</find>
       <find>editdata</find>
       <find>repea</find>
       <find>hasło</find>
@@ -102,6 +101,7 @@
       <find>$reposi</find>
       <find>role</find>
       <find>getrole</find>
+      <find>button</find>
     </findStrings>
     <replaceStrings>
       <replace>ingredient</replace>
@@ -142,7 +142,6 @@
         <option value="$PROJECT_DIR$/app/templates/security/login.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/tag/view.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/user/new.html.twig" />
-        <option value="$PROJECT_DIR$/app/templates/user/delete.html.twig" />
         <option value="$PROJECT_DIR$/app/src/DataFixtures/UserFixtures.php" />
         <option value="$PROJECT_DIR$/app/src/DataFixtures/AbstractBaseFixtures.php" />
         <option value="$PROJECT_DIR$/app/src/Security/LoginFormAuthenticator.php" />
@@ -164,18 +163,19 @@
         <option value="$PROJECT_DIR$/app/src/Entity/Recipe.php" />
         <option value="$PROJECT_DIR$/app/src/Form/UserTypeData.php" />
         <option value="$PROJECT_DIR$/app/templates/user/edit.html.twig" />
-        <option value="$PROJECT_DIR$/app/templates/user/editData.html.twig" />
-        <option value="$PROJECT_DIR$/app/templates/user/editPassword.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Form/UserTypePassword.php" />
-        <option value="$PROJECT_DIR$/app/templates/user/editRole.html.twig" />
-        <option value="$PROJECT_DIR$/app/public/css/style.css" />
         <option value="$PROJECT_DIR$/app/src/Form/UserTypeRole.php" />
         <option value="$PROJECT_DIR$/app/src/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/app/templates/user/index.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Entity/User.php" />
-        <option value="$PROJECT_DIR$/app/templates/user/view.html.twig" />
-        <option value="$PROJECT_DIR$/app/translations/messages.en.xlf" />
         <option value="$PROJECT_DIR$/app/translations/messages.pl.xlf" />
+        <option value="$PROJECT_DIR$/app/translations/messages.en.xlf" />
+        <option value="$PROJECT_DIR$/app/public/css/style.css" />
+        <option value="$PROJECT_DIR$/app/templates/user/view.html.twig" />
+        <option value="$PROJECT_DIR$/app/templates/user/editData.html.twig" />
+        <option value="$PROJECT_DIR$/app/templates/user/editPassword.html.twig" />
+        <option value="$PROJECT_DIR$/app/templates/user/editRole.html.twig" />
+        <option value="$PROJECT_DIR$/app/templates/user/delete.html.twig" />
       </list>
     </option>
   </component>
@@ -488,12 +488,12 @@
       <workItem from="1558729794169" duration="4927000" />
       <workItem from="1558804545127" duration="10292000" />
       <workItem from="1558873355073" duration="6574000" />
-      <workItem from="1558954968549" duration="5826000" />
+      <workItem from="1558954968549" duration="6325000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136559000" />
+    <option name="totallyTimeSpent" value="137058000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -557,11 +557,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190512150725.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190502203225.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-255" />
@@ -741,13 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/user/editPassword.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Form/UserTypePassword.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -778,27 +766,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2540">
           <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/user/editData.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="4" selection-end-line="21" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1751">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/user/editRole.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="67" selection-start-line="10" selection-start-column="67" selection-end-line="10" selection-end-column="67" />
         </state>
       </provider>
     </entry>
@@ -905,24 +872,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/user/view.html.twig">
+    <entry file="file://$PROJECT_DIR$/app/translations/messages.pl.xlf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
+        <state relative-caret-position="494">
+          <caret line="208" column="12" selection-start-line="208" selection-start-column="12" selection-end-line="211" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/translations/messages.en.xlf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="198" column="12" selection-start-line="198" selection-start-column="12" selection-end-line="209" selection-end-column="25" />
+        <state relative-caret-position="494">
+          <caret line="212" column="43" selection-start-line="212" selection-start-column="43" selection-end-line="212" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/translations/messages.pl.xlf">
+    <entry file="file://$PROJECT_DIR$/app/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="97" column="127" selection-start-line="97" selection-start-column="127" selection-end-line="97" selection-end-column="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/user/view.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
-          <caret line="206" column="37" selection-start-line="206" selection-start-column="37" selection-end-line="206" selection-end-column="37" />
+          <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/user/editData.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/user/editPassword.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/user/editRole.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/user/delete.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>

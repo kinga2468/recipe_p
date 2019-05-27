@@ -195,7 +195,6 @@
                 <source>action.delete</source>
                 <target>delete</target>
             </trans-unit>
-
             <trans-unit id="label.roles">
                 <source>label.roles</source>
                 <target>Roles</target>
@@ -211,6 +210,10 @@
             <trans-unit id="title.user_editRole">
                 <source>title.user_editRole</source>
                 <target>Change role of user: </target>
+            </trans-unit>
+            <trans-unit id="title.user_delete">
+                <source>title.user_delete</source>
+                <target>Delete user: </target>
             </trans-unit>
 
         </body>
