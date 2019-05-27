@@ -196,6 +196,23 @@
                 <target>delete</target>
             </trans-unit>
 
+            <trans-unit id="label.roles">
+                <source>label.roles</source>
+                <target>Roles</target>
+            </trans-unit>
+            <trans-unit id="label.user">
+                <source>label.user</source>
+                <target>user</target>
+            </trans-unit>
+            <trans-unit id="label.admin">
+                <source>label.admin</source>
+                <target>admin</target>
+            </trans-unit>
+            <trans-unit id="title.user_editRole">
+                <source>title.user_editRole</source>
+                <target>Change role of user: </target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

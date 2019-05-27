@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block body %}
+
+    {% include 'default/_flash_messages.html.twig' %}
+
     <div class="section_title">
         <h1>{{ 'title.user_view'|trans }} {{ user.firstName }}</h1>
     </div>
@@ -17,6 +20,7 @@
                 <th>{{ 'label.updatedAt'|trans }}</th>
                 <th>{{ 'label.email'|trans }}</th>
                 <th>{{ 'label.firstName'|trans }}</th>
+                <th>{{ 'label.roles'|trans }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
                 <th></th>
                 <th></th>
@@ -30,6 +34,13 @@
                      <td>{{ user.updatedAt|localizeddate }}</td>
                      <td>{{ user.email }}</td>
                      <td>{{ user.firstName }}</td>
+                     <td>
+                         {% if user.roles.1 is defined %}
+                             {{ 'label.admin'|trans }}
+                         {% else %}
+                             {{ 'label.user'|trans }}
+                         {% endif %}
+                     </td>
                      <td>
                          <a href="{{ url('user_editData', {id: user.id}) }}" title="{{ 'action.editData'|trans }}">
                              {{ 'action.editData'|trans }}

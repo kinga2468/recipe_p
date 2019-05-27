@@ -5,6 +5,9 @@
 {% endblock %}
 
 {% block body %}
+
+    {% include 'default/_flash_messages.html.twig' %}
+
     <div class="section_title">
         <h1>{{ 'title.user_list'|trans }}</h1>
     </div>
@@ -18,6 +21,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.updatedAt'|trans, 'u.updatedAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.email'|trans, 'u.email') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.firstName'|trans, 'u.firstName') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.roles'|trans, 'u.roles') }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
                 <th></th>
             </tr>
@@ -31,6 +35,13 @@
                     <td>{{ user.updatedAt|localizeddate }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.firstName }}</td>
+                    <td>
+                        {% if user.roles.1 is defined %}
+                            {{ 'label.admin'|trans }}
+                        {% else %}
+                            {{ 'label.user'|trans }}
+                        {% endif %}
+                    </td>
                     <td>
                         <a href="{{ url('user_view', {id: user.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}

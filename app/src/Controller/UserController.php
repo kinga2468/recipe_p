@@ -19,7 +19,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Form\UserTypeData;
 use App\Form\UserTypePassword;
-use App\Form\UserTypeRole;
 
 /**
  * Class UserController.
@@ -225,12 +224,20 @@ class UserController extends AbstractController
      */
     public function editRole(Request $request, User $user, UserRepository $repository): Response
     {
-        $form = $this->createForm(UserTypeRole::class, $user, ['method' => 'PUT']);
+        $role = $user->getRoles();
+        $form = $this->createForm(FormType::class, $user, ['method' => 'PUT']);
         $form->handleRequest($request);
 
+//        if ($request->isMethod('PUT')) {
         if ($form->isSubmitted() && $form->isValid()) {
-            $repository->save($user);
+            if ($role == ['ROLE_USER']){
+                $user->setRoles(['ROLE_USER','ROLE_ADMIN']);
+            }
+            if ($role == ['ROLE_USER','ROLE_ADMIN']){
+                $user->setRoles(['ROLE_USER']);
+            }
 
+            $repository->save($user);
             $this->addFlash('success', 'message.updated_successfully');
 
             return $this->redirectToRoute('user_index');
