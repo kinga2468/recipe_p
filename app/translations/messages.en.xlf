@@ -215,7 +215,34 @@
                 <source>title.user_delete</source>
                 <target>Delete user: </target>
             </trans-unit>
-
+            <trans-unit id="message.deleted_successfully">
+                <source>message.deleted_successfully</source>
+                <target>Deleted successfully!</target>
+            </trans-unit>
+            <trans-unit id="message.created_successfully">
+                <source>message.created_successfully</source>
+                <target>Created successfully</target>
+            </trans-unit>
+            <trans-unit id="title.user_viewPanel">
+                <source>title.user_viewPanel</source>
+                <target>User panel</target>
+            </trans-unit>
+            <trans-unit id="message.updated_successfully">
+                <source>message.updated_successfully</source>
+                <target>Updated!</target>
+            </trans-unit>
+            <trans-unit id="title.user_editDataPanel">
+                <source>title.user_editDataPanel</source>
+                <target>Edit data</target>
+            </trans-unit>
+            <trans-unit id="title.user_editPasswordPanel">
+                <source>title.user_editPasswordPanel</source>
+                <target>Edit password</target>
+            </trans-unit>
+            <trans-unit id="message.not_have_access">
+                <source>message.not_have_access</source>
+                <target>You don't have access to this page</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

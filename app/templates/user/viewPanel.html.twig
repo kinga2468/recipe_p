@@ -9,53 +9,33 @@
     {% include 'default/_flash_messages.html.twig' %}
 
     <div class="section_title">
-        <h1>{{ 'title.user_view'|trans }} {{ user.firstName }}</h1>
+        <h1>{{ 'title.user_viewPanel'|trans }}</h1>
     </div>
     {% if user is defined and user|length %}
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ 'label.id'|trans }}</th>
-                <th>{{ 'label.createdAt'|trans }}</th>
-                <th>{{ 'label.updatedAt'|trans }}</th>
                 <th>{{ 'label.email'|trans }}</th>
                 <th>{{ 'label.firstName'|trans }}</th>
-                <th>{{ 'label.roles'|trans }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
-                <th></th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
-                 <tr>
-                     <td>{{ user.id }}</td>
-                     <td>{{ user.createdAt|localizeddate }}</td>
-                     <td>{{ user.updatedAt|localizeddate }}</td>
-                     <td>{{ user.email }}</td>
-                     <td>{{ user.firstName }}</td>
-                     <td>
-                         {% if user.roles.1 is defined %}
-                             {{ 'label.admin'|trans }}
-                         {% else %}
-                             {{ 'label.user'|trans }}
-                         {% endif %}
-                     </td>
-                     <td>
-                         <a href="{{ url('user_editData', {id: user.id}) }}" title="{{ 'action.editData'|trans }}">
-                             {{ 'action.editData'|trans }}
-                         </a>
-                     </td>
-                     <td>
-                         <a href="{{ url('user_editPassword', {id: user.id}) }}" title="{{ 'action.editPassword'|trans }}">
-                             {{ 'action.editPassword'|trans }}
-                         </a>
-                     </td>
-                     <td>
-                         <a href="{{ url('user_editRole', {id: user.id}) }}" title="{{ 'action.editRole'|trans }}">
-                             {{ 'action.editRole'|trans }}
-                         </a>
-                     </td>
-                </tr>
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>
+                    <a href="{{ url('user_editDataPanel', {id: user.id}) }}" title="{{ 'action.editData'|trans }}">
+                        {{ 'action.editData'|trans }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ url('user_editPasswordPanel', {id: user.id}) }}" title="{{ 'action.editPassword'|trans }}">
+                        {{ 'action.editPassword'|trans }}
+                    </a>
+                </td>
+            </tr>
             </tbody>
         </table>
         {% if usersRecipes is defined and usersRecipes|length %}
@@ -88,7 +68,7 @@
         </p>
     {% endif %}
     <div class="form-group row float-sm-left">
-        <a href="{{ url('user_index') }}" class="btn btn-link">
+        <a href="{{ url('main_index') }}" class="btn btn-link">
             {{ 'action.back_to_list'|trans }}
         </a>
     </div>

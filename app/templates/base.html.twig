@@ -44,7 +44,7 @@
                             </li>
                             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('main_index') }}" title="{{ app.user.firstName }}">
+                                    <a class="nav-link" href="{{ url('user_panel', {id: app.user.id}) }}" title="{{ app.user.firstName }}">
                                         {{ app.user.firstName }}
                                     </a>
                                 </li>

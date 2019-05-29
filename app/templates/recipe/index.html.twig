@@ -66,58 +66,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-    {#<table class="table table-striped">#}
-            {#<thead>#}
-            {#<tr>#}
-                {#<th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'r.id') }}</th>#}
-                {#<th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'r.createdAt') }}</th>#}
-                {#<th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'r.updatedAt') }}</th>#}
-                {#<th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'r.title') }}</th>#}
-                {#<th>{{ 'label.photo'|trans }}</th>#}
-                {#<th>{{ 'label.time'|trans }}</th>#}
-                {#<th>{{ 'label.peopleAmount'|trans }}</th>#}
-                {#<th>{{ 'label.actions'|trans }}</th>#}
-            {#</tr>#}
-            {#</thead>#}
-            {#<tbody>#}
-            {#<a href="{{ url('recipe_new') }}" title="{{ 'action.add'|trans }}">#}
-                {#{{ 'action.add'|trans }}#}
-            {#</a>#}
-            {#{% for recipe in pagination %}#}
-                {#<tr>#}
-                    {#<td>{{ recipe.id }}</td>#}
-                    {#<td>{{ recipe.createdAt|localizeddate }}</td>#}
-                    {#<td>{{ recipe.updatedAt|localizeddate }}</td>#}
-                    {#<td>{{ recipe.title }}</td>#}
-                    {#<td>{{ recipe.description }}</td>#}
-                    {#<td>{{ recipe.photo }}</td>#}
-                    {#<td>{{ recipe.time }}</td>#}
-                    {#<td>{{ recipe.peopleAmount }}</td>#}
-                    {#<td>#}
-                        {#<a href="{{ url('recipe_view', {id: recipe.id}) }}" title="{{ 'action.view'|trans }}">#}
-                            {#{{ 'action.view'|trans }}#}
-                        {#</a>#}
-                        {#<a href="{{ url('recipe_edit', {id: recipe.id}) }}" title="{{ 'action.edit'|trans }}">#}
-                            {#{{ 'action.edit'|trans }}#}
-                        {#</a>#}
-                        {#<a href="{{ url('recipe_delete', {id: recipe.id}) }}" title="{{ 'action.delete'|trans }}">#}
-                            {#{{ 'action.delete'|trans }}#}
-                        {#</a>#}
-                    {#</td>#}
-                {#</tr>#}
-            {#{% endfor %}#}
-            {#</tbody>#}
-        {#</table>#}
-
     {% else %}
         {% include 'default/_single_flash_message.html.twig' with {
             type: 'warning',
