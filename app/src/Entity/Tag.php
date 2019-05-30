@@ -23,12 +23,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Tag
 {
     /**
- * Use constants to define configuration options that rarely change instead
- * of specifying them in app/config/config.yml.
- * See http://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
- *
- * @constant int NUMBER_OF_ITEMS
- */
+     * Use constants to define configuration options that rarely change instead
+     * of specifying them in app/config/config.yml.
+     * See http://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
+     *
+     * @constant int NUMBER_OF_ITEMS
+     */
     const NUMBER_OF_ITEMS = 2;
 
     /**

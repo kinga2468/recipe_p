@@ -16,7 +16,7 @@
                             <a href="{{ url('recipe_view', {'id': item.id}) }}" title="{{ 'label.view'|trans }}">
                                 <div class="photo_border">
                                     <div class="image">
-                                        <img src="{{ asset('img/muffiny.png') }}" alt="recipe_photo">
+                                        <img src="{{ asset('uploads/photos/'~item.photo) }}" alt="recipe_photo">
                                         <div class="icons">
                                             <i class="fas fa-clock"></i>
                                             <div class="icon">{{ item.time }}</div>

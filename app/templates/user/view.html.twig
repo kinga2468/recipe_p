@@ -65,7 +65,7 @@
                     <div class="col-md-3">
                         <a href="{{ url('recipe_view', {'id': recipe.id}) }}" title="{{ 'label.view'|trans }}">
                             <div class="photo_border">
-                                <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
+                                <img src="{{ asset('uploads/photos/'~recipe.photo) }}" alt="recipe_photo">
                                 <div class="icons">
                                     <i class="fas fa-clock"></i>
                                     <div class="icon">{{ recipe.time }}</div>

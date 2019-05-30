@@ -5,27 +5,26 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.tag_view'|trans({'%id%': tag.id|default('')}) }}</h1>
+    <div class="section_title">
+        <h1>{{ 'recipe_with_tag'|trans }}{{  tag.title }}</h1>
+    </div>
     {% if tag is defined and tag|length %}
         {% if pagination is defined and pagination|length %}
 
-            <div class="title">
-                <p>{{ 'recipe_with_tag'|trans }}{{  tag.title }}</p>
-            </div>
             <div class="row">
-                {% for video in pagination %}
+                {% for recipe in pagination %}
                     <div class="col-md-3">
-                        <a href="{{ url('recipe_view', {'id': video.id}) }}" title="{{ 'label.view'|trans }}">
+                        <a href="{{ url('recipe_view', {'id': recipe.id}) }}" title="{{ 'label.view'|trans }}">
                             <div class="photo_border">
-                                <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
+                                <img src="{{ asset('uploads/photos/'~recipe.photo) }}" alt="recipe_photo">
                                 <div class="icons">
                                     <i class="fas fa-clock"></i>
-                                    <div class="icon">{{ video.time }}</div>
+                                    <div class="icon">{{ recipe.time }}</div>
                                     <i class="fas fa-user"></i>
-                                    <div class="icon">{{ video.people_amount }}</div>
+                                    <div class="icon">{{ recipe.people_amount }}</div>
                                 </div>
                             </div>
-                            <p class="caption">{{ video.title }}</p>
+                            <p class="caption">{{ recipe.title }}</p>
                         </a>
                     </div>
                 {% endfor %}
