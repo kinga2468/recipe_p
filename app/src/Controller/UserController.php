@@ -87,44 +87,6 @@ class UserController extends AbstractController
         );
     }
     /**
-     * New action.
-     *
-     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Repository\UserRepository        $repository User repository
-     * @param \Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface $passwordEncoder
-     *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
-     *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     *
-     * @Route(
-     *     "/new",
-     *     methods={"GET", "POST"},
-     *     name="user_new",
-     * )
-     */
-    public function new(Request $request, UserRepository $repository, UserPasswordEncoderInterface $passwordEncoder): Response
-    {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            dump($form);
-            $user->setRoles(['ROLE_USER']);
-            $user->setPassword($passwordEncoder->encodePassword($user, $user->getPassword()));
-
-            $repository->save($user);
-            $this->addFlash('success', 'message.created_successfully');
-            return $this->redirectToRoute('main_index');
-        }
-        return $this->render(
-            'user/new.html.twig',
-            ['form' => $form->createView()]
-        );
-    }
-    /**
      * EditData action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request

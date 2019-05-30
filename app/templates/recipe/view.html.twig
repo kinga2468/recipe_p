@@ -8,7 +8,7 @@
     {% if recipe is defined and recipe|length %}
         <div class="col-md-12">
             <div class="col-md-6 photo_recipe">
-                <img src="{{ asset('img/ciasto.png') }}" alt="recipe_photo">
+                <img src="{{ asset('uploads/photos/'~recipe.photo) }}" alt="recipe_photo">
             </div>
             <div class="col-md-6 data_recipe">
                 {% include 'default/_flash_messages.html.twig' %}
@@ -25,9 +25,9 @@
                     </div>
                     <div class="ingredients_list">
                         <p>{{ 'ingredient'|trans }}</p>
-                        {% for ingredient in recipe.ingredients %}
-                            <i class="fas fa-circle"></i><div>{{  ingredient.name }}</div>
-                        {% endfor %}
+                        {#{% for ingredient in recipe.ingredients %}#}
+                            {#<i class="fas fa-circle"></i><div>{{  ingredient.name }}</div>#}
+                        {#{% endfor %}#}
                     </div>
                     <div class="recipe_description">
                         <p>{{ 'label.description'|trans }}</p>

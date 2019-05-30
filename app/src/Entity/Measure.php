@@ -1,6 +1,6 @@
 <?php
 /**
- * Ingredient entity.
+ * Measure entity.
  */
 namespace App\Entity;
 
@@ -9,9 +9,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\IngredientRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\MeasureRepository")
  */
-class Ingredient
+class Measure
 {
     /**
      * Primary key.
@@ -38,17 +38,15 @@ class Ingredient
 
     /**
      * @ORM\ManyToMany(
-     *     targetEntity="App\Entity\Measure",
-     *     inversedBy="ingredients",
-     *     orphanRemoval=true
+     *     targetEntity="App\Entity\Ingredient",
+     *     mappedBy="measures"
      * )
-     * @ORM\JoinTable(name="ingredients_measures")
      */
-    private $measures;
+    private $ingredients;
 
     public function __construct()
     {
-        $this->measures = new ArrayCollection();
+        $this->ingredients = new ArrayCollection();
     }
 
     /**
@@ -84,26 +82,28 @@ class Ingredient
     }
 
     /**
-     * @return Collection|Measure[]
+     * @return Collection|Ingredient[]
      */
-    public function getMeasures(): Collection
+    public function getIngredients(): Collection
     {
-        return $this->measures;
+        return $this->ingredients;
     }
 
-    public function addMeasure(Measure $measure): self
+    public function addIngredient(Ingredient $ingredient): self
     {
-        if (!$this->measures->contains($measure)) {
-            $this->measures[] = $measure;
+        if (!$this->ingredients->contains($ingredient)) {
+            $this->ingredients[] = $ingredient;
+            $ingredient->addMeasure($this);
         }
 
         return $this;
     }
 
-    public function removeMeasure(Measure $measure): self
+    public function removeIngredient(Ingredient $ingredient): self
     {
-        if ($this->measures->contains($measure)) {
-            $this->measures->removeElement($measure);
+        if ($this->ingredients->contains($ingredient)) {
+            $this->ingredients->removeElement($ingredient);
+            $ingredient->removeMeasure($this);
         }
 
         return $this;

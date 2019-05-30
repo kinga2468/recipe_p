@@ -7,11 +7,11 @@ namespace App\Form;
 
 use App\Entity\Recipe;
 use App\Entity\Tag;
-use App\Form\DataTransformer\IngredientsDataTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Form\DataTransformer\TagsDataTransformer;
@@ -30,21 +30,13 @@ class RecipeType extends AbstractType
     private $tagsDataTransformer = null;
 
     /**
-     * Ingredients data transformer.
-     *
-     * @var \App\Form\DataTransformer\IngredientsDataTransformer|null
-     */
-    private $ingredientsDataTransformer = null;
-
-    /**
      * RecipeType constructor.
      *
      * @param \App\Form\DataTransformer\TagsDataTransformer $tagsDataTransformer Tags data transformer
      */
-    public function __construct(TagsDataTransformer $tagsDataTransformer, IngredientsDataTransformer $ingredientsDataTransformer)
+    public function __construct(TagsDataTransformer $tagsDataTransformer)
     {
         $this->tagsDataTransformer = $tagsDataTransformer;
-        $this->ingredientsDataTransformer = $ingredientsDataTransformer;
     }
 
     /**
@@ -105,21 +97,31 @@ class RecipeType extends AbstractType
                 'scale' => 0,
             ]
         );
+
         $builder->add(
-            'ingredients',
-            TextType::class,
+            'photo',
+            FileType::class,
             [
-                'label' => 'label.ingredients',
-                'required' => false,
-                'attr' => [
-                    'max_length' => 100,
-                ],
+                'label' => 'label.photo',
+                'required' => true,
             ]
         );
 
-        $builder->get('ingredients')->addModelTransformer(
-            $this->ingredientsDataTransformer
-        );
+//        $builder->add(
+//            'ingredients',
+//            TextType::class,
+//            [
+//                'label' => 'label.ingredients',
+//                'required' => false,
+//                'attr' => [
+//                    'max_length' => 100,
+//                ],
+//            ]
+//        );
+//
+//        $builder->get('ingredients')->addModelTransformer(
+//            $this->ingredientsDataTransformer
+//        );
         $builder->add(
             'tags',
             TextType::class,

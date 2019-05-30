@@ -111,22 +111,6 @@ class Recipe
     private $description;
 
     /**
-     *  Photo
-     *
-     * @var string
-     *
-     * @ORM\Column(
-     *     type="string",
-     *     length=128
-     * )
-     * @Assert\Length(
-     *     min="3",
-     *     max="128",
-     * )
-     */
-    private $photo;
-
-    /**
      *  Time
      *
      * @var string
@@ -191,19 +175,6 @@ class Recipe
      */
     private $tags;
 
-    /**
-     * Ingredients.
-     *
-     * @var array
-     *
-     * @ORM\ManyToMany(
-     *     targetEntity="App\Entity\Ingredient",
-     *     inversedBy="recipes",
-     *     orphanRemoval=true
-     * )
-     * @ORM\JoinTable(name="recipes_ingredients")
-     */
-    private $ingredients;
 
     /**
      * Comments
@@ -226,10 +197,15 @@ class Recipe
      */
     private $author;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $photo;
+
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
-        $this->ingredients = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
 
@@ -332,28 +308,6 @@ class Recipe
     }
 
     /**
-     * Getter for Photo.
-     *
-     * @return string|null Photo
-     */
-    public function getPhoto(): ?string
-    {
-        return $this->photo;
-    }
-
-    /**
-     * Setter for Photo.
-     *
-     * @param string $photo Photo
-     */
-    public function setPhoto(string $photo): self
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
      * Getter for Time.
      *
      * @return integer|null Time
@@ -436,32 +390,6 @@ class Recipe
     }
 
     /**
-     * @return Collection|Ingredient[]
-     */
-    public function getIngredients(): Collection
-    {
-        return $this->ingredients;
-    }
-
-    public function addIngredient(Ingredient $ingredient): self
-    {
-        if (!$this->ingredients->contains($ingredient)) {
-            $this->ingredients[] = $ingredient;
-        }
-
-        return $this;
-    }
-
-    public function removeIngredient(Ingredient $ingredient): self
-    {
-        if ($this->ingredients->contains($ingredient)) {
-            $this->ingredients->removeElement($ingredient);
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Comment[]
      */
     public function getComments(): Collection
@@ -497,10 +425,19 @@ class Recipe
         return $this->author;
     }
 
-    public function setAuthor(?User $author): self
+    public function setAuthor(?User $author): void
     {
         $this->author = $author;
-
-        return $this;
     }
+
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto($photo):void
+    {
+        $this->photo = $photo;
+    }
+
 }

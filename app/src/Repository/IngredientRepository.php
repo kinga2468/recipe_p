@@ -1,13 +1,10 @@
 <?php
-/**
- * Ingredient repository.
- */
+
 namespace App\Repository;
 
 use App\Entity\Ingredient;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Ingredient|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,67 +14,9 @@ use Doctrine\ORM\QueryBuilder;
  */
 class IngredientRepository extends ServiceEntityRepository
 {
-    /**
-     * IngredientRepository constructor.
-     *
-     * @param \Symfony\Bridge\Doctrine\RegistryInterface $registry Registry
-     */
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Ingredient::class);
-    }
-
-    /**
-     * Query all records.
-     *
-     * @return \Doctrine\ORM\QueryBuilder Query builder
-     */
-    public function queryAll(): QueryBuilder
-    {
-        return $this->getOrCreateQueryBuilder()
-            ->orderBy('i.updatedAt', 'DESC');
-    }
-
-    /**
-     * Get or create new query builder.
-     *
-     * @param \Doctrine\ORM\QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return \Doctrine\ORM\QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?: $this->createQueryBuilder('i');
-    }
-
-    /**
-     * Save record.
-     *
-     * @param \App\Entity\Ingredient $ingredient Ingredient entity
-     *
-     * @return void
-     *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     */
-    public function save(Ingredient $ingredient): void
-    {
-        $this->_em->persist($ingredient);
-        $this->_em->flush($ingredient);
-    }
-
-    /**
-     * Delete record.
-     *
-     * @param \App\Entity\Ingredient $ingredient Ingredient entity
-     *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     */
-    public function delete(Ingredient $ingredient): void
-    {
-        $this->_em->remove($ingredient);
-        $this->_em->flush($ingredient);
     }
 
     // /**

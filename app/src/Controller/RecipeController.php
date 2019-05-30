@@ -7,6 +7,7 @@ namespace App\Controller;
 
 use App\Entity\Recipe;
 use App\Entity\Comment;
+use App\Entity\Photo;
 use App\Repository\RecipeRepository;
 use App\Repository\TagRepository;
 use App\Repository\CommentRepository;
