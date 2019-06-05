@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.ingredient_list'|trans }}
+    {{ 'title.measure_list'|trans }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.ingredient_list'|trans }}</h1>
-    {% if ingredients is defined and ingredients|length %}
+    <h1>{{ 'title.measure_list'|trans }}</h1>
+    {% if measures is defined and measures|length %}
         <table class="table table-striped">
             <thead>
             <tr>
@@ -17,22 +17,22 @@
             </tr>
             </thead>
             <tbody>
-            <a href="{{ url('ingredient_new') }}" title="{{ 'action.add'|trans }}">
+            <a href="{{ url('measure_new') }}" title="{{ 'action.add'|trans }}">
                 {{ 'action.add'|trans }}
             </a>
-            {% for ingredient in ingredients %}
+            {% for measure in measures %}
                 <tr>
-                    <td>{{ ingredient.id }}</td>
-                    <td>{{ ingredient.title }}</td>
-                    {#<td>{{ ingredient.amount }}</td>#}
+                    <td>{{ measure.id }}</td>
+                    <td>{{ measure.title }}</td>
+                    {#<td>{{ measure.amount }}</td>#}
                     <td>
-                        <a href="{{ url('ingredient_view', {id: ingredient.id}) }}" title="{{ 'action.view'|trans }}">
+                        <a href="{{ url('measure_view', {id: measure.id}) }}" title="{{ 'action.view'|trans }}">
                             {{ 'action.view'|trans }}
                         </a>
-                        <a href="{{ url('ingredient_edit', {id: ingredient.id}) }}" title="{{ 'action.edit'|trans }}">
+                        <a href="{{ url('measure_edit', {id: measure.id}) }}" title="{{ 'action.edit'|trans }}">
                             {{ 'action.edit'|trans }}
                         </a>
-                        <a href="{{ url('ingredient_delete', {id: ingredient.id}) }}" title="{{ 'action.delete'|trans }}">
+                        <a href="{{ url('measure_delete', {id: measure.id}) }}" title="{{ 'action.delete'|trans }}">
                             {{ 'action.delete'|trans }}
                         </a>
                     </td>
@@ -41,7 +41,7 @@
             </tbody>
         </table>
         <div class="navigation text-center">
-            {{ knp_pagination_render(ingredients) }}
+            {{ knp_pagination_render(measures) }}
         </div>
     {% else %}
         <p>

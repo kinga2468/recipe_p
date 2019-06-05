@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Ingredient;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Ingredient|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,32 +20,54 @@ class IngredientRepository extends ServiceEntityRepository
         parent::__construct($registry, Ingredient::class);
     }
 
-    // /**
-    //  * @return Ingredient[] Returns an array of Ingredient objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Query all records.
+     *
+     * @return \Doctrine\ORM\QueryBuilder Query builder
+     */
+    public function queryAll(): QueryBuilder
     {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->getOrCreateQueryBuilder()
+            ->orderBy('i.title', 'DESC');
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Ingredient
+    /**
+     * Get or create new query builder.
+     *
+     * @param \Doctrine\ORM\QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return \Doctrine\ORM\QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $queryBuilder ?: $this->createQueryBuilder('i');
     }
-    */
+    /**
+     * Save record.
+     *
+     * @param \App\Entity\Ingredient $ingredient Ingredient entity
+     *
+     * @return void
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function save(Ingredient $ingredient): void
+    {
+        $this->_em->persist($ingredient);
+        $this->_em->flush($ingredient);
+    }
+    /**
+     * Delete record.
+     *
+     * @param \App\Entity\Ingredient $ingredient Ingredient entity
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function delete(Ingredient $ingredient): void
+    {
+        $this->_em->remove($ingredient);
+        $this->_em->flush($ingredient);
+    }
 }

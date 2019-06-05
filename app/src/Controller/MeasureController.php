@@ -1,14 +1,14 @@
 <?php
 /**
- * Tag controller.
+ * Measure controller.
  */
 
 namespace App\Controller;
 
-use App\Entity\Tag;
-use App\Form\TagType;
+use App\Entity\Measure;
+use App\Form\MeasureType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
-use App\Repository\TagRepository;
+use App\Repository\MeasureRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,79 +16,65 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class TagController.
+ * Class MeasureController.
  *
- * @Route("/tag")
+ * @Route("/measure")
  */
-class TagController extends AbstractController
+class MeasureController extends AbstractController
 {
     /**
      * Index action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Repository\TagRepository        $repository Tag repository
+     * @param \App\Repository\MeasureRepository        $repository Measure repository
      * @param \Knp\Component\Pager\PaginatorInterface   $paginator  Paginator
      *
      * @return \Symfony\Component\HttpFoundation\Response
      *
      * @Route(
      *     "/",
-     *     name="tag_index",
+     *     name="measure_index",
      * )
      */
-    public function index(Request $request, TagRepository $repository, PaginatorInterface $paginator): Response
+    public function index(Request $request, MeasureRepository $repository, PaginatorInterface $paginator): Response
     {
-//        $pagination = $paginator->paginate(
-////            $repository->queryAll(),
-////            $request->query->getInt('page', 1),
-////            Tag::NUMBER_OF_ITEMS
-////        );
-////
-////        return $this->render(
-////            'tag/index.html.twig',
-////            ['pagination' => $pagination]
-////        );
+        $pagination = $paginator->paginate(
+            $repository->queryAll(),
+            $request->query->getInt('page', 1),
+            Measure::NUMBER_OF_ITEMS
+        );
+
         return $this->render(
-            'ingredient/index.html.twig',
-            ['ingredients' => $repository->findAll()]
+            'measure/index.html.twig',
+            ['measures' => $pagination]
         );
     }
 
     /**
      * View action.
      *
-     * @param \App\Entity\Tag $tag Tag entity
+     * @param \App\Entity\Measure $measure Measure entity
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
      * @Route(
      *     "/{id}",
-     *     name="tag_view",
+     *     name="measure_view",
      *     requirements={"id": "[1-9]\d*"},
      * )
      */
-    public function view(Request $request, TagRepository $tagRepository, Tag $tag, $id,  PaginatorInterface $paginator): Response
+    public function view(Measure $measure): Response
     {
-        $pagination = $paginator->paginate(
-            $tagRepository->findRecipeWithThisTag($id),
-            $request->query->getInt('page', 1),
-            Tag::NUMBER_OF_ITEMS
-        );
-
         return $this->render(
-            'tag/view.html.twig',
-            [
-                'pagination' => $pagination,
-                'tag' => $tag,
-//                'videos' =>$tagRepository -> findRecipeWithThisTag($id)
-            ]
+            'measure/view.html.twig',
+            ['measure' => $measure]
         );
     }
     /**
      * New action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Repository\TagRepository        $repository Tag repository
+     * @param \App\Repository\MeasureRepository        $repository Measure repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -98,25 +84,25 @@ class TagController extends AbstractController
      * @Route(
      *     "/new",
      *     methods={"GET", "POST"},
-     *     name="tag_new",
+     *     name="measure_new",
      * )
      */
-    public function new(Request $request, TagRepository $repository): Response
+    public function new(Request $request, MeasureRepository $repository): Response
     {
-        $tag = new Tag();
-        $form = $this->createForm(TagType::class, $tag);
+        $measure = new Measure();
+        $form = $this->createForm(MeasureType::class, $measure);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $repository->save($tag);
+            $repository->save($measure);
 
             $this->addFlash('success', 'message.created_successfully');
 
-            return $this->redirectToRoute('tag_index');
+            return $this->redirectToRoute('measure_index');
         }
 
         return $this->render(
-            'tag/new.html.twig',
+            'measure/new.html.twig',
             ['form' => $form->createView()]
         );
     }
@@ -124,8 +110,8 @@ class TagController extends AbstractController
      * Edit action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Entity\Tag                      $tag   Tag entity
-     * @param \App\Repository\TagRepository        $repository Tag repository
+     * @param \App\Entity\Measure                      $measure   Measure entity
+     * @param \App\Repository\MeasureRepository        $repository Measure repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -136,27 +122,27 @@ class TagController extends AbstractController
      *     "/{id}/edit",
      *     methods={"GET", "PUT"},
      *     requirements={"id": "[1-9]\d*"},
-     *     name="tag_edit",
+     *     name="measure_edit",
      * )
      */
-    public function edit(Request $request, Tag $tag, TagRepository $repository): Response
+    public function edit(Request $request, Measure $measure, MeasureRepository $repository): Response
     {
-        $form = $this->createForm(TagType::class, $tag, ['method' => 'PUT']);
+        $form = $this->createForm(MeasureType::class, $measure, ['method' => 'PUT']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $repository->save($tag);
+            $repository->save($measure);
 
             $this->addFlash('success', 'message.updated_successfully');
 
-            return $this->redirectToRoute('tag_index');
+            return $this->redirectToRoute('measure_index');
         }
 
         return $this->render(
-            'tag/editData.html.twig',
+            'measure/edit.html.twig',
             [
                 'form' => $form->createView(),
-                'tag' => $tag,
+                'measure' => $measure,
             ]
         );
     }
@@ -164,8 +150,8 @@ class TagController extends AbstractController
      * Delete action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Entity\Tag                      $tag   Tag entity
-     * @param \App\Repository\TagRepository        $repository Tag repository
+     * @param \App\Entity\Measure                      $measure   Measure entity
+     * @param \App\Repository\MeasureRepository        $repository Measure repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -176,28 +162,27 @@ class TagController extends AbstractController
      *     "/{id}/delete",
      *     methods={"GET", "DELETE"},
      *     requirements={"id": "[1-9]\d*"},
-     *     name="tag_delete",
+     *     name="measure_delete",
      * )
      */
-    public function delete(Request $request, Tag $tag, TagRepository $repository): Response
+    public function delete(Request $request, Measure $measure, MeasureRepository $repository): Response
     {
-        $form = $this->createForm(FormType::class, $tag, ['method' => 'DELETE']);
+        $form = $this->createForm(FormType::class, $measure, ['method' => 'DELETE']);
         $form->handleRequest($request);
 
         if ($request->isMethod('DELETE')) {
-            //$form->submit($request->request->get($form->getName()));
-            $repository->delete($tag);
+            $repository->delete($measure);
 
             $this->addFlash('success', 'message.deleted_successfully');
 
-            return $this->redirectToRoute('tag_index');
+            return $this->redirectToRoute('measure_index');
         }
 
         return $this->render(
-            'tag/delete.html.twig',
+            'measure/delete.html.twig',
             [
                 'form' => $form->createView(),
-                'tag' => $tag,
+                'measure' => $measure,
             ]
         );
     }

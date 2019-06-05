@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Measure;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Measure|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,32 +20,54 @@ class MeasureRepository extends ServiceEntityRepository
         parent::__construct($registry, Measure::class);
     }
 
-    // /**
-    //  * @return Measure[] Returns an array of Measure objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Query all records.
+     *
+     * @return \Doctrine\ORM\QueryBuilder Query builder
+     */
+    public function queryAll(): QueryBuilder
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->getOrCreateQueryBuilder()
+            ->orderBy('m.title', 'DESC');
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Measure
+    /**
+     * Get or create new query builder.
+     *
+     * @param \Doctrine\ORM\QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return \Doctrine\ORM\QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $queryBuilder ?: $this->createQueryBuilder('m');
     }
-    */
+    /**
+     * Save record.
+     *
+     * @param \App\Entity\Measure $measure Measure entity
+     *
+     * @return void
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function save(Measure $measure): void
+    {
+        $this->_em->persist($measure);
+        $this->_em->flush($measure);
+    }
+    /**
+     * Delete record.
+     *
+     * @param \App\Entity\Measure $measure Measure entity
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function delete(Measure $measure): void
+    {
+        $this->_em->remove($measure);
+        $this->_em->flush($measure);
+    }
 }

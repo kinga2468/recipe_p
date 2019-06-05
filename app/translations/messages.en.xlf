@@ -243,6 +243,10 @@
                 <source>message.not_have_access</source>
                 <target>You don't have access to this page</target>
             </trans-unit>
+            <trans-unit id="action.edit">
+                <source>action.edit</source>
+                <target>edit</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
