@@ -191,11 +191,9 @@ class Tag
         return $this->code;
     }
 
-    public function setCode(string $code): self
+    public function setCode(string $code): void
     {
         $this->code = $code;
-
-        return $this;
     }
 
     /**
@@ -206,24 +204,20 @@ class Tag
         return $this->recipes;
     }
 
-    public function addRecipe(Recipe $recipe): self
+    public function addRecipe(Recipe $recipe): void
     {
         if (!$this->recipes->contains($recipe)) {
             $this->recipes[] = $recipe;
             $recipe->addTag($this);
         }
-
-        return $this;
     }
 
-    public function removeRecipe(Recipe $recipe): self
+    public function removeRecipe(Recipe $recipe): void
     {
         if ($this->recipes->contains($recipe)) {
             $this->recipes->removeElement($recipe);
             $recipe->removeTag($this);
         }
-
-        return $this;
     }
 
 }

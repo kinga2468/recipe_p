@@ -70,4 +70,20 @@ class IngredientRepository extends ServiceEntityRepository
         $this->_em->remove($ingredient);
         $this->_em->flush($ingredient);
     }
+
+    /**
+     * znajduje przepisy o wyszukiwanym składniku
+     * @param string $search
+     * @return \Doctrine\ORM\QueryBuilder Query builder
+     */
+    public function findRecipeByIngredient($search): QueryBuilder
+    {
+        return $this->getOrCreateQueryBuilder()
+//            ->select('r.id')
+//            ->innerJoin('i.recipes', 'r')
+            ->where('i.title LIKE :search')
+            ->setParameter('search', '%'.$search.'%')
+            ->orderBy("LOCATE(:pos, i.title), i.title")
+            ->setParameter('pos', $search);
+    }
 }

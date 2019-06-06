@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.recipe_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    {% include 'default/_flash_messages.html.twig' %}
+    {% if recipes is defined and recipes|length %}
+
+        <div class="containter index_recipe">
+            <div class="col-md-9 last_recipe">
+                <div class="row">
+                    {% for item in recipes %}
+                        <div class="col-md-4">
+                            <a href="{{ url('recipe_view', {'id': item.id}) }}" title="{{ 'label.view'|trans }}">
+                                <div class="photo_border">
+                                    <div class="image">
+                                        <img src="{{ asset('uploads/photos/'~item.photo) }}" alt="recipe_photo">
+                                        <div class="icons">
+                                            <i class="fas fa-clock"></i>
+                                            <div class="icon">{{ item.time }}</div>
+                                            <i class="fas fa-user"></i>
+                                            <div class="icon">{{ item.peopleAmount }}</div>
+                                        </div>
+                                        {#{% if is_granted('ROLE_ADMIN')%}#}
+                                        {#<div class="icons_edit">#}
+                                        {#<a class="icon cog" href="{{ url('recipe_edit', {'id': item.id}) }}" title="{{ 'edit'|trans }}">#}
+                                        {#<i class="fas fa-cog"></i>#}
+                                        {#</a>#}
+                                        {#<a class="icon trash" href="{{ url('recipe_delete', {'id': item.id}) }}" title="{{ 'delete'|trans }}">#}
+                                        {#<i class="fas fa-trash-alt"></i>#}
+                                        {#</a>#}
+                                        {#</div>#}
+                                        {#{% endif %}#}
+                                    </div>
+                                </div>
+                                <p class="caption">{{ item.title }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="navigation text-center">
+                    {{ knp_pagination_render(recipes) }}
+                </div>
+
+            </div>
+        </div>
+    {% else %}
+        {% include 'default/_single_flash_message.html.twig' with {
+            type: 'warning',
+            message: 'message.empty_list'|trans
+        } %}
+    {% endif %}
+    <footer>
+        <p>{{ 'footer.text'|trans }}</p>
+    </footer>
+
+{% endblock %}

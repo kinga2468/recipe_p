@@ -82,11 +82,9 @@ class Measure
      *
      * @param string $title Title
      */
-    public function setTitle(string $title): self
+    public function setTitle(string $title): void
     {
         $this->title = $title;
-
-        return $this;
     }
 
     /**
@@ -97,23 +95,19 @@ class Measure
         return $this->ingredients;
     }
 
-    public function addIngredient(Ingredient $ingredient): self
+    public function addIngredient(Ingredient $ingredient): void
     {
         if (!$this->ingredients->contains($ingredient)) {
             $this->ingredients[] = $ingredient;
             $ingredient->addMeasure($this);
         }
-
-        return $this;
     }
 
-    public function removeIngredient(Ingredient $ingredient): self
+    public function removeIngredient(Ingredient $ingredient): void
     {
         if ($this->ingredients->contains($ingredient)) {
             $this->ingredients->removeElement($ingredient);
             $ingredient->removeMeasure($this);
         }
-
-        return $this;
     }
 }

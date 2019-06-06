@@ -34,6 +34,14 @@ class Recipe
      * of specifying them in app/config/config.yml.
      * See http://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
      *
+     * @constant int NUMBER_OF_ITEMS_MATCHING
+     */
+    const NUMBER_OF_ITEMS_MATCHING = 3;
+    /**
+     * Use constants to define configuration options that rarely change instead
+     * of specifying them in app/config/config.yml.
+     * See http://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
+     *
      * @constant int NUMBER_OF_ITEMS
      */
     const NUMBER_OF_RECIPES = 2;
@@ -169,7 +177,11 @@ class Recipe
      * Tags.
      * @var array
      *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", inversedBy="recipes", orphanRemoval=true)
+     * @ORM\ManyToMany(
+     *     targetEntity="App\Entity\Tag",
+     *     inversedBy="recipes",
+     *     orphanRemoval=true,
+     *     )
      *
      * @ORM\JoinTable(name="recipes_tags")
      */
@@ -203,10 +215,27 @@ class Recipe
     private $photo;
 
 
+    /**
+     * Tags.
+     *
+     * @var array
+     *
+     * @ORM\ManyToMany(
+     *     targetEntity="App\Entity\Ingredient", 
+     *     inversedBy="recipes",
+     *     orphanRemoval=true,
+     *     cascade={"persist"}
+     * )
+     * @ORM\JoinTable(name="recipes_ingredients")
+     */
+    private $ingredients;
+
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->ingredients = new ArrayCollection();
     }
 
     /**
@@ -234,11 +263,9 @@ class Recipe
      *
      * @param string $title Title
      */
-    public function setTitle(string $title): self
+    public function setTitle(string $title): void
     {
         $this->title = $title;
-
-        return $this;
     }
 
     /**
@@ -256,11 +283,9 @@ class Recipe
      *
      * @param \DateTimeInterface $createdAt Created at
      */
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
-
-        return $this;
     }
 
     /**
@@ -278,11 +303,9 @@ class Recipe
      *
      * @param \DateTimeInterface $updatedAt Updated at
      */
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
-
-        return $this;
     }
 
     /**
@@ -300,11 +323,9 @@ class Recipe
      *
      * @param string $description Description
      */
-    public function setDescription(string $description): self
+    public function setDescription(string $description): void
     {
         $this->description = $description;
-
-        return $this;
     }
 
     /**
@@ -322,11 +343,9 @@ class Recipe
      *
      * @param integer $time Time
      */
-    public function setTime(int $time): self
+    public function setTime(int $time): void
     {
         $this->time = $time;
-
-        return $this;
     }
 
     /**
@@ -344,11 +363,9 @@ class Recipe
      *
      * @param integer $peopleAmount PeopleAmount
      */
-    public function setPeopleAmount(int $people_amount): self
+    public function setPeopleAmount(int $people_amount): void
     {
         $this->people_amount = $people_amount;
-
-        return $this;
     }
 
     public function getCode(): ?string
@@ -356,11 +373,9 @@ class Recipe
         return $this->code;
     }
 
-    public function setCode(string $code): self
+    public function setCode(string $code): void
     {
         $this->code = $code;
-
-        return $this;
     }
 
     /**
@@ -371,22 +386,18 @@ class Recipe
         return $this->tags;
     }
 
-    public function addTag(Tag $tag): self
+    public function addTag(Tag $tag): void
     {
         if (!$this->tags->contains($tag)) {
             $this->tags[] = $tag;
         }
-
-        return $this;
     }
 
-    public function removeTag(Tag $tag): self
+    public function removeTag(Tag $tag): void
     {
         if ($this->tags->contains($tag)) {
             $this->tags->removeElement($tag);
         }
-
-        return $this;
     }
 
     /**
@@ -397,17 +408,15 @@ class Recipe
         return $this->comments;
     }
 
-    public function addComment(Comment $comment): self
+    public function addComment(Comment $comment): void
     {
         if (!$this->comments->contains($comment)) {
             $this->comments[] = $comment;
             $comment->setRecipe($this);
         }
-
-        return $this;
     }
 
-    public function removeComment(Comment $comment): self
+    public function removeComment(Comment $comment): void
     {
         if ($this->comments->contains($comment)) {
             $this->comments->removeElement($comment);
@@ -416,8 +425,6 @@ class Recipe
                 $comment->setRecipe(null);
             }
         }
-
-        return $this;
     }
 
     public function getAuthor(): ?User
@@ -438,6 +445,31 @@ class Recipe
     public function setPhoto($photo):void
     {
         $this->photo = $photo;
+    }
+
+    /**
+     * @return Collection|Ingredient[]
+     */
+    public function getIngredients(): Collection
+    {
+        return $this->ingredients;
+    }
+
+    public function addIngredient(Ingredient $ingredient): void
+    {
+        if (!$this->ingredients->contains($ingredient)) {
+            $this->ingredients[] = $ingredient;
+        }
+
+        $ingredient->addRecipe($this);
+        $this->ingredients->add($ingredient);
+    }
+
+    public function removeIngredient(Ingredient $ingredient): void
+    {
+        if ($this->ingredients->contains($ingredient)) {
+            $this->ingredients->removeElement($ingredient);
+        }
     }
 
 }

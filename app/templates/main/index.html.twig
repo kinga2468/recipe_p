@@ -7,10 +7,20 @@
     <div class="containter-fluid">
         <img src="{{ asset('img/breakfast1.jpg') }}" alt="main_photo" height="auto" width="100%">
     </div>
-    <div class="search">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control" type="search" placeholder="{{ 'ingredients.search'|trans }}" aria-label="Search">
+    <div class="searching">
+        {#<form class="form-inline my-2 my-lg-0">#}
+            {#<input class="form-control" type="search" placeholder="{{ 'ingredients.search'|trans }}" aria-label="Search">#}
+        {#</form>#}
+
+        <form method="post" class="search" action="{{ url('search_index') }}">
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input type="text" id="search" name="search" autocomplete="off" placeholder="{{ 'ingredients.search'|trans }}">
+                    <button type="submit" title="{{ 'action.search'|trans }}"></button>
+                </div>
+            </div>
         </form>
+
     </div>
     <div class="containter last_recipe">
         <p class="headline">{{ 'last_recipe_headline'|trans }}</p>

@@ -324,17 +324,15 @@ class User implements UserInterface
         return $this->recipes;
     }
 
-    public function addRecipe(Recipe $recipe): self
+    public function addRecipe(Recipe $recipe): void
     {
         if (!$this->recipes->contains($recipe)) {
             $this->recipes[] = $recipe;
             $recipe->setAuthor($this);
         }
-
-        return $this;
     }
 
-    public function removeRecipe(Recipe $recipe): self
+    public function removeRecipe(Recipe $recipe): void
     {
         if ($this->recipes->contains($recipe)) {
             $this->recipes->removeElement($recipe);
@@ -343,8 +341,6 @@ class User implements UserInterface
                 $recipe->setAuthor(null);
             }
         }
-
-        return $this;
     }
 
     /**
@@ -355,17 +351,15 @@ class User implements UserInterface
         return $this->comments;
     }
 
-    public function addComment(Comment $comment): self
+    public function addComment(Comment $comment): void
     {
         if (!$this->comments->contains($comment)) {
             $this->comments[] = $comment;
             $comment->setAuthor($this);
         }
-
-        return $this;
     }
 
-    public function removeComment(Comment $comment): self
+    public function removeComment(Comment $comment): void
     {
         if ($this->comments->contains($comment)) {
             $this->comments->removeElement($comment);
@@ -374,7 +368,5 @@ class User implements UserInterface
                 $comment->setAuthor(null);
             }
         }
-
-        return $this;
     }
 }

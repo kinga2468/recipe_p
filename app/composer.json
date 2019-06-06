@@ -86,6 +86,7 @@
         "symfony/maker-bundle": "^1.11",
         "symfony/stopwatch": "*",
         "symfony/twig-bundle": "*",
+        "symfony/var-dumper": "3.4.*",
         "symfony/web-profiler-bundle": "*",
         "symfony/web-server-bundle": "3.4.*"
     }

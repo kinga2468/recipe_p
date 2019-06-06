@@ -7,7 +7,7 @@ namespace App\Controller;
 
 use App\Entity\Recipe;
 use App\Entity\Comment;
-use App\Entity\Photo;
+use App\Repository\IngredientRepository;
 use App\Repository\RecipeRepository;
 use App\Repository\TagRepository;
 use App\Repository\CommentRepository;
@@ -19,6 +19,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\RecipeType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use App\Entity\Ingredient;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * Class RecipeController.
@@ -129,15 +132,32 @@ class RecipeController extends AbstractController
      *     name="recipe_new",
      * )
      */
-    public function new(Request $request, RecipeRepository $repository): Response
+    public function new(Request $request, RecipeRepository $repository, IngredientRepository $ingredientRepository): Response
     {
         $recipe = new Recipe();
+
+//        $ingredient = new Ingredient();
+//        $ingredient->setTitle('pietruszka');
+//        $recipe->getIngredients()->add($ingredient);
+
+//        $ingredient2 = new Ingredient();
+//        $ingredient2->setTitle('szczypiorek');
+//        $recipe->getIngredients()->add($ingredient2);
+
         $form = $this->createForm(RecipeType::class, $recipe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $recipe->setAuthor($this->getUser());
+
+            foreach ($recipe->getIngredients() as $ingredient) {
+                $ingredientRepository->save($ingredient);
+            }
             $repository->save($recipe);
+
+//            $recipe->getIngredients()->add($ingredient);
+         //   $ingredientRepository->save($ingredient);
+//            $ingredientRepository->save($ingredient2);
 
             $this->addFlash('success', 'message.created_successfully');
 
@@ -171,6 +191,7 @@ class RecipeController extends AbstractController
      */
     public function edit(Request $request, Recipe $recipe, RecipeRepository $repository): Response
     {
+//        https://symfony.com/doc/current/form/form_collections.html - jeśli by coś nie działało to jeszcze ten ostatni kod zanalizuj
         $form = $this->createForm(RecipeType::class, $recipe, ['method' => 'PUT']);
         $form->handleRequest($request);
 

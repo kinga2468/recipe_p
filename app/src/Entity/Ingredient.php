@@ -48,15 +48,25 @@ class Ingredient
      * @ORM\ManyToMany(
      *     targetEntity="App\Entity\Measure",
      *     inversedBy="ingredients",
-     *     orphanRemoval=true
+     *     orphanRemoval=true,
      * )
      * @ORM\JoinTable(name="ingredients_measures")
      */
     private $measures;
 
+    /**
+     * @ORM\ManyToMany(
+     *     targetEntity="App\Entity\Recipe",
+     *     mappedBy="ingredients",
+     *     cascade={"persist"}
+     *     )
+     */
+    private $recipes;
+
     public function __construct()
     {
         $this->measures = new ArrayCollection();
+        $this->recipes = new ArrayCollection();
     }
 
     /**
@@ -84,11 +94,9 @@ class Ingredient
      *
      * @param string $title Title
      */
-    public function setTitle(string $title): self
+    public function setTitle(string $title): void
     {
         $this->title = $title;
-
-        return $this;
     }
 
     /**
@@ -99,21 +107,44 @@ class Ingredient
         return $this->measures;
     }
 
-    public function addMeasure(Measure $measure): self
+    public function addMeasure(Measure $measure): void
     {
         if (!$this->measures->contains($measure)) {
             $this->measures[] = $measure;
         }
 
-        return $this;
     }
 
-    public function removeMeasure(Measure $measure): self
+    public function removeMeasure(Measure $measure): void
     {
         if ($this->measures->contains($measure)) {
             $this->measures->removeElement($measure);
         }
 
-        return $this;
+    }
+
+    /**
+     * @return Collection|Recipe[]
+     */
+    public function getRecipes(): Collection
+    {
+        return $this->recipes;
+    }
+
+    public function addRecipe(Recipe $recipe): void
+    {
+        if (!$this->recipes->contains($recipe)) {
+//            $this->recipes->add($recipe);
+            $this->recipes[] = $recipe;
+            $recipe->addIngredient($this);
+        }
+    }
+
+    public function removeRecipe(Recipe $recipe): void
+    {
+        if ($this->recipes->contains($recipe)) {
+            $this->recipes->removeElement($recipe);
+            $recipe->removeIngredient($this);
+        }
     }
 }

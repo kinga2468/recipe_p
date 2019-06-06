@@ -107,11 +107,9 @@ class Comment
      *
      * @param \DateTimeInterface $createdAt Created at
      */
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
-
-        return $this;
     }
 
     /**
@@ -129,11 +127,9 @@ class Comment
      *
      * @param \DateTimeInterface $updatedAt Updated at
      */
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
-
-        return $this;
     }
 
     /**
@@ -151,11 +147,9 @@ class Comment
      *
      * @param string $title Text
      */
-    public function setText(string $text): self
+    public function setText(string $text): void
     {
         $this->text = $text;
-
-        return $this;
     }
 
     public function getRecipe(): ?Recipe
@@ -163,11 +157,9 @@ class Comment
         return $this->recipe;
     }
 
-    public function setRecipe(?Recipe $recipe): self
+    public function setRecipe(?Recipe $recipe): void
     {
         $this->recipe = $recipe;
-
-        return $this;
     }
 
     public function getAuthor(): ?User
@@ -175,10 +167,8 @@ class Comment
         return $this->author;
     }
 
-    public function setAuthor(?User $author): self
+    public function setAuthor(?User $author): void
     {
         $this->author = $author;
-
-        return $this;
     }
 }
