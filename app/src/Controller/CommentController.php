@@ -121,19 +121,20 @@ class CommentController extends AbstractController
      * @throws \Doctrine\ORM\OptimisticLockException
      *
      * @Route(
-     *     "/{id}/edit/{commentId}",
+     *     "/{recipeId}/edit/{id}",
      *     methods={"GET", "PUT"},
      *     requirements={"id": "[1-9]\d*"},
+     *     requirements={"recipeId": "[1-9]\d*"},
      *     name="comment_edit",
      * )
      */
-    public function edit(Request $request, Comment $comment, CommentRepository $repository, $commentId): Response
+    public function edit(Request $request, Comment $comment, CommentRepository $repository, $recipeId): Response
     {
-//        if ($comment->getAuthor() !== $this->getUser()) {
-//            $this->addFlash('warning', 'message.item_not_found');
-//
-//            return $this->redirectToRoute('recipe_view', ['id' => $commentId]);
-//        }
+        if ($comment->getAuthor() !== $this->getUser() and $this->isGranted('ROLE_ADMIN') == false) {
+            $this->addFlash('warning', 'message.item_not_found');
+
+            return $this->redirectToRoute('recipe_view', ['id' => $recipeId]);
+        }
 
         $form = $this->createForm(CommentType::class, $comment, ['method' => 'PUT']);
         $form->handleRequest($request);
@@ -143,7 +144,7 @@ class CommentController extends AbstractController
 
             $this->addFlash('success', 'message.updated_successfully');
 
-            return $this->redirectToRoute('comment_index');
+            return $this->redirectToRoute('recipe_view', ['id' => $recipeId]);
         }
 
         return $this->render(
@@ -168,19 +169,20 @@ class CommentController extends AbstractController
      * @throws \Doctrine\ORM\OptimisticLockException
      *
      * @Route(
-     *     "/{id}/delete",
+     *     "/{recipeId}/delete/{id}",
      *     methods={"GET", "DELETE"},
      *     requirements={"id": "[1-9]\d*"},
+     *     requirements={"recipeId": "[1-9]\d*"},
      *     name="comment_delete",
      * )
      */
-    public function delete(Request $request, Comment $comment, CommentRepository $repository, $id): Response
+    public function delete(Request $request, Comment $comment, CommentRepository $repository, $recipeId): Response
     {
-//        if ($comment->getAuthor() !== $this->getUser()) {
-//            $this->addFlash('warning', 'message.item_not_found');
-//
-//            return $this->redirectToRoute('recipe_view', ['id' => $id]);
-//        }
+        if ($comment->getAuthor() !== $this->getUser() and $this->isGranted('ROLE_ADMIN') == false) {
+            $this->addFlash('warning', 'message.item_not_found');
+
+            return $this->redirectToRoute('recipe_view', ['id' => $recipeId]);
+        }
 
         $form = $this->createForm(FormType::class, $comment, ['method' => 'DELETE']);
         $form->handleRequest($request);
@@ -193,7 +195,7 @@ class CommentController extends AbstractController
             $repository->delete($comment);
             $this->addFlash('success', 'message.deleted_successfully');
 
-            return $this->redirectToRoute('comment_index');
+            return $this->redirectToRoute('recipe_view', ['id' => $recipeId]);
         }
 
         return $this->render(

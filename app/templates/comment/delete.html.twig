@@ -6,13 +6,13 @@
 
 {% block body %}
     <h1>{{ 'title.comment_delete'|trans({'%id%': comment.id|default('')}) }}</h1>
-    {{ form_start(form, { method: 'DELETE', action: url('comment_delete', {id: comment.id}) }) }}
+    {{ form_start(form, { method: 'DELETE', action: url('comment_delete', {id: comment.id, 'recipeId':comment.recipe.id }) }) }}
     {{ form_widget(form) }}
     <div class="form-group row float-sm-right">
         <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
     </div>
     <div class="form-group row float-sm-left">
-        <a href="{{ url('comment_index') }}" class="btn btn-link">
+        <a href="{{ url('recipe_view', {'id': comment.recipe.id}) }}" class="btn btn-link">
             {{ 'action.back_to_list'|trans }}
         </a>
     </div>

@@ -72,15 +72,7 @@ class RecipeType extends AbstractType
                 'attr' => ['max_length' => 700],
             ]
         );
-        $builder->add(
-            'photo',
-            TextType::class,
-            [
-                'label' => 'label.photo',
-                'required' => true,
-                'attr' => ['max_length' => 128],
-            ]
-        );
+
         $builder->add(
             'time',
             NumberType::class,
@@ -108,6 +100,12 @@ class RecipeType extends AbstractType
                 'required' => true,
             ]
         );
+
+//        $builder->add('photo', 'file', array(
+//            'data_class' => 'Symfony\Component\HttpFoundation\File\File',
+//            'property_path' => 'image',
+//            'required' => false,
+//        ));
 
         $builder->add('ingredients', CollectionType::class, [
             'entry_type' => IngredientType::class,
@@ -141,6 +139,7 @@ class RecipeType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
+//        $resolver->setDefaults(['data_class' => 'Symfony\Component\HttpFoundation\File\File']);
         $resolver->setDefaults(['data_class' => Recipe::class]);
     }
 

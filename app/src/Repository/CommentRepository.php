@@ -14,7 +14,7 @@ use Doctrine\ORM\QueryBuilder;
  * @method Comment|null findOneBy(array $criteria, array $orderBy = null)
  * @method Comment[]    findAll()
  * @method Comment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- * @method Comment[]    findByRecipe($value)
+ * @method Comment[]    findByRecipe($value, $orderBy = 'c.updatedAt, ASC')
  */
 class CommentRepository extends ServiceEntityRepository
 {
@@ -36,7 +36,7 @@ class CommentRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('c.updatedAt', 'DESC');
+            ->orderBy('c.updatedAt', 'ASC');
     }
 
     /**

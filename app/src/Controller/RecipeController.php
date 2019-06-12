@@ -5,6 +5,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Photo;
+use Symfony\Component\HttpFoundation\File\File;
 use App\Entity\Recipe;
 use App\Entity\Comment;
 use App\Repository\IngredientRepository;
@@ -21,7 +23,6 @@ use App\Form\RecipeType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use App\Entity\Ingredient;
 use Doctrine\Common\Collections\ArrayCollection;
-
 
 /**
  * Class RecipeController.
@@ -192,7 +193,7 @@ class RecipeController extends AbstractController
     public function edit(Request $request, Recipe $recipe, RecipeRepository $repository): Response
     {
 //        https://symfony.com/doc/current/form/form_collections.html - jeśli by coś nie działało to jeszcze ten ostatni kod zanalizuj
-        if ($recipe->getAuthor() !== $this->getUser()) {
+        if ($recipe->getAuthor() !== $this->getUser() and $this->isGranted('ROLE_ADMIN')==false){
             $this->addFlash('warning', 'message.item_not_found');
 
             return $this->redirectToRoute('recipe_index');
@@ -202,6 +203,17 @@ class RecipeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+//            $recipe->setPhoto(
+//                new File($this->getParameter('photos_directory').'/'.$recipe->getPhoto())
+//            );
+
+            #nie działa
+//            $recipePicture = $form->get('photo')->getData();
+//            if($recipePicture!=null){
+//                $recipe->setPhoto($recipePicture);
+//            }#dotąd
+
             $repository->save($recipe);
 
             $this->addFlash('success', 'message.updated_successfully');
@@ -239,7 +251,7 @@ class RecipeController extends AbstractController
      */
     public function delete(Request $request, Recipe $recipe, RecipeRepository $repository): Response
     {
-        if ($recipe->getAuthor() !== $this->getUser()) {
+        if ($recipe->getAuthor() !== $this->getUser() and $this->isGranted('ROLE_ADMIN')==false){
             $this->addFlash('warning', 'message.item_not_found');
 
             return $this->redirectToRoute('recipe_index');

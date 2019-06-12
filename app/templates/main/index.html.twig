@@ -12,13 +12,12 @@
             {#<input class="form-control" type="search" placeholder="{{ 'ingredients.search'|trans }}" aria-label="Search">#}
         {#</form>#}
 
-        <form method="post" class="search" action="{{ url('search_index') }}">
-            <div class="form-group row">
-                <div class="col-sm-10">
-                    <input type="text" id="search" name="search" autocomplete="off" placeholder="{{ 'ingredients.search'|trans }}">
-                    <button type="submit" title="{{ 'action.search'|trans }}"></button>
-                </div>
-            </div>
+        <form method="post" class="form-inline my-2 my-lg-0" action="{{ url('search_index') }}">
+            {#<div class="form-group row">#}
+                {#<div class="col-sm-10">#}
+                    <input type="search" class="form-control" name="search" autocomplete="off" placeholder="{{ 'ingredients.search'|trans }}">
+                {#</div>#}
+            {#</div>#}
         </form>
 
     </div>
@@ -35,6 +34,16 @@
                                 <div class="icon">{{ item.time }}</div>
                                 <i class="fas fa-user"></i>
                                 <div class="icon">{{ item.peopleAmount }}</div>
+                                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                    {% if is_granted('ROLE_ADMIN') or item.author.id == app.user.id %}
+                                        <a class="edit" href="{{ url('recipe_edit', {'id': item.id}) }}" title="{{ 'action.edit'|trans }}">
+                                            <i class="fas fa-cog"></i>
+                                        </a>
+                                        <a class="delete" href="{{ url('recipe_delete', {'id': item.id}) }}" title="{{ 'action.delete'|trans }}">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
                             </div>
                         </div>
                         <p class="caption">{{ item.title }}</p>

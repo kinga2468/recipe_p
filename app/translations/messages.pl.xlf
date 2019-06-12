@@ -36,7 +36,7 @@
             </trans-unit>
             <trans-unit id="ingredients.search">
                 <source>ingredients.search</source>
-                <target>Podaj składniki...</target>
+                <target>Podaj składnik...</target>
             </trans-unit>
             <trans-unit id="last_recipe_headline">
                 <source>last_recipe_headline</source>
@@ -257,6 +257,10 @@
             <trans-unit id="message.item_not_found">
                 <source>message.item_not_found</source>
                 <target>Rekord nie został znaleziony</target>
+            </trans-unit>
+            <trans-unit id="log_to_add_comment">
+                <source>log_to_add_comment</source>
+                <target>Zaloguj się by móc komentować</target>
             </trans-unit>
         </body>
     </file>

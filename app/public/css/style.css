@@ -26,13 +26,14 @@ p{margin-bottom:0;}
 .navbar li a {color:black; }
 .navbar li a:hover {color: black; text-decoration: underline; }
 .navbar-expand-lg{padding-top:8px;}
-/*.searching{width:40%; margin:0 auto; position: relative; bottom: 300px; height:60px; }*/
-/*.searching .form-control{width:100%; height:60px; border-radius: 0; border:none; padding-top:15px;}*/
+.searching{width:50%; margin:0 auto; position: relative; bottom: 300px; height:60px; }
+.searching .form-control{width:100%; height:60px; border-radius: 0; border:none; padding-top:15px;}
 
 .headline{font-size: 26px; color:#3A595E; padding-left:45px; margin-bottom: 10px;}
 .photo_border{width:90%; margin:0 auto; background-color: #61969E;}
 .photo_border img{max-height:220px; width:100%; padding:10px;}
 .caption{text-align: center; padding:5px; }
+/*.caption:hover{text-decoration: underline;}*/
 
 footer{clear:both; background-color: #61969E; }
 footer p{text-align:center; padding:8px; margin-bottom: 0;}
@@ -42,6 +43,9 @@ footer p{text-align:center; padding:8px; margin-bottom: 0;}
 .photo_border:hover{opacity:0.9;}
 .icons{color:black; background-color: #61969E; position: absolute; top:2%; left:10%; }
 .icons .fas{float: left; padding:6px 2px 6px 9px; font-size: 90%;}
+.icons .fas:last-child:last-child:hover{color: #f6f0ea;}
+.icons .fas:last-child{padding-right:9px; }
+.icons .fas:last-child:hover{padding-right:9px; color: #f6f0ea;}
 .icon{float:left; padding:0 8px 0 4px; font-size: 100%;}
 
 /*.icons_edit{position: relative; bottom: 38px; left:10px;}*/
@@ -65,7 +69,6 @@ h1{text-align: center; font-size: 40px;}
 .add_recipe:hover{opacity: 0.9;}
 .add_recipe p{text-align: center; margin:5px;}
 .add_recipe a{color:black; }
-.log_to_add{}
 
 .popular_tags{clear:both; width:100%;}
 .popular_tags p{margin-bottom: 5px; margin-top: 20px;}
@@ -96,8 +99,11 @@ h1{text-align: center; font-size: 40px;}
 
 .comments p{clear:both;}
 .comment{border:1px solid #ddd; border-radius: 4px; padding:10px; margin:10px 0 10px 0; }
+.comment .link{border-left:1px solid #ddd; }
+.comment_author{border-right:1px solid #ddd;}
 .button{background-color: #e9662a; border:none; color:black; border-radius: 3px; padding:3px 8px; margin:15px; cursor: pointer;}
 .button:hover{opacity: 0.9;}
+#log_to_comment{font-weight: normal;}
 
 .dl-horizontal{margin-right:10px;}
 .userRecipe{clear:both;}

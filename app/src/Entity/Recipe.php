@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  *  Recipe class.
@@ -211,8 +212,11 @@ class Recipe
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
      */
     private $photo;
+//nullable=true
+//mapped=false
 
 
     /**

@@ -48,11 +48,15 @@
                     <div class="comments">
                         <p>{{ 'label.comments'|trans }}</p>
                         <div class="add_comment">
-                            {% if recipe|length %}
-                                {{ form_start(form_comment, { method: 'post', action: url('recipe_view', {'id':id}) }) }}
-                                {{ form_widget(form_comment.text, { 'value': '' }) }}
-                                <input type="submit" value="{{ 'action.save'|trans }}" class="button"/>
-                                {{ form_end(form_comment) }}
+                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                {% if recipe|length %}
+                                    {{ form_start(form_comment, { method: 'post', action: url('recipe_view', {'id':id}) }) }}
+                                    {{ form_widget(form_comment.text, { 'value': '' }) }}
+                                    <input type="submit" value="{{ 'action.save'|trans }}" class="button"/>
+                                    {{ form_end(form_comment) }}
+                                {% endif %}
+                            {% else %}
+                                <p id="log_to_comment">{{ 'log_to_add_comment'|trans }}</p>
                             {% endif %}
                             {% for comment in recipesComments %}
                                 <div class="row comment">
@@ -68,14 +72,16 @@
                                         {{ comment.text }}
                                     </div>
                                     <div class="col-md-1 link">
-                                            {#{% if is_granted('IS_AUTHENTICATED_FULLY') and user_id==line.users_id or is_granted('ROLE_ADMIN')%}#}
-                                                {#<a class="edit" href="{{ url('comment_delete', {'id': line.id, 'videoId': line.video_id}) }}" title="{{ 'delete'|trans }}">#}
-                                                    {#{{ 'delete'|trans }}#}
-                                                {#</a>#}
-                                                {#<a class="edit" href="{{ url('comment_edit', {'id': line.id, 'videoId': line.video_id}) }}" title="{{ 'edit'|trans }}">#}
-                                                    {#{{ 'edit'|trans }}#}
-                                                {#</a>#}
-                                            {#{% endif %}#}
+                                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                            {% if is_granted('ROLE_ADMIN') or comment.author.id == app.user.id %}
+                                                <a class="edit" href="{{ url('comment_edit', {'id': comment.id, 'recipeId':recipe.id}) }}" title="{{ 'action.edit'|trans }}">
+                                                    {{ 'action.edit'|trans }}
+                                                </a>
+                                                <a class="edit" href="{{ url('comment_delete', {'id': comment.id, 'recipeId': recipe.id}) }}" title="{{ 'action.delete'|trans }}">
+                                                    {{ 'action.delete'|trans }}
+                                                </a>
+                                            {% endif %}
+                                        {% endif %}
                                     </div>
                                 </div>
                             {% endfor %}
