@@ -44,15 +44,6 @@ class Ingredient
      */
     private $title;
 
-    /**
-     * @ORM\ManyToMany(
-     *     targetEntity="App\Entity\Measure",
-     *     inversedBy="ingredients",
-     *     orphanRemoval=true,
-     * )
-     * @ORM\JoinTable(name="ingredients_measures")
-     */
-    private $measures;
 
     /**
      * @ORM\ManyToMany(
@@ -65,7 +56,7 @@ class Ingredient
 
     public function __construct()
     {
-        $this->measures = new ArrayCollection();
+//        $this->measures = new ArrayCollection();
         $this->recipes = new ArrayCollection();
     }
 
@@ -97,30 +88,6 @@ class Ingredient
     public function setTitle(string $title): void
     {
         $this->title = $title;
-    }
-
-    /**
-     * @return Collection|Measure[]
-     */
-    public function getMeasures(): Collection
-    {
-        return $this->measures;
-    }
-
-    public function addMeasure(Measure $measure): void
-    {
-        if (!$this->measures->contains($measure)) {
-            $this->measures[] = $measure;
-        }
-
-    }
-
-    public function removeMeasure(Measure $measure): void
-    {
-        if ($this->measures->contains($measure)) {
-            $this->measures->removeElement($measure);
-        }
-
     }
 
     /**

@@ -22,91 +22,91 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
  */
 class CommentController extends AbstractController
 {
-    /**
-     * Index action.
-     *
-     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Repository\CommentRepository            $repository Repository
-     * @param \Knp\Component\Pager\PaginatorInterface   $paginator  Paginator
-     *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
-     *
-     * @Route(
-     *     "/",
-     *     name="comment_index",
-     * )
-     */
-    public function index(Request $request, CommentRepository $repository, PaginatorInterface $paginator): Response
-    {
-        $pagination = $paginator->paginate(
-            $repository->queryAll(),
-            $request->query->getInt('page', 1),
-            Comment::NUMBER_OF_ITEMS
-        );
-
-        return $this->render(
-            'comment/index.html.twig',
-            ['pagination' => $pagination]
-        );
-    }
-
-    /**
-     * View action.
-     *
-     * @param \App\Entity\Comment $comment Comment entity
-     *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
-     *
-     * @Route(
-     *     "/{id}",
-     *     name="comment_view",
-     *     requirements={"id": "[1-9]\d*"},
-     * )
-     */
-    public function view(Comment $comment): Response
-    {
-        return $this->render(
-            'comment/view.html.twig',
-            ['comment' => $comment]
-        );
-    }
-
-    /**
-     * New action.
-     *
-     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
-     * @param \App\Repository\CommentRepository        $repository Comment repository
-     *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
-     *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     *
-     * @Route(
-     *     "/new",
-     *     methods={"GET", "POST"},
-     *     name="comment_new",
-     * )
-     */
-    public function new(Request $request, CommentRepository $repository): Response
-    {
-        $comment = new Comment();
-        $form = $this->createForm(CommentType::class, $comment);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $repository->save($comment);
-
-            $this->addFlash('success', 'message.created_successfully');
-
-            return $this->redirectToRoute('comment_index');
-        }
-
-        return $this->render(
-            'comment/new.html.twig',
-            ['form' => $form->createView()]
-        );
-    }
+//    /**
+//     * Index action.
+//     *
+//     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+//     * @param \App\Repository\CommentRepository            $repository Repository
+//     * @param \Knp\Component\Pager\PaginatorInterface   $paginator  Paginator
+//     *
+//     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+//     *
+//     * @Route(
+//     *     "/",
+//     *     name="comment_index",
+//     * )
+//     */
+//    public function index(Request $request, CommentRepository $repository, PaginatorInterface $paginator): Response
+//    {
+//        $pagination = $paginator->paginate(
+//            $repository->queryAll(),
+//            $request->query->getInt('page', 1),
+//            Comment::NUMBER_OF_ITEMS
+//        );
+//
+//        return $this->render(
+//            'comment/index.html.twig',
+//            ['pagination' => $pagination]
+//        );
+//    }
+//
+//    /**
+//     * View action.
+//     *
+//     * @param \App\Entity\Comment $comment Comment entity
+//     *
+//     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+//     *
+//     * @Route(
+//     *     "/{id}",
+//     *     name="comment_view",
+//     *     requirements={"id": "[1-9]\d*"},
+//     * )
+//     */
+//    public function view(Comment $comment): Response
+//    {
+//        return $this->render(
+//            'comment/view.html.twig',
+//            ['comment' => $comment]
+//        );
+//    }
+//
+//    /**
+//     * New action.
+//     *
+//     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+//     * @param \App\Repository\CommentRepository        $repository Comment repository
+//     *
+//     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+//     *
+//     * @throws \Doctrine\ORM\ORMException
+//     * @throws \Doctrine\ORM\OptimisticLockException
+//     *
+//     * @Route(
+//     *     "/new",
+//     *     methods={"GET", "POST"},
+//     *     name="comment_new",
+//     * )
+//     */
+//    public function new(Request $request, CommentRepository $repository): Response
+//    {
+//        $comment = new Comment();
+//        $form = $this->createForm(CommentType::class, $comment);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $repository->save($comment);
+//
+//            $this->addFlash('success', 'message.created_successfully');
+//
+//            return $this->redirectToRoute('comment_index');
+//        }
+//
+//        return $this->render(
+//            'comment/new.html.twig',
+//            ['form' => $form->createView()]
+//        );
+//    }
 
     /**
      * Edit action.
@@ -121,14 +121,20 @@ class CommentController extends AbstractController
      * @throws \Doctrine\ORM\OptimisticLockException
      *
      * @Route(
-     *     "/{id}/edit",
+     *     "/{id}/edit/{commentId}",
      *     methods={"GET", "PUT"},
      *     requirements={"id": "[1-9]\d*"},
      *     name="comment_edit",
      * )
      */
-    public function edit(Request $request, Comment $comment, CommentRepository $repository): Response
+    public function edit(Request $request, Comment $comment, CommentRepository $repository, $commentId): Response
     {
+//        if ($comment->getAuthor() !== $this->getUser()) {
+//            $this->addFlash('warning', 'message.item_not_found');
+//
+//            return $this->redirectToRoute('recipe_view', ['id' => $commentId]);
+//        }
+
         $form = $this->createForm(CommentType::class, $comment, ['method' => 'PUT']);
         $form->handleRequest($request);
 
@@ -141,7 +147,7 @@ class CommentController extends AbstractController
         }
 
         return $this->render(
-            'comment/editData.html.twig',
+            'comment/edit.html.twig',
             [
                 'form' => $form->createView(),
                 'comment' => $comment,
@@ -168,8 +174,14 @@ class CommentController extends AbstractController
      *     name="comment_delete",
      * )
      */
-    public function delete(Request $request, Comment $comment, CommentRepository $repository): Response
+    public function delete(Request $request, Comment $comment, CommentRepository $repository, $id): Response
     {
+//        if ($comment->getAuthor() !== $this->getUser()) {
+//            $this->addFlash('warning', 'message.item_not_found');
+//
+//            return $this->redirectToRoute('recipe_view', ['id' => $id]);
+//        }
+
         $form = $this->createForm(FormType::class, $comment, ['method' => 'DELETE']);
         $form->handleRequest($request);
 

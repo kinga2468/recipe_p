@@ -48,11 +48,18 @@
             </div>
             <div class="col-md-3 aside">
                 <div class="row">
-                    <div class="add_recipe"><p>
-                        <a href="{{ url('recipe_new') }}" title="{{ 'action.add'|trans }}">
-                            {{ 'action.add'|trans }}
-                        </a></p>
-                    </div>
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        <div class="add_recipe">
+                            <p>
+                                <a href="{{ url('recipe_new') }}" title="{{ 'action.add'|trans }}">
+                                    {{ 'action.add'|trans }}
+                                </a>
+                            </p>
+                        </div>
+                    {% else %}
+                        <p class="log_to_add">{{ 'log_to_add_recipe'|trans }}</p>
+                    {% endif %}
+
                     <div class="popular_tags">
                         <p>{{ 'popular.tag'|trans }}</p>
                         {% for tag in mostPopularTag %}

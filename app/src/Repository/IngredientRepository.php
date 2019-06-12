@@ -78,12 +78,31 @@ class IngredientRepository extends ServiceEntityRepository
      */
     public function findRecipeByIngredient($search): QueryBuilder
     {
+//        return $this->createQueryBuilder('i')
+//            ->andWhere('i.id = :val')
+//            ->setParameter('val', $search)
+//            ->innerJoin('i.recipes','r')
+//            ->addSelect('r')
+//            ->select('r.title', 'r.id', 'r.photo, r.time, r.people_amount');
+
         return $this->getOrCreateQueryBuilder()
-//            ->select('r.id')
-//            ->innerJoin('i.recipes', 'r')
             ->where('i.title LIKE :search')
             ->setParameter('search', '%'.$search.'%')
             ->orderBy("LOCATE(:pos, i.title), i.title")
             ->setParameter('pos', $search);
     }
 }
+
+
+
+
+
+
+
+
+//        return $this->createQueryBuilder('i')
+//            ->andWhere('i.id = :val')
+//            ->setParameter('val', $search)
+//            ->innerJoin('i.recipes','r')
+//            ->addSelect('r')
+//            ->select('r.title', 'r.id', 'r.photo, r.time, r.people_amount');

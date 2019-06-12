@@ -192,6 +192,12 @@ class RecipeController extends AbstractController
     public function edit(Request $request, Recipe $recipe, RecipeRepository $repository): Response
     {
 //        https://symfony.com/doc/current/form/form_collections.html - jeśli by coś nie działało to jeszcze ten ostatni kod zanalizuj
+        if ($recipe->getAuthor() !== $this->getUser()) {
+            $this->addFlash('warning', 'message.item_not_found');
+
+            return $this->redirectToRoute('recipe_index');
+        }
+
         $form = $this->createForm(RecipeType::class, $recipe, ['method' => 'PUT']);
         $form->handleRequest($request);
 
@@ -233,6 +239,12 @@ class RecipeController extends AbstractController
      */
     public function delete(Request $request, Recipe $recipe, RecipeRepository $repository): Response
     {
+        if ($recipe->getAuthor() !== $this->getUser()) {
+            $this->addFlash('warning', 'message.item_not_found');
+
+            return $this->redirectToRoute('recipe_index');
+        }
+
         $form = $this->createForm(FormType::class, $recipe, ['method' => 'DELETE']);
         $form->handleRequest($request);
 

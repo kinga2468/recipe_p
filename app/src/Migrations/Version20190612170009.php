@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190518203112 extends AbstractMigration
+final class Version20190612170009 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20190518203112 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE ingredient CHANGE name name VARCHAR(100) NOT NULL');
+        $this->addSql('DROP TABLE ingredients_measures');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +30,8 @@ final class Version20190518203112 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE ingredient CHANGE name name VARCHAR(100) DEFAULT \'NULL\' COLLATE utf8mb4_unicode_ci');
+        $this->addSql('CREATE TABLE ingredients_measures (ingredient_id INT NOT NULL, measure_id INT NOT NULL, INDEX IDX_2159121C5DA37D00 (measure_id), INDEX IDX_2159121C933FE08C (ingredient_id), PRIMARY KEY(ingredient_id, measure_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\' ');
+        $this->addSql('ALTER TABLE ingredients_measures ADD CONSTRAINT FK_2159121C5DA37D00 FOREIGN KEY (measure_id) REFERENCES measure (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE ingredients_measures ADD CONSTRAINT FK_2159121C933FE08C FOREIGN KEY (ingredient_id) REFERENCES ingredient (id) ON DELETE CASCADE');
     }
 }

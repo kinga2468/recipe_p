@@ -63,14 +63,17 @@ class SearchController extends AbstractController
         $uniqueRecipe = [];
 
         foreach ($ingredientResult as $ingredient){
-            dump($ingredient);
-            if(!in_array($ingredient->getRecipes(), $uniqueRecipe)){
-                array_push($uniqueRecipe, $ingredient->getRecipes());
+//            dump($ingredient);
+            foreach ($ingredient->getRecipes() as $recipe) {
+//                dump($recipe);
+                if(!in_array($recipe, $uniqueRecipe)){
+                    array_push($uniqueRecipe, $recipe);
+                }
             }
         }
 
 //        dump($ingredientResult);
-        dump($uniqueRecipe);
+//        dump($uniqueRecipe);
         return $this->render(
             'search/view.html.twig',
             [

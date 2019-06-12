@@ -65,6 +65,7 @@ h1{text-align: center; font-size: 40px;}
 .add_recipe:hover{opacity: 0.9;}
 .add_recipe p{text-align: center; margin:5px;}
 .add_recipe a{color:black; }
+.log_to_add{}
 
 .popular_tags{clear:both; width:100%;}
 .popular_tags p{margin-bottom: 5px; margin-top: 20px;}

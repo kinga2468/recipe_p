@@ -8,6 +8,7 @@ use App\Entity\Recipe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\ORM\QueryBuilder;
+use App\Entity\User;
 
 /**
  *  RecipeRepository class.
@@ -170,5 +171,23 @@ class RecipeRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
 
+    }
+    /**
+     * Query tasks by author.
+     *
+     * @param \App\Entity\User|null $user User entity
+     *
+     * @return \Doctrine\ORM\QueryBuilder Query builder
+     */
+    public function queryByAuthor(User $user = null): QueryBuilder
+    {
+        $queryBuilder = $this->queryAll();
+
+        if (!is_null($user)) {
+            $queryBuilder->andWhere('r.author_id = :author_id')
+                ->setParameter('author_id', $user);
+        }
+
+        return $queryBuilder;
     }
 }

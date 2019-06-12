@@ -44,17 +44,9 @@ class Measure
      */
     private $title;
 
-    /**
-     * @ORM\ManyToMany(
-     *     targetEntity="App\Entity\Ingredient",
-     *     mappedBy="measures"
-     * )
-     */
-    private $ingredients;
-
     public function __construct()
     {
-        $this->ingredients = new ArrayCollection();
+//        $this->ingredients = new ArrayCollection();
     }
 
     /**
@@ -87,27 +79,4 @@ class Measure
         $this->title = $title;
     }
 
-    /**
-     * @return Collection|Ingredient[]
-     */
-    public function getIngredients(): Collection
-    {
-        return $this->ingredients;
-    }
-
-    public function addIngredient(Ingredient $ingredient): void
-    {
-        if (!$this->ingredients->contains($ingredient)) {
-            $this->ingredients[] = $ingredient;
-            $ingredient->addMeasure($this);
-        }
-    }
-
-    public function removeIngredient(Ingredient $ingredient): void
-    {
-        if ($this->ingredients->contains($ingredient)) {
-            $this->ingredients->removeElement($ingredient);
-            $ingredient->removeMeasure($this);
-        }
-    }
 }

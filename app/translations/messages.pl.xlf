@@ -246,6 +246,18 @@
                 <source>message.not_have_access</source>
                 <target>Nie masz dostępu do tej strony</target>
             </trans-unit>
+            <trans-unit id="user_index">
+                <source>user_index</source>
+                <target>Panel admina</target>
+            </trans-unit>
+            <trans-unit id="log_to_add_recipe">
+                <source>log_to_add_recipe</source>
+                <target>Zaloguj się by móc dodawać przepisy</target>
+            </trans-unit>
+            <trans-unit id="message.item_not_found">
+                <source>message.item_not_found</source>
+                <target>Rekord nie został znaleziony</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
