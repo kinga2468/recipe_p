@@ -5,7 +5,7 @@
 
 namespace App\EventListener;
 
-use App\Entity\Photo;
+use App\Entity\Recipe;
 use App\Service\FileUploader;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
@@ -65,13 +65,13 @@ class PhotoUploadListener
     /**
      * Upload file.
      *
-     * @param \App\Entity\Photo $entity Photo entity
+     * @param \App\Entity\Recipe $entity Photo entity
      *
      * @throws \Exception
      */
     private function uploadFile($entity): void
     {
-        if (!$entity instanceof Photo) {
+        if (!$entity instanceof Recipe) {
             return;
         }
 

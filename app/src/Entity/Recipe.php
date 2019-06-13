@@ -210,6 +210,12 @@ class Recipe
     private $author;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     *
+     */
+    private $photo;
+
+    /**
      * Tags.
      *
      * @var array
@@ -223,11 +229,6 @@ class Recipe
      * @ORM\JoinTable(name="recipes_ingredients")
      */
     private $ingredients;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Photo", mappedBy="recipe", cascade={"persist", "remove"})
-     */
-    private $photo;
 
     public function __construct()
     {
@@ -435,6 +436,17 @@ class Recipe
         $this->author = $author;
     }
 
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto($photo):void
+    {
+        $this->photo = $photo;
+    }
+
+
     /**
      * @return Collection|Ingredient[]
      */
@@ -459,23 +471,4 @@ class Recipe
             $this->ingredients->removeElement($ingredient);
         }
     }
-
-    public function getPhoto(): ?Photo
-    {
-        return $this->photo;
-    }
-
-    public function setPhoto($photo): self
-    {
-        $this->photo = $photo;
-
-        // set the owning side of the relation if necessary
-//        if ($this !== $photo->getRecipe()) {
-//            $photo->setRecipe($this);
-//        }
-
-        return $this;
-    }
-
-
 }

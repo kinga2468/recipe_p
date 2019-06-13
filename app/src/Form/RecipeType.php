@@ -95,10 +95,10 @@ class RecipeType extends AbstractType
 
         $builder->add(
             'photo',
-            PhotoType::class,
+             FileType::class,
             [
                 'label' => 'label.photo',
-//                'data_class' => null,
+                'data_class' => null,
 //                'mapped' => false
             ]
         );

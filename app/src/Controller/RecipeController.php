@@ -144,16 +144,12 @@ class RecipeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $recipe->setAuthor($this->getUser());
 
-            $photo = $recipe->getPhoto();
-            $photo->setRecipe($recipe);
-
             foreach ($recipe->getIngredients() as $ingredient) {
 
                 $ingredientRepository->save($ingredient);
                 $recipe->addIngredient($ingredient);
             }
             $repository->save($recipe);
-            $photoRepository->save($photo);
 
 //            $recipe->getIngredients()->add($ingredient);
          //   $ingredientRepository->save($ingredient);
@@ -203,9 +199,9 @@ class RecipeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $recipePhoto = $form->get('photo')->getData()->getPhoto();
+            $recipePhoto = $form->get('photo')->getData();
             if($recipePhoto!=null){
-                $recipe->setPhoto($form->get('photo')->get('photo')->getData());
+                $recipe->setPhoto($recipePhoto);
             }
 
             $repository->save($recipe);
