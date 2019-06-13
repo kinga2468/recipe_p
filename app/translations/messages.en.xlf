@@ -263,6 +263,26 @@
                 <source>log_to_add_comment</source>
                 <target>Log in to can add comment</target>
             </trans-unit>
+            <trans-unit id="message.search_error">
+                <source>message.search_error</source>
+                <target>Search error</target>
+            </trans-unit>
+            <trans-unit id="title.comment_edit">
+                <source>title.comment_edit</source>
+                <target>Comment edit</target>
+            </trans-unit>
+            <trans-unit id="label.text">
+                <source>label.text</source>
+                <target>Text</target>
+            </trans-unit>
+            <trans-unit id="title.comment_delete">
+                <source>title.comment_delete</source>
+                <target>Comment delete</target>
+            </trans-unit>
+            <trans-unit id="label.view">
+                <source>label.view</source>
+                <target>view</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

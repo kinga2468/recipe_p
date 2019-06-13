@@ -53,7 +53,7 @@ class PhotoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $photo->setRecipe();
+            $photo->setRecipe($this->getRecipe());
             $repository->save($photo);
             $this->addFlash('success', 'message.created_successfully');
 

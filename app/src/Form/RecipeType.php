@@ -24,6 +24,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
  */
 class RecipeType extends AbstractType
 {
+
     /**
      * Tags data transformer.
      *
@@ -94,26 +95,21 @@ class RecipeType extends AbstractType
 
         $builder->add(
             'photo',
-            FileType::class,
+            PhotoType::class,
             [
                 'label' => 'label.photo',
-                'required' => true,
+//                'data_class' => null,
+//                'mapped' => false
             ]
         );
 
-//        $builder->add('photo', 'file', array(
-//            'data_class' => 'Symfony\Component\HttpFoundation\File\File',
-//            'property_path' => 'image',
-//            'required' => false,
-//        ));
-
-        $builder->add('ingredients', CollectionType::class, [
-            'entry_type' => IngredientType::class,
-            'entry_options' => ['label' => false],
-            'allow_add' => true,
-            'by_reference' => false,
-            'allow_delete' => true,
-        ]);
+//        $builder->add('ingredients', CollectionType::class, [
+//            'entry_type' => IngredientType::class,
+//            'entry_options' => ['label' => false],
+//            'allow_add' => true,
+//            'by_reference' => false,
+//            'allow_delete' => true,
+//        ]);
 
         $builder->add(
             'tags',

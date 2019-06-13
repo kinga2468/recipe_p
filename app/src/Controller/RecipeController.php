@@ -5,7 +5,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Photo;
+use App\Repository\PhotoRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Entity\Recipe;
 use App\Entity\Comment;
@@ -52,6 +52,7 @@ class RecipeController extends AbstractController
             $request->query->getInt('page', 1),
             Recipe::NUMBER_OF_ITEMS
         );
+
 
         return $this->render(
             'recipe/index.html.twig',
@@ -133,17 +134,9 @@ class RecipeController extends AbstractController
      *     name="recipe_new",
      * )
      */
-    public function new(Request $request, RecipeRepository $repository, IngredientRepository $ingredientRepository): Response
+    public function new(Request $request, RecipeRepository $repository, PhotoRepository $photoRepository, IngredientRepository $ingredientRepository): Response
     {
         $recipe = new Recipe();
-
-//        $ingredient = new Ingredient();
-//        $ingredient->setTitle('pietruszka');
-//        $recipe->getIngredients()->add($ingredient);
-
-//        $ingredient2 = new Ingredient();
-//        $ingredient2->setTitle('szczypiorek');
-//        $recipe->getIngredients()->add($ingredient2);
 
         $form = $this->createForm(RecipeType::class, $recipe);
         $form->handleRequest($request);
@@ -151,10 +144,16 @@ class RecipeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $recipe->setAuthor($this->getUser());
 
+            $photo = $recipe->getPhoto();
+            $photo->setRecipe($recipe);
+
             foreach ($recipe->getIngredients() as $ingredient) {
+
                 $ingredientRepository->save($ingredient);
+                $recipe->addIngredient($ingredient);
             }
             $repository->save($recipe);
+            $photoRepository->save($photo);
 
 //            $recipe->getIngredients()->add($ingredient);
          //   $ingredientRepository->save($ingredient);
@@ -199,20 +198,15 @@ class RecipeController extends AbstractController
             return $this->redirectToRoute('recipe_index');
         }
 
+
         $form = $this->createForm(RecipeType::class, $recipe, ['method' => 'PUT']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-//            $recipe->setPhoto(
-//                new File($this->getParameter('photos_directory').'/'.$recipe->getPhoto())
-//            );
-
-            #nie działa
-//            $recipePicture = $form->get('photo')->getData();
-//            if($recipePicture!=null){
-//                $recipe->setPhoto($recipePicture);
-//            }#dotąd
+            $recipePhoto = $form->get('photo')->getData()->getPhoto();
+            if($recipePhoto!=null){
+                $recipe->setPhoto($form->get('photo')->get('photo')->getData());
+            }
 
             $repository->save($recipe);
 
@@ -222,7 +216,7 @@ class RecipeController extends AbstractController
         }
 
         return $this->render(
-            'recipe/editData.html.twig',
+            'recipe/edit.html.twig',
             [
                 'form' => $form->createView(),
                 'recipe' => $recipe,

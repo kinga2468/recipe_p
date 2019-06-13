@@ -143,6 +143,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Recipe", mappedBy="author")
+     * @ORM\JoinColumn(name="reportId", referencedColumnName="id", onDelete="CASCADE")
      */
     private $recipes;
 

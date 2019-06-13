@@ -36,6 +36,6 @@ services:
                 $targetDirectory: '%photos_directory%'
 
     App\EventListener\PhotoUploadListener:
-            tags:
-                - { name: doctrine.event_listener, event: prePersist }
-                - { name: doctrine.event_listener, event: preUpdate }
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }

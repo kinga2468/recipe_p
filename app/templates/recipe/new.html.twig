@@ -16,11 +16,11 @@
     {{ form_row(form.photo) }}
 
     <h3>Ingredients</h3>
-    <ul class="ingredients" data-prototype="{{ form_widget(form.ingredients.vars.prototype)|e('html_attr') }}">
-        {% for ingredient in form.ingredients %}
-            <li>{{ form_row(ingredient.title) }}</li>
-        {% endfor %}
-    </ul>
+    {#<ul class="ingredients" data-prototype="{{ form_widget(form.ingredients.vars.prototype)|e('html_attr') }}">#}
+        {#{% for ingredient in form.ingredients %}#}
+            {#<li>{{ form_row(ingredient.title) }}</li>#}
+        {#{% endfor %}#}
+    {#</ul>#}
     {{ form_row(form.tags) }}
 
     <div class="form-group row float-sm-right">

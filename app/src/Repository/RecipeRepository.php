@@ -167,6 +167,7 @@ class RecipeRepository extends ServiceEntityRepository
             ->innerJoin('r.comments','c')
             ->andWhere('r.id = :val')
             ->setParameter('val', $recipeId)
+            ->orderBy('c.updatedAt', 'DESC')
             ->select('*')
             ->getQuery()
             ->getResult();

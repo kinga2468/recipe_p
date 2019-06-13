@@ -262,6 +262,26 @@
                 <source>log_to_add_comment</source>
                 <target>Zaloguj się by móc komentować</target>
             </trans-unit>
+            <trans-unit id="message.search_error">
+                <source>message.search_error</source>
+                <target>Błąd wyszukiwania</target>
+            </trans-unit>
+            <trans-unit id="title.comment_edit">
+                <source>title.comment_edit</source>
+                <target>Edytowanie komentarza</target>
+            </trans-unit>
+            <trans-unit id="label.text">
+                <source>label.text</source>
+                <target>Treść</target>
+            </trans-unit>
+            <trans-unit id="title.comment_delete">
+                <source>title.comment_delete</source>
+                <target>Usuwanie komentarza</target>
+            </trans-unit>
+            <trans-unit id="label.view">
+                <source>label.view</source>
+                <target>zobacz</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

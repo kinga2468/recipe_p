@@ -56,7 +56,7 @@ class FileUploader
      *
      * @return string Target directory
      */
-    public function getTargetDir(): string
+    public function getTargetDirectory(): string
     {
         return $this->targetDirectory;
     }

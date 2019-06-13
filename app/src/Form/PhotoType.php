@@ -30,11 +30,13 @@ class PhotoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'file',
+            'photo',
             FileType::class,
             [
-                'label' => 'label.photo',
-                'required' => true,
+                'label' => false,
+                'required' => false,
+                'data_class' => null,
+                'mapped' => false
             ]
         );
     }
@@ -53,8 +55,7 @@ class PhotoType extends AbstractType
      * Returns the prefix of the template block name for this type.
      *
      * The block prefix defaults to the underscored short class name with
-     * the "Type" suffix removed (e.g. "RecipeType" => "recipe").
-     *
+     * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
      * @return string The prefix of the template block name
      */
     public function getBlockPrefix(): string
