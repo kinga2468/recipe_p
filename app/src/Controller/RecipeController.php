@@ -5,11 +5,12 @@
 
 namespace App\Controller;
 
+use App\Repository\IngredientRepository;
 use App\Repository\PhotoRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Entity\Recipe;
 use App\Entity\Comment;
-use App\Repository\IngredientRepository;
+use App\Entity\Ingredient;
 use App\Repository\RecipeRepository;
 use App\Repository\TagRepository;
 use App\Repository\CommentRepository;
@@ -21,8 +22,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\RecipeType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
-use App\Entity\Ingredient;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Class RecipeController.
@@ -134,9 +135,16 @@ class RecipeController extends AbstractController
      *     name="recipe_new",
      * )
      */
-    public function new(Request $request, RecipeRepository $repository, PhotoRepository $photoRepository, IngredientRepository $ingredientRepository): Response
+    public function new(Request $request, RecipeRepository $repository, IngredientRepository $ingredientRepository, PhotoRepository $photoRepository): Response
     {
         $recipe = new Recipe();
+
+//        $ingredient1 = new Ingredient();
+//        $ingredient1->setName('ingredient1');
+//        $recipe->getIngredient()->add($ingredient1);
+//        $ingredient2 = new Ingredient();
+//        $ingredient2->setName('ingredient2');
+//        $recipe->getIngredient()->add($ingredient2);
 
         $form = $this->createForm(RecipeType::class, $recipe);
         $form->handleRequest($request);
@@ -144,16 +152,9 @@ class RecipeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $recipe->setAuthor($this->getUser());
 
-            foreach ($recipe->getIngredients() as $ingredient) {
-
-                $ingredientRepository->save($ingredient);
-                $recipe->addIngredient($ingredient);
-            }
-            $repository->save($recipe);
-
-//            $recipe->getIngredients()->add($ingredient);
-         //   $ingredientRepository->save($ingredient);
+//            $ingredientRepository->save($ingredient1);
 //            $ingredientRepository->save($ingredient2);
+            $repository->save($recipe);
 
             $this->addFlash('success', 'message.created_successfully');
 
@@ -185,7 +186,7 @@ class RecipeController extends AbstractController
      *     name="recipe_edit",
      * )
      */
-    public function edit(Request $request, Recipe $recipe, RecipeRepository $repository): Response
+    public function edit($id, Request $request, Recipe $recipe, RecipeRepository $repository, EntityManagerInterface $entityManager): Response
     {
 //        https://symfony.com/doc/current/form/form_collections.html - jeśli by coś nie działało to jeszcze ten ostatni kod zanalizuj
         if ($recipe->getAuthor() !== $this->getUser() and $this->isGranted('ROLE_ADMIN')==false){
@@ -193,6 +194,24 @@ class RecipeController extends AbstractController
 
             return $this->redirectToRoute('recipe_index');
         }
+
+
+
+
+
+//        if (null === $recipe = $entityManager->getRepository(Recipe::class)->find($id)) {
+//            throw $this->createNotFoundException('No recipe found for id '.$id);
+//        }
+//        $originalIngredients = new ArrayCollection();
+//        // Create an ArrayCollection of the current Tag objects in the database
+//        foreach ($recipe->getIngredients() as $ingredient) {
+//            $originalIngredients->add($ingredient);
+//        }
+
+
+
+
+
 
 
         $form = $this->createForm(RecipeType::class, $recipe, ['method' => 'PUT']);
@@ -203,6 +222,17 @@ class RecipeController extends AbstractController
             if($recipePhoto!=null){
                 $recipe->setPhoto($recipePhoto);
             }
+
+
+//            foreach ($originalIngredients as $ingredient) {
+//                if (false === $recipe->getIngredient()->contains($ingredient)) {
+//                    $ingredient->getRecipes()->removeElement($recipe);
+//                    $entityManager->persist($ingredient);
+//                }
+//            }
+//
+//            $entityManager->persist($recipe);
+//            $entityManager->flush();
 
             $repository->save($recipe);
 
