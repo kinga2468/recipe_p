@@ -8,18 +8,9 @@
         <img src="{{ asset('img/breakfast1.jpg') }}" alt="main_photo" height="auto" width="100%">
     </div>
     <div class="searching">
-        {#<form class="form-inline my-2 my-lg-0">#}
-            {#<input class="form-control" type="search" placeholder="{{ 'ingredients.search'|trans }}" aria-label="Search">#}
+        {#<form method="post" class="form-inline my-2 my-lg-0" action="{{ url('search_index') }}">#}
+            {#<input type="search" class="form-control" name="search" autocomplete="off" placeholder="{{ 'ingredients.search'|trans }}">#}
         {#</form>#}
-
-        <form method="post" class="form-inline my-2 my-lg-0" action="{{ url('search_index') }}">
-            {#<div class="form-group row">#}
-                {#<div class="col-sm-10">#}
-                    <input type="search" class="form-control" name="search" autocomplete="off" placeholder="{{ 'ingredients.search'|trans }}">
-                {#</div>#}
-            {#</div>#}
-        </form>
-
     </div>
     <div class="containter last_recipe">
         <p class="headline">{{ 'last_recipe_headline'|trans }}</p>

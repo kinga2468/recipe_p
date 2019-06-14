@@ -1,52 +1,52 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block title %}
-    {{ 'title.ingredient_list'|trans }}
-{% endblock %}
+{#{% block title %}#}
+    {#{{ 'title.ingredient_list'|trans }}#}
+{#{% endblock %}#}
 
-{% block body %}
-    <h1>{{ 'title.ingredient_list'|trans }}</h1>
-    {% if ingredients is defined and ingredients|length %}
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>{{ 'label.id'|trans }}</th>
-                <th>{{ 'label.title'|trans }}</th>
+{#{% block body %}#}
+    {#<h1>{{ 'title.ingredient_list'|trans }}</h1>#}
+    {#{% if ingredients is defined and ingredients|length %}#}
+        {#<table class="table table-striped">#}
+            {#<thead>#}
+            {#<tr>#}
+                {#<th>{{ 'label.id'|trans }}</th>#}
+                {#<th>{{ 'label.title'|trans }}</th>#}
                 {#<th>{{ 'label.amount'|trans }}</th>#}
-                <th>{{ 'label.actions'|trans }}</th>
-            </tr>
-            </thead>
-            <tbody>
-            <a href="{{ url('ingredient_new') }}" title="{{ 'action.add'|trans }}">
-                {{ 'action.add'|trans }}
-            </a>
-            {% for ingredient in ingredients %}
-                <tr>
-                    <td>{{ ingredient.id }}</td>
-                    <td>{{ ingredient.title }}</td>
+                {#<th>{{ 'label.actions'|trans }}</th>#}
+            {#</tr>#}
+            {#</thead>#}
+            {#<tbody>#}
+            {#<a href="{{ url('ingredient_new') }}" title="{{ 'action.add'|trans }}">#}
+                {#{{ 'action.add'|trans }}#}
+            {#</a>#}
+            {#{% for ingredient in ingredients %}#}
+                {#<tr>#}
+                    {#<td>{{ ingredient.id }}</td>#}
+                    {#<td>{{ ingredient.title }}</td>#}
                     {#<td>{{ ingredient.amount }}</td>#}
-                    <td>
-                        <a href="{{ url('ingredient_view', {id: ingredient.id}) }}" title="{{ 'action.view'|trans }}">
-                            {{ 'action.view'|trans }}
-                        </a>
-                        <a href="{{ url('ingredient_edit', {id: ingredient.id}) }}" title="{{ 'action.edit'|trans }}">
-                            {{ 'action.edit'|trans }}
-                        </a>
-                        <a href="{{ url('ingredient_delete', {id: ingredient.id}) }}" title="{{ 'action.delete'|trans }}">
-                            {{ 'action.delete'|trans }}
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <div class="navigation text-center">
-            {{ knp_pagination_render(ingredients) }}
-        </div>
-    {% else %}
-        <p>
-            {{ 'message.empty_list'|trans }}
-        </p>
-    {% endif %}
+                    {#<td>#}
+                        {#<a href="{{ url('ingredient_view', {id: ingredient.id}) }}" title="{{ 'action.view'|trans }}">#}
+                            {#{{ 'action.view'|trans }}#}
+                        {#</a>#}
+                        {#<a href="{{ url('ingredient_edit', {id: ingredient.id}) }}" title="{{ 'action.edit'|trans }}">#}
+                            {#{{ 'action.edit'|trans }}#}
+                        {#</a>#}
+                        {#<a href="{{ url('ingredient_delete', {id: ingredient.id}) }}" title="{{ 'action.delete'|trans }}">#}
+                            {#{{ 'action.delete'|trans }}#}
+                        {#</a>#}
+                    {#</td>#}
+                {#</tr>#}
+            {#{% endfor %}#}
+            {#</tbody>#}
+        {#</table>#}
+        {#<div class="navigation text-center">#}
+            {#{{ knp_pagination_render(ingredients) }}#}
+        {#</div>#}
+    {#{% else %}#}
+        {#<p>#}
+            {#{{ 'message.empty_list'|trans }}#}
+        {#</p>#}
+    {#{% endif %}#}
 
-{% endblock %}
+{#{% endblock %}#}

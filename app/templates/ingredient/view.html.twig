@@ -1,23 +1,23 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
 
-{% block title %}
-    {{ 'title.ingredient_view'|trans({'%id%': ingredient.id|default('')}) }}
-{% endblock %}
+{#{% block title %}#}
+    {#{{ 'title.ingredient_view'|trans({'%id%': ingredient.id|default('')}) }}#}
+{#{% endblock %}#}
 
-{% block body %}
-    <h1>{{ 'title.ingredient_view'|trans({'%id%': ingredient.id|default('')}) }}</h1>
-    {% if ingredient is defined and ingredient|length %}
-        <dl class="dl-horizontal">
-            <dt>{{ 'label.id'|trans }}</dt>
-            <dd>{{ ingredient.id }}</dd>
-            <dt>{{ 'label.title'|trans }}</dt>
-            <dd>{{  ingredient.title }}</dd>
+{#{% block body %}#}
+    {#<h1>{{ 'title.ingredient_view'|trans({'%id%': ingredient.id|default('')}) }}</h1>#}
+    {#{% if ingredient is defined and ingredient|length %}#}
+        {#<dl class="dl-horizontal">#}
+            {#<dt>{{ 'label.id'|trans }}</dt>#}
+            {#<dd>{{ ingredient.id }}</dd>#}
+            {#<dt>{{ 'label.title'|trans }}</dt>#}
+            {#<dd>{{  ingredient.title }}</dd>#}
             {#<dt>{{ 'label.name'|amount }}</dt>#}
             {#<dd>{{  ingredient.amount }}</dd>#}
-        </dl>
-    {% else %}
-        <p>
-            {{ 'message.item_not_found'|trans }}
-        </p>
-    {% endif %}
-{% endblock %}
+        {#</dl>#}
+    {#{% else %}#}
+        {#<p>#}
+            {#{{ 'message.item_not_found'|trans }}#}
+        {#</p>#}
+    {#{% endif %}#}
+{#{% endblock %}#}

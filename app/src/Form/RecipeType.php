@@ -5,7 +5,6 @@
 
 namespace App\Form;
 
-use App\Entity\Ingredient;
 use App\Entity\Recipe;
 use App\Entity\Tag;
 use Symfony\Component\Form\AbstractType;
@@ -103,13 +102,17 @@ class RecipeType extends AbstractType
             ]
         );
 
-//        $builder->add('ingredients', CollectionType::class, [
-//            'entry_type' => IngredientType::class,
-//            'entry_options' => ['label' => false],
-//            'allow_add' => true,
-//            'by_reference' => false,
-//            'allow_delete' => true,
-//        ]);
+        $builder->add(
+            'ingredient',
+            CollectionType::class,
+            [
+                'label' => 'label.ingredient',
+                'entry_type' => IngredientType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true,
+                'by_reference' => false,
+            ]
+        );
 
         $builder->add(
             'tags',

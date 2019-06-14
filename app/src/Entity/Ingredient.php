@@ -20,7 +20,8 @@ class Ingredient
      *
      * @constant int NUMBER_OF_ITEMS
      */
-    const NUMBER_OF_ITEMS = 2;
+    const NUMBER_OF_ITEMS = 10;
+
     /**
      * Primary key.
      *
@@ -33,30 +34,24 @@ class Ingredient
     private $id;
 
     /**
-     * Title.
+     * Name.
      *
      * @var string
      *
      * @ORM\Column(
      *     type="string",
-     *     length=100,
+     *     length=100
      * )
      */
-    private $title;
-
+    private $name;
 
     /**
-     * @ORM\ManyToMany(
-     *     targetEntity="App\Entity\Recipe",
-     *     mappedBy="ingredients",
-     *     cascade={"persist"}
-     *     )
+     * @ORM\ManyToMany(targetEntity="App\Entity\Recipe", mappedBy="ingredient")
      */
     private $recipes;
 
     public function __construct()
     {
-//        $this->measures = new ArrayCollection();
         $this->recipes = new ArrayCollection();
     }
 
@@ -71,23 +66,23 @@ class Ingredient
     }
 
     /**
-     * Getter for Title.
+     * Getter for Name.
      *
-     * @return string|null Title
+     * @return string|null Name
      */
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
     /**
-     * Setter for Title.
+     * Setter for Name.
      *
-     * @param string $title Title
+     * @param string $name Name
      */
-    public function setTitle(string $title): void
+    public function setName(string $name): void
     {
-        $this->title = $title;
+        $this->name = $name;
     }
 
     /**
@@ -98,20 +93,23 @@ class Ingredient
         return $this->recipes;
     }
 
-    public function addRecipe(Recipe $recipe): void
+    public function addRecipe(Recipe $recipe): self
     {
         if (!$this->recipes->contains($recipe)) {
-//            $this->recipes->add($recipe);
             $this->recipes[] = $recipe;
             $recipe->addIngredient($this);
         }
+
+        return $this;
     }
 
-    public function removeRecipe(Recipe $recipe): void
+    public function removeRecipe(Recipe $recipe): self
     {
         if ($this->recipes->contains($recipe)) {
             $this->recipes->removeElement($recipe);
             $recipe->removeIngredient($this);
         }
+
+        return $this;
     }
 }

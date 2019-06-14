@@ -216,25 +216,19 @@ class Recipe
     private $photo;
 
     /**
-     * Tags.
-     *
+     * Ingredient
      * @var array
-     *
-     * @ORM\ManyToMany(
-     *     targetEntity="App\Entity\Ingredient", 
-     *     inversedBy="recipes",
-     *     orphanRemoval=true,
-     *     cascade={"persist"}
-     * )
+     * @ORM\ManyToMany(targetEntity="App\Entity\Ingredient", inversedBy="recipes",orphanRemoval=true, cascade={"persist"})
      * @ORM\JoinTable(name="recipes_ingredients")
      */
-    private $ingredients;
+    private $ingredient;
+
 
     public function __construct()
     {
         $this->tags = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->ingredients = new ArrayCollection();
+        $this->ingredient = new ArrayCollection();
     }
 
     /**
@@ -446,29 +440,31 @@ class Recipe
         $this->photo = $photo;
     }
 
-
     /**
      * @return Collection|Ingredient[]
      */
-    public function getIngredients(): Collection
+    public function getIngredient(): Collection
     {
-        return $this->ingredients;
+        return $this->ingredient;
     }
 
-    public function addIngredient(Ingredient $ingredient): void
+    public function addIngredient(Ingredient $ingredient): self
     {
-        if (!$this->ingredients->contains($ingredient)) {
-            $this->ingredients[] = $ingredient;
+        if (!$this->ingredient->contains($ingredient)) {
+            $this->ingredient[] = $ingredient;
         }
 
-        $ingredient->addRecipe($this);
-        $this->ingredients->add($ingredient);
+        return $this;
     }
 
-    public function removeIngredient(Ingredient $ingredient): void
+    public function removeIngredient(Ingredient $ingredient): self
     {
-        if ($this->ingredients->contains($ingredient)) {
-            $this->ingredients->removeElement($ingredient);
+        if ($this->ingredient->contains($ingredient)) {
+            $this->ingredient->removeElement($ingredient);
         }
+
+        return $this;
     }
+
+
 }
