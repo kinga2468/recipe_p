@@ -104,6 +104,10 @@
         // Get the ul that holds the collection of ingredients
         $collectionHolder = $('ul.ingredients');
 
+        $collectionHolder.find('li').each(function() {
+            addIngredientFormDeleteLink($(this));
+        });
+
         // add the "add a ingredient" anchor and li to the ingredients ul
         $collectionHolder.append($newLinkLi);
 
@@ -140,6 +144,16 @@
         var $newFormLi = $('<li></li>').append(newForm);
         $newLinkLi.before($newFormLi);
 
+        addIngredientFormDeleteLink($newFormLi);
+    }
+    function addIngredientFormDeleteLink($ingredientFormLi) {
+        var $removeFormButton = $('<button type="button">Delete this ingredient</button>');
+        $ingredientFormLi.append($removeFormButton);
+
+        $removeFormButton.on('click', function(e) {
+            // remove the li for the ingredient form
+            $ingredientFormLi.remove();
+        });
     }
 
 </script>
