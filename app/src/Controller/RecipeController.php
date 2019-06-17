@@ -139,21 +139,12 @@ class RecipeController extends AbstractController
     {
         $recipe = new Recipe();
 
-//        $ingredient1 = new Ingredient();
-//        $ingredient1->setName('ingredient1');
-//        $recipe->getIngredient()->add($ingredient1);
-//        $ingredient2 = new Ingredient();
-//        $ingredient2->setName('ingredient2');
-//        $recipe->getIngredient()->add($ingredient2);
-
         $form = $this->createForm(RecipeType::class, $recipe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $recipe->setAuthor($this->getUser());
-
-//            $ingredientRepository->save($ingredient1);
-//            $ingredientRepository->save($ingredient2);
+            
             $repository->save($recipe);
 
             $this->addFlash('success', 'message.created_successfully');
@@ -204,13 +195,9 @@ class RecipeController extends AbstractController
 //        }
 //        $originalIngredients = new ArrayCollection();
 //        // Create an ArrayCollection of the current Tag objects in the database
-//        foreach ($recipe->getIngredients() as $ingredient) {
+//        foreach ($recipe->getIngredient() as $ingredient) {
 //            $originalIngredients->add($ingredient);
 //        }
-
-
-
-
 
 
 
