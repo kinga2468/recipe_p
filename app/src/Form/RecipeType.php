@@ -7,6 +7,9 @@ namespace App\Form;
 
 use App\Entity\Recipe;
 use App\Entity\Tag;
+use App\Entity\Ingredient;
+use App\Form\DataTransformer\IngredientDataTransformer;
+use App\Repository\IngredientRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -17,12 +20,19 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Form\DataTransformer\TagsDataTransformer;
 use App\Repository\TagRepository;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\CallbackTransformer;
 
 /**
  * Class RecipeType.
  */
 class RecipeType extends AbstractType
 {
+    /**
+     * Ingredients data transformer.
+     *
+     * @var \App\Form\DataTransformer\IngredientDataTransformer|null
+     */
+    private $ingredientDataTransformer = null;
 
     /**
      * Tags data transformer.
@@ -36,9 +46,11 @@ class RecipeType extends AbstractType
      *
      * @param \App\Form\DataTransformer\TagsDataTransformer $tagsDataTransformer Tags data transformer
      */
-    public function __construct(TagsDataTransformer $tagsDataTransformer)
+    public function __construct(TagsDataTransformer $tagsDataTransformer, IngredientDataTransformer $ingredientDataTransformer)
     {
         $this->tagsDataTransformer = $tagsDataTransformer;
+        $this->ingredientDataTransformer = $ingredientDataTransformer;
+
     }
 
     /**
@@ -106,14 +118,31 @@ class RecipeType extends AbstractType
             'ingredient',
             CollectionType::class,
             [
-                'label' => 'label.ingredient',
-                'entry_type' => IngredientType::class,
+                'label' => false,
                 'entry_options' => ['label' => false],
                 'allow_add' => true,
                 'by_reference' => false,
                 'allow_delete' => true,
             ]
         );
+
+        $builder->get('ingredient')->addModelTransformer(
+            $this->ingredientDataTransformer
+        );
+
+
+//        $builder->get('ingredient')
+//            ->addModelTransformer(new CallbackTransformer(
+//                function ($ingredientsAsArray) {
+//                    // transform the array to a string
+//                    return implode(', ', $ingredientsAsArray);
+//                },
+//                function ($ingredientsAsString) {
+//                    // transform the string back to an array
+//                    return explode(', ', $ingredientsAsString);
+//                }
+//            ))
+//        ;
 
         $builder->add(
             'tags',

@@ -372,28 +372,6 @@ class Recipe
     }
 
     /**
-     * @return Collection|Tag[]
-     */
-    public function getTags(): Collection
-    {
-        return $this->tags;
-    }
-
-    public function addTag(Tag $tag): void
-    {
-        if (!$this->tags->contains($tag)) {
-            $this->tags[] = $tag;
-        }
-    }
-
-    public function removeTag(Tag $tag): void
-    {
-        if ($this->tags->contains($tag)) {
-            $this->tags->removeElement($tag);
-        }
-    }
-
-    /**
      * @return Collection|Comment[]
      */
     public function getComments(): Collection
@@ -441,6 +419,27 @@ class Recipe
     }
 
     /**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): void
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+        }
+    }
+
+    public function removeTag(Tag $tag): void
+    {
+        if ($this->tags->contains($tag)) {
+            $this->tags->removeElement($tag);
+        }
+    }
+    /**
      * @return Collection|Ingredient[]
      */
     public function getIngredient(): Collection
@@ -448,13 +447,11 @@ class Recipe
         return $this->ingredient;
     }
 
-    public function addIngredient(Ingredient $ingredient): self
+    public function addIngredient(Ingredient $ingredient):void
     {
         if (!$this->ingredient->contains($ingredient)) {
             $this->ingredient[] = $ingredient;
         }
-
-        return $this;
     }
 
     public function removeIngredient(Ingredient $ingredient): self

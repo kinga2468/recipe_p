@@ -93,14 +93,12 @@ class Ingredient
         return $this->recipes;
     }
 
-    public function addRecipe(Recipe $recipe): self
+    public function addRecipe(Recipe $recipe):void
     {
         if (!$this->recipes->contains($recipe)) {
             $this->recipes[] = $recipe;
             $recipe->addIngredient($this);
         }
-
-        return $this;
     }
 
     public function removeRecipe(Recipe $recipe): self
