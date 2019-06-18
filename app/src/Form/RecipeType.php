@@ -7,6 +7,7 @@ namespace App\Form;
 
 use App\Entity\Recipe;
 use App\Entity\Tag;
+use App\Form\DataTransformer\IngredientDataTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -25,6 +26,12 @@ use Symfony\Component\Form\CallbackTransformer;
 class RecipeType extends AbstractType
 {
     /**
+     * Ingredients data transformer.
+     *
+     * @var \App\Form\DataTransformer\IngredientDataTransformer|null
+     */
+    private $ingredientDataTransformer = null;
+    /**
      * Tags data transformer.
      *
      * @var \App\Form\DataTransformer\TagsDataTransformer|null
@@ -36,9 +43,11 @@ class RecipeType extends AbstractType
      *
      * @param \App\Form\DataTransformer\TagsDataTransformer $tagsDataTransformer Tags data transformer
      */
-    public function __construct(TagsDataTransformer $tagsDataTransformer)
+    public function __construct(TagsDataTransformer $tagsDataTransformer, IngredientDataTransformer $ingredientDataTransformer)
     {
         $this->tagsDataTransformer = $tagsDataTransformer;
+        $this->ingredientDataTransformer = $ingredientDataTransformer;
+
 
     }
 
@@ -109,6 +118,9 @@ class RecipeType extends AbstractType
             'by_reference' => false,
             'allow_delete' => true,
         ]);
+        $builder->get('ingredient')->addModelTransformer(
+            $this->ingredientDataTransformer
+        );
 
         $builder->add(
             'tags',
