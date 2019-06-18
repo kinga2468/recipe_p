@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190614103241 extends AbstractMigration
+final class Version20190618212302 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -23,7 +23,6 @@ final class Version20190614103241 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('CREATE TABLE ingredient (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(100) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('ALTER TABLE recipe DROP ingredient_id');
     }
 
     public function down(Schema $schema) : void
@@ -32,6 +31,5 @@ final class Version20190614103241 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('DROP TABLE ingredient');
-        $this->addSql('ALTER TABLE recipe ADD ingredient_id INT NOT NULL');
     }
 }

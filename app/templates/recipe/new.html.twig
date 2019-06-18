@@ -18,6 +18,7 @@
     <div class="ingredient_add">
         <p>{{ 'label.ingredient'|trans }}</p>
         <ul class="ingredients" data-prototype="{{ form_widget(form.ingredient.vars.prototype)|e('html_attr') }}">
+            {# iterate over each existing ingredient and render its only field: name #}
             {% for ingredient_1 in form.ingredient %}
                 <li>{{ form_row(ingredient_1.name) }}</li>
             {% endfor %}

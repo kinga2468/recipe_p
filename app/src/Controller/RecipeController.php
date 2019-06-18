@@ -5,12 +5,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Ingredient;
 use App\Repository\IngredientRepository;
 use App\Repository\PhotoRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Entity\Recipe;
 use App\Entity\Comment;
-use App\Entity\Ingredient;
 use App\Repository\RecipeRepository;
 use App\Repository\TagRepository;
 use App\Repository\CommentRepository;
@@ -107,14 +107,14 @@ class RecipeController extends AbstractController
             Comment::NUMBER_OF_ITEMS
         );
 
-        $ingredients = $repository->findRecipeIngredients($recipe->getId());
+//        $ingredients = $repository->findRecipeIngredients($recipe->getId());
 
         return $this->render(
             'recipe/view.html.twig',
             [
                 'id' => $id,
                 'recipe' => $recipe,
-                'ingredients' => $ingredients,
+//                'ingredients' => $ingredients,
                 'recipesComments' => $comment_pagination,
                 'form_comment' => $commentForm->createView(),
             ]
@@ -138,16 +138,25 @@ class RecipeController extends AbstractController
      *     name="recipe_new",
      * )
      */
-    public function new(Request $request, RecipeRepository $repository, IngredientRepository $ingredientRepository, PhotoRepository $photoRepository): Response
+    public function new(Request $request, IngredientRepository $ingredientRepository, RecipeRepository $repository, PhotoRepository $photoRepository): Response
     {
         $recipe = new Recipe();
+
+//        $ingredient1 = new Ingredient();
+//        $ingredient1->setName('ingredient1');
+//        $recipe->getIngredient()->add($ingredient1);
+//        $ingredient2 = new Ingredient();
+//        $ingredient2->setName('ingredient2');
+//        $recipe->getIngredient()->add($ingredient2);
 
         $form = $this->createForm(RecipeType::class, $recipe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $recipe->setAuthor($this->getUser());
-            
+
+//            $ingredientRepository->save($ingredient1);
+//            $ingredientRepository->save($ingredient2);
             $repository->save($recipe);
 
             $this->addFlash('success', 'message.created_successfully');
@@ -192,18 +201,6 @@ class RecipeController extends AbstractController
 
 
 
-
-//        if (null === $recipe = $entityManager->getRepository(Recipe::class)->find($id)) {
-//            throw $this->createNotFoundException('No recipe found for id '.$id);
-//        }
-//        $originalIngredients = new ArrayCollection();
-//        // Create an ArrayCollection of the current Tag objects in the database
-//        foreach ($recipe->getIngredient() as $ingredient) {
-//            $originalIngredients->add($ingredient);
-//        }
-
-
-
         $form = $this->createForm(RecipeType::class, $recipe, ['method' => 'PUT']);
         $form->handleRequest($request);
 
@@ -212,17 +209,6 @@ class RecipeController extends AbstractController
             if($recipePhoto!=null){
                 $recipe->setPhoto($recipePhoto);
             }
-
-
-//            foreach ($originalIngredients as $ingredient) {
-//                if (false === $recipe->getIngredient()->contains($ingredient)) {
-//                    $ingredient->getRecipes()->removeElement($recipe);
-//                    $entityManager->persist($ingredient);
-//                }
-//            }
-//
-//            $entityManager->persist($recipe);
-//            $entityManager->flush();
 
             $repository->save($recipe);
 

@@ -27,15 +27,9 @@ class IngredientType extends AbstractType
      * @param FormBuilderInterface $builder The form builder
      * @param array                $options The options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add(
-            'ingredient',
-            TextType::class,
-            [
-                'label' => 'label.name',
-            ]
-        );
+        $builder->add('name');
     }
 
     /**

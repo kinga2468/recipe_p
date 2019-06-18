@@ -14,15 +14,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Ingredient
 {
     /**
-     * Use constants to define configuration options that rarely change instead
-     * of specifying them in app/config/config.yml.
-     * See http://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
-     *
-     * @constant int NUMBER_OF_ITEMS
-     */
-    const NUMBER_OF_ITEMS = 10;
-
-    /**
      * Primary key.
      *
      * @var int
@@ -93,11 +84,16 @@ class Ingredient
         return $this->recipes;
     }
 
-    public function addRecipe(Recipe $recipe):void
+    public function addRecipe(Recipe $recipe)
     {
+//        if (!$this->recipes->contains($recipe)) {
+//            $this->recipes[] = $recipe;
+//            $recipe->addIngredient($this);
+//        }
+//
+//        return $this;
         if (!$this->recipes->contains($recipe)) {
-            $this->recipes[] = $recipe;
-            $recipe->addIngredient($this);
+            $this->recipes->add($recipe);
         }
     }
 

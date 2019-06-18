@@ -216,13 +216,14 @@ class Recipe
     private $photo;
 
     /**
-     * Ingredient
+     *
+     * Ingredient.
+     *
      * @var array
-     * @ORM\ManyToMany(targetEntity="App\Entity\Ingredient", inversedBy="recipes",orphanRemoval=true, cascade={"persist"})
-     * @ORM\JoinTable(name="recipes_ingredients")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Ingredient", inversedBy="recipes", orphanRemoval=true, cascade={"persist"})
+     * @ORM\JoinTable(name="recipess_ingredients")
      */
     private $ingredient;
-
 
     public function __construct()
     {
@@ -439,6 +440,7 @@ class Recipe
             $this->tags->removeElement($tag);
         }
     }
+
     /**
      * @return Collection|Ingredient[]
      */
@@ -447,21 +449,27 @@ class Recipe
         return $this->ingredient;
     }
 
-    public function addIngredient(Ingredient $ingredient):void
+    public function addIngredient(Ingredient $ingredient)
     {
-        if (!$this->ingredient->contains($ingredient)) {
-            $this->ingredient[] = $ingredient;
-        }
+//        if (!$this->ingredient->contains($ingredient)) {
+//            $this->ingredient[] = $ingredient;
+//        }
+//
+//        return $this;
+        $ingredient->addRecipe($this);
+        $this->ingredient->add($ingredient);
     }
 
-    public function removeIngredient(Ingredient $ingredient): self
+    public function removeIngredient(Ingredient $ingredient)
     {
-        if ($this->ingredient->contains($ingredient)) {
-            $this->ingredient->removeElement($ingredient);
-        }
-
-        return $this;
+//        if ($this->ingredient->contains($ingredient)) {
+//            $this->ingredient->removeElement($ingredient);
+//        }
+//
+//        return $this;
+        $this->ingredient->removeElement($ingredient);
     }
+
 
 
 }
