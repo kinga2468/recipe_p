@@ -123,6 +123,7 @@ class RecipeType extends AbstractType
                 'allow_add' => true,
                 'by_reference' => false,
                 'allow_delete' => true,
+                'entry_type' => IngredientType::class,
             ]
         );
 

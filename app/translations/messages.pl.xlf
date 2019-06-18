@@ -282,6 +282,18 @@
                 <source>label.view</source>
                 <target>zobacz</target>
             </trans-unit>
+            <trans-unit id="label.photo">
+                <source>label.photo</source>
+                <target>Zdjęcie</target>
+            </trans-unit>
+            <trans-unit id="label.ingredient">
+                <source>label.ingredient</source>
+                <target>Składniki</target>
+            </trans-unit>
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>podaj składnik</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -173,6 +173,23 @@ class RecipeRepository extends ServiceEntityRepository
             ->getResult();
 
     }
+
+    /*
+     *  funkcja znajdująca składniki do danego przepisu
+     */
+    public function findRecipeIngredients($recipeId)
+    {
+        return $this->createQueryBuilder('r')
+            ->innerJoin('r.ingredient','i')
+            ->andWhere('r.id = :val')
+            ->setParameter('val', $recipeId)
+//            ->orderBy('c.updatedAt', 'DESC')
+            ->select('i.name')
+            ->getQuery()
+            ->getResult();
+
+    }
+
     /**
      * Query tasks by author.
      *

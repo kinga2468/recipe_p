@@ -29,7 +29,13 @@ class IngredientType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name');
+        $builder->add(
+            'ingredient',
+            TextType::class,
+            [
+                'label' => 'label.name',
+            ]
+        );
     }
 
     /**

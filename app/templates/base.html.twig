@@ -97,7 +97,7 @@
     var $collectionHolder;
 
     // setup an "add a ingredient" link
-    var $addIngredientButton = $('<button type="button" class="add_ingredient_link">Add a ingredient</button>');
+    var $addIngredientButton = $('<i class="fas fa-plus-circle add_ingredient_link"></i>');
     var $newLinkLi = $('<li></li>').append($addIngredientButton);
 
     jQuery(document).ready(function() {
@@ -147,7 +147,7 @@
         addIngredientFormDeleteLink($newFormLi);
     }
     function addIngredientFormDeleteLink($ingredientFormLi) {
-        var $removeFormButton = $('<button type="button">Delete this ingredient</button>');
+        var $removeFormButton = $('<i class="fas fa-minus-circle delete_ingredient_link"></i>');
         $ingredientFormLi.append($removeFormButton);
 
         $removeFormButton.on('click', function(e) {

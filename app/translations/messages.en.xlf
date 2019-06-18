@@ -283,6 +283,18 @@
                 <source>label.view</source>
                 <target>view</target>
             </trans-unit>
+            <trans-unit id="label.photo">
+                <source>label.photo</source>
+                <target>Photo</target>
+            </trans-unit>
+            <trans-unit id="label.ingredient">
+                <source>label.ingredient</source>
+                <target>Ingredients</target>
+            </trans-unit>
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>Add ingredient</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

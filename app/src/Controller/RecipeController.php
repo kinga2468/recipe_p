@@ -107,11 +107,14 @@ class RecipeController extends AbstractController
             Comment::NUMBER_OF_ITEMS
         );
 
+        $ingredients = $repository->findRecipeIngredients($recipe->getId());
+
         return $this->render(
             'recipe/view.html.twig',
             [
                 'id' => $id,
                 'recipe' => $recipe,
+                'ingredients' => $ingredients,
                 'recipesComments' => $comment_pagination,
                 'form_comment' => $commentForm->createView(),
             ]

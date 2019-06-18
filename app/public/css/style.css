@@ -79,7 +79,7 @@ h1{text-align: center; font-size: 40px;}
 .photo_recipe{position: fixed; top: 66px; bottom: 0; left: 0; width: 46%; height: auto; padding:0}
 .photo_recipe img{width:100%; height:100%;}
 .data_recipe{position: absolute; top: 26px; bottom: 0; left: 46%; width: 54%;}
-.recipe_list{margin:0 0 0 30px;}
+.recipe_list{margin:0 0 30px 30px;}
 .recipe_list p{font-weight: bold; padding-top:20px;}
 .data_recipe .recipe_name{font-size:34px; padding-top:0;}
 
@@ -109,5 +109,11 @@ h1{text-align: center; font-size: 40px;}
 .userRecipe{clear:both;}
 /*.table-striped a{clear:both; display:block;}*/
 
-
-
+.ingredients{list-style: none;}
+.ingredient_add p{padding-top: calc(.375rem + 1px); padding-bottom: calc(.375rem + 1px); margin-bottom: 0; font-size: inherit; line-height: 1.5;    font-weight: bold;padding-right: 15px; padding-left: 15px;}
+.ingredient_add input{float:left; margin-left:68px;}
+.add_ingredient_link{cursor: pointer; position: absolute; top:505px; left:270px;}
+.delete_ingredient_link{float: left; cursor: pointer; position: relative; top:10px; right:90px;}
+.ingredient_add li {width:100%;}
+.ingredient_add li div{width:80%; float: left;}
+.tag_add{clear:both;}
