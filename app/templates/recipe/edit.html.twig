@@ -16,14 +16,17 @@
     {{ form_row(form.peopleAmount) }}
     {{ form_row(form.photo) }}
 
-    <h3>Ingredient</h3>
-    <ul class="ingredients" data-prototype="{{ form_widget(form.ingredient.vars.prototype)|e('html_attr') }}">
-        {% for ingredient_1 in form.ingredient %}
-            <li>{{ form_row(ingredient_1.name) }}</li>
-        {% endfor %}
-    </ul>
-
-    {{ form_row(form.tags) }}
+    <div class="ingredient_add">
+    <p>{{ 'label.ingredient'|trans }}</p>
+        <ul class="ingredients" data-prototype="{{ form_widget(form.ingredient.vars.prototype)|e('html_attr') }}">
+            {% for ingredient_1 in form.ingredient %}
+                <li>{{ form_row(ingredient_1.name) }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="tag_add">
+        {{ form_row(form.tags) }}
+    </div>
 
     <div class="form-group row float-sm-right">
         <input type="submit" value="{{ 'action.save'|trans }}" class="button" />

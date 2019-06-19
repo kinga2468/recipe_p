@@ -114,11 +114,17 @@ h1{text-align: center; font-size: 40px;}
 /*.ingredient_add input{float:left; margin-left:68px;}*/
 .add_ingredient_link{cursor: pointer; position: absolute; top:505px; left:270px;}
 .delete_ingredient_link{
-    /*float: left; cursor: pointer;*/
-    /*position: relative; top:10px; right:90px;*/
+    float: left; cursor: pointer;
+    position: relative; top:10px; right:190px;
 }
 .ingredient_add li {width:100%;}
 .ingredient_add li div{
-    /*width:50%; float: left;*/
+    width:100%; float: left;
+}
+.ingredient_add li div input{
+    width:100%; float: left;
+}
+.ingredient_add li .col-sm-10 input{
+    width:80%; float: left;
 }
 .tag_add{clear:both;}

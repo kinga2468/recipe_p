@@ -117,6 +117,7 @@ class RecipeType extends AbstractType
             'allow_add' => true,
             'by_reference' => false,
             'allow_delete' => true,
+            'label'=> false,
         ]);
         $builder->get('ingredient')->addModelTransformer(
             $this->ingredientDataTransformer

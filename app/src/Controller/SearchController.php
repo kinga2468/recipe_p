@@ -61,6 +61,8 @@ class SearchController extends AbstractController
     {
         $ingredientResult = $ingredientRepository->findRecipeByIngredient($search)->getQuery()->getResult();
         $uniqueRecipe = [];
+//        dump($ingredientResult);
+//        die();
 
         foreach ($ingredientResult as $ingredient){
 //            dump($ingredient);
