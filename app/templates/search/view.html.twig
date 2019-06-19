@@ -9,10 +9,10 @@
     {% if recipes is defined and recipes|length %}
 
         <div class="containter index_recipe">
-            <div class="col-md-9 last_recipe">
+            <div class="col-md-12 last_recipe">
                 <div class="row">
                     {% for item in recipes %}
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <a href="{{ url('recipe_view', {'id': item.id}) }}" title="{{ 'label.view'|trans }}">
                                 <div class="photo_border">
                                     <div class="image">
@@ -53,6 +53,11 @@
             message: 'message.empty_list'|trans
         } %}
     {% endif %}
+    <div class="form-group row float-sm-left">
+        <a href="{{ url('main_index') }}" class="btn btn-link">
+            {{ 'action.back_to_list'|trans }}
+        </a>
+    </div>
     <footer>
         <p>{{ 'footer.text'|trans }}</p>
     </footer>

@@ -6,7 +6,7 @@
 
 {% block body %}
     <div class="section_title">
-        <h1>{{ 'title.user_editRole'|trans }}{{ user.firstName }}</h1>
+        <h1>{{ 'title.user_editRole'|trans }}{{ user.login }}</h1>
     </div>
     {{ form_start(form, { method: 'PUT', action: url('user_editRole', {id: user.id}) }) }}
     {{ form_widget(form) }}

@@ -1,20 +1,20 @@
 <?php
 /**
- * User type.
+ * UserData2 type.
  */
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\UserData;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class UserTypeData.
+ * Class UserTypeData2.
  */
-class UserTypeData extends AbstractType
+class UserTypeData2 extends AbstractType
 {
     /**
      * Builds the form.
@@ -30,19 +30,19 @@ class UserTypeData extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'email',
+            'firstName',
             TextType::class,
             [
-                'label' => 'label.email',
+                'label' => 'label.firstName',
                 'required' => true,
-                'attr' => ['max_length' => 128],
+                'attr' => ['max_length' => 255],
             ]
         );
         $builder->add(
-            'login',
+            'surname',
             TextType::class,
             [
-                'label' => 'label.login',
+                'label' => 'label.surname',
                 'required' => true,
                 'attr' => ['max_length' => 255],
             ]
@@ -56,7 +56,7 @@ class UserTypeData extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => User::class]);
+        $resolver->setDefaults(['data_class' => UserData::class]);
     }
 
     /**
@@ -69,6 +69,6 @@ class UserTypeData extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'user';
+        return 'user_data';
     }
 }

@@ -50,10 +50,10 @@ class UserType extends AbstractType
             ]
         );
         $builder->add(
-            'firstName',
+            'login',
             TextType::class,
             [
-                'label' => 'label.firstName',
+                'label' => 'label.login',
                 'required' => true,
                 'attr' => ['max_length' => 255],
             ]

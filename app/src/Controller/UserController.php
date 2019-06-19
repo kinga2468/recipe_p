@@ -7,8 +7,9 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Recipe;
-use App\Form\UserType;
+use App\Entity\UserData;
 use App\Repository\RecipeRepository;
+use App\Repository\UserDataRepository;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -18,6 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Form\UserTypeData;
+use App\Form\UserTypeData2;
 use App\Form\UserTypePassword;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -77,12 +79,14 @@ class UserController extends AbstractController
             $request->query->getInt('page', 1),
             Recipe::NUMBER_OF_RECIPES
         );
+        $userData = $user->getUserData();
 
         return $this->render(
             'user/view.html.twig',
             [
                 'user' => $user,
                 'usersRecipes' => $recipe_pagination,
+                'userData' => $userData
             ]
         );
     }
@@ -115,7 +119,7 @@ class UserController extends AbstractController
 
             $this->addFlash('success', 'message.updated_successfully');
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('user_view', ['id' => $user->getId()]);
         }
 
         return $this->render(
@@ -126,6 +130,7 @@ class UserController extends AbstractController
             ]
         );
     }
+
     /**
      * EditPassword action.
      *
@@ -156,7 +161,7 @@ class UserController extends AbstractController
 
             $this->addFlash('success', 'message.updated_successfully');
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('user_view', ['id' => $user->getId()]);
         }
 
         return $this->render(
@@ -204,7 +209,7 @@ class UserController extends AbstractController
             $repository->save($user);
             $this->addFlash('success', 'message.updated_successfully');
 
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('user_view', ['id' => $user->getId()]);
         }
 
         return $this->render(
@@ -215,6 +220,62 @@ class UserController extends AbstractController
             ]
         );
     }
+
+
+
+
+
+
+    /**
+     * EditData action.
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+     * @param \App\Entity\UserData                      $userData   UserData entity
+     * @param \App\Repository\UserDataRepository        $repository UserData repository
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @Route(
+     *     "/{id}/editData2/{UserDataId}",
+     *     methods={"GET", "PUT"},
+     *     requirements={"id": "[1-9]\d*"},
+     *     requirements={"UserDataId": "[1-9]\d*"},
+     *     name="user_editUserData",
+     * )
+     */
+    public function editData2(Request $request, User $user, UserDataRepository $repository): Response
+    {
+        $userData=$user->getUserData();
+        $userId = $user->getId();
+        $form = $this->createForm(UserTypeData2::class, $userData, ['method' => 'PUT']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository->save($userData);
+
+            $this->addFlash('success', 'message.updated_successfully');
+
+            return $this->redirectToRoute('user_view', ['id' => $userId]);
+        }
+
+        return $this->render(
+            'user/editData2.html.twig',
+            [
+                'form' => $form->createView(),
+                'user' => $user,
+                'userData' => $userData,
+            ]
+        );
+    }
+
+
+
+
+
+
     /**
      * Delete action.
      *

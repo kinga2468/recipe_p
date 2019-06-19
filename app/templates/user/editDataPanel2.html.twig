@@ -1,22 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.user_editPassword'|trans({'%id%': user.id|default('')}) }}
+    {{ 'user_editDataPanel2'|trans({'%id%': user.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
     <div class="section_title">
-        <h1>{{ 'title.user_editPassword'|trans }}{{ user.login }}</h1>
+        <h1>{{ 'user_editDataPanel2'|trans }}{{ userData.user.login }}</h1>
     </div>
-    {{ form_start(form, { method: 'PUT', action: url('user_editPassword', {id: user.id}) }) }}
+    {{ form_start(form, { method: 'PUT', action: url('user_editDataPanel2', {'id': userData.user.id, 'UserDataId': userData.id}) }) }}
     {{ form_widget(form) }}
     <div class="form-group row float-sm-right">
         <input type="submit" value="{{ 'action.save'|trans }}" class="button" />
     </div>
+    {{ form_end(form) }}
+
     <div class="form-group row float-sm-left">
-        <a href="{{ url('user_view', {id: user.id}) }}" class="btn btn-link">
+        <a href="{{ url('user_panel', {id: userData.user.id}) }}" class="btn btn-link">
             {{ 'action.back_to_list'|trans }}
         </a>
     </div>
-    {{ form_end(form) }}
 {% endblock %}

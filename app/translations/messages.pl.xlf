@@ -298,6 +298,14 @@
                 <source>message.empty_list</source>
                 <target>Brak wyników</target>
             </trans-unit>
+            <trans-unit id="label.login">
+                <source>label.login</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="label.surname">
+                <source>label.surname</source>
+                <target>Nazwisko</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -299,6 +299,14 @@
                 <source>message.empty_list</source>
                 <target>Empty list</target>
             </trans-unit>
+            <trans-unit id="label.login">
+                <source>label.login</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="label.surname">
+                <source>label.surname</source>
+                <target>Surname</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

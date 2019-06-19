@@ -6,17 +6,18 @@
 
 {% block body %}
     <div class="section_title">
-        <h1>{{ 'title.user_editData'|trans }}{{ user.firstName }}</h1>
+        <h1>{{ 'title.user_editData'|trans }}{{ user.login }}</h1>
     </div>
     {{ form_start(form, { method: 'PUT', action: url('user_editData', {id: user.id}) }) }}
     {{ form_widget(form) }}
     <div class="form-group row float-sm-right">
         <input type="submit" value="{{ 'action.save'|trans }}" class="button" />
     </div>
+    {{ form_end(form) }}
+
     <div class="form-group row float-sm-left">
         <a href="{{ url('user_view', {id: user.id}) }}" class="btn btn-link">
             {{ 'action.back_to_list'|trans }}
         </a>
     </div>
-    {{ form_end(form) }}
 {% endblock %}

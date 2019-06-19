@@ -6,7 +6,7 @@
 
 {% block body %}
     <div class="section_title">
-        <h1>{{ 'title.user_delete'|trans }}{{ user.firstName }}</h1>
+        <h1>{{ 'title.user_delete'|trans }}{{ user.login }}</h1>
     </div>
     {{ form_start(form, { method: 'DELETE', action: url('user_delete', {id: user.id}) }) }}
     {{ form_widget(form) }}

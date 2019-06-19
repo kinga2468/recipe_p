@@ -20,12 +20,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     uniqueConstraints={
  *          @ORM\UniqueConstraint(
  *              name="email_idx",
- *              columns={"email"},
+ *              columns={"email", "login"},
  *          )
  *     }
  * )
  *
  * @UniqueEntity(fields={"email"})
+ * @UniqueEntity(fields={"login"})
  */
 class User implements UserInterface
 {
@@ -129,19 +130,6 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * First name.
-     *
-     * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *     min="3",
-     *     max="255",
-     * )
-     */
-    private $firstName;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Recipe", mappedBy="author")
      * @ORM\JoinColumn(name="reportId", referencedColumnName="id", onDelete="CASCADE")
      */
@@ -151,6 +139,16 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="author")
      */
     private $comments;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $login;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\UserData", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $userData;
 
     public function __construct()
     {
@@ -298,26 +296,6 @@ class User implements UserInterface
     }
 
     /**
-     * Getter for the First name.
-     *
-     * @return string|null First name
-     */
-    public function getFirstName(): ?string
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * Setter for the First Name.
-     *
-     * @param string $firstName First Name
-     */
-    public function setFirstName(string $firstName): void
-    {
-        $this->firstName = $firstName;
-    }
-
-    /**
      * @return Collection|Recipe[]
      */
     public function getRecipes(): Collection
@@ -370,4 +348,44 @@ class User implements UserInterface
             }
         }
     }
+
+    /**
+     * Getter for the Login.
+     *
+     * @return string|null Login
+     */
+    public function getLogin(): ?string
+    {
+        return $this->login;
+    }
+
+    /**
+     * Setter for the Login.
+     *
+     * @param string $login Login
+     */
+    public function setLogin(string $login): self
+    {
+        $this->login = $login;
+
+        return $this;
+    }
+
+    public function getUserData(): ?UserData
+    {
+        return $this->userData;
+    }
+
+    public function setUserData(UserData $userData): self
+    {
+        $this->userData = $userData;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $userData->getUser()) {
+            $userData->setUser($this);
+        }
+
+        return $this;
+    }
+
 }

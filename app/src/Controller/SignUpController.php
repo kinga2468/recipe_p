@@ -6,7 +6,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\UserData;
 use App\Form\UserType;
+use App\Repository\UserDataRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -39,7 +41,7 @@ class SignUpController extends AbstractController
      *     name="user_new",
      * )
      */
-    public function new(Request $request, UserRepository $repository, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function new(Request $request, UserRepository $repository, UserDataRepository $userDataRepository, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -50,6 +52,11 @@ class SignUpController extends AbstractController
             $user->setPassword($passwordEncoder->encodePassword($user, $user->getPassword()));
 
             $repository->save($user);
+
+            $userData = new UserData();
+            $userData->setUser($user);
+            $userDataRepository->save($userData);
+
             $this->addFlash('success', 'message.created_successfully');
             return $this->redirectToRoute('main_index');
         }

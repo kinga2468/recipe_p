@@ -119,10 +119,10 @@ h1{text-align: center; font-size: 40px;}
 }
 .ingredient_add li {width:100%;}
 .ingredient_add li div{
-    width:100%; float: left;
+    width:90%; float: left;
 }
 .ingredient_add li div input{
-    width:90%; float: left;
+    width:100%; float: left;
 }
 .ingredient_add li .col-sm-10 input{
     width:80%; float: left;

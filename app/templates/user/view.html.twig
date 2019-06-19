@@ -9,7 +9,7 @@
     {% include 'default/_flash_messages.html.twig' %}
 
     <div class="section_title">
-        <h1>{{ 'title.user_view'|trans }} {{ user.firstName }}</h1>
+        <h1>{{ 'title.user_view'|trans }} {{ user.login }}</h1>
     </div>
     {% if user is defined and user|length %}
         <table class="table table-striped">
@@ -19,9 +19,14 @@
                 <th>{{ 'label.createdAt'|trans }}</th>
                 <th>{{ 'label.updatedAt'|trans }}</th>
                 <th>{{ 'label.email'|trans }}</th>
-                <th>{{ 'label.firstName'|trans }}</th>
+                <th>{{ 'label.login'|trans }}</th>
                 <th>{{ 'label.roles'|trans }}</th>
+                {% if userData is defined and userData|length %}
+                    <th>{{ 'label.firstName'|trans }}</th>
+                    <th>{{ 'label.surname'|trans }}</th>
+                {% endif %}
                 <th>{{ 'label.actions'|trans }}</th>
+                <th></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -32,7 +37,7 @@
                      <td>{{ user.createdAt|localizeddate }}</td>
                      <td>{{ user.updatedAt|localizeddate }}</td>
                      <td>{{ user.email }}</td>
-                     <td>{{ user.firstName }}</td>
+                     <td>{{ user.login }}</td>
                      <td>
                          {% if user.roles.1 is defined %}
                              {{ 'label.admin'|trans }}
@@ -40,11 +45,22 @@
                              {{ 'label.user'|trans }}
                          {% endif %}
                      </td>
+                    {% if userData is defined and userData|length %}
+                        <td>{{ userData.firstName }}</td>
+                        <td>{{ userData.surname }}</td>
+                    {% endif %}
                      <td>
                          <a href="{{ url('user_editData', {id: user.id}) }}" title="{{ 'action.editData'|trans }}">
                              {{ 'action.editData'|trans }}
                          </a>
                      </td>
+                     {% if userData is defined %}
+                         <td>
+                             <a href="{{ url('user_editUserData', {'id': user.id, 'UserDataId':userData.id}) }}" title="{{ 'action.editUserData'|trans }}">
+                                 {{ 'action.editUserData'|trans }}
+                             </a>
+                         </td>
+                     {% endif %}
                      <td>
                          <a href="{{ url('user_editPassword', {id: user.id}) }}" title="{{ 'action.editPassword'|trans }}">
                              {{ 'action.editPassword'|trans }}

@@ -16,20 +16,36 @@
             <thead>
             <tr>
                 <th>{{ 'label.email'|trans }}</th>
-                <th>{{ 'label.firstName'|trans }}</th>
+                <th>{{ 'label.login'|trans }}</th>
+                {% if userData is defined and userData|length %}
+                    <th>{{ 'label.firstName'|trans }}</th>
+                    <th>{{ 'label.surname'|trans }}</th>
+                {% endif %}
                 <th>{{ 'label.actions'|trans }}</th>
+                <th></th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td>{{ user.email }}</td>
-                <td>{{ user.firstName }}</td>
+                <td>{{ user.login }}</td>
+                {% if userData is defined and userData|length %}
+                    <td>{{ userData.firstName }}</td>
+                    <td>{{ userData.surname }}</td>
+                {% endif %}
                 <td>
                     <a href="{{ url('user_editDataPanel', {id: user.id}) }}" title="{{ 'action.editData'|trans }}">
                         {{ 'action.editData'|trans }}
                     </a>
                 </td>
+                {% if userData is defined %}
+                    <td>
+                        <a href="{{ url('user_editDataPanel2', {'id': user.id, 'UserDataId':userData.id}) }}" title="{{ 'action.editUserData'|trans }}">
+                            {{ 'action.editUserData'|trans }}
+                        </a>
+                    </td>
+                {% endif %}
                 <td>
                     <a href="{{ url('user_editPasswordPanel', {id: user.id}) }}" title="{{ 'action.editPassword'|trans }}">
                         {{ 'action.editPassword'|trans }}
@@ -45,12 +61,22 @@
                     <div class="col-md-3">
                         <a href="{{ url('recipe_view', {'id': recipe.id}) }}" title="{{ 'label.view'|trans }}">
                             <div class="photo_border">
-                                <img src="{{ asset('img/recipe1.jpg') }}" alt="recipe_photo">
+                                <img src="{{ asset('uploads/photos/'~recipe.photo) }}" alt="recipe_photo">
                                 <div class="icons">
                                     <i class="fas fa-clock"></i>
                                     <div class="icon">{{ recipe.time }}</div>
                                     <i class="fas fa-user"></i>
                                     <div class="icon">{{ recipe.peopleAmount }}</div>
+                                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                        {% if is_granted('ROLE_ADMIN') or item.author.id == app.user.id %}
+                                            <a class="edit" href="{{ url('recipe_edit', {'id': recipe.id}) }}" title="{{ 'action.edit'|trans }}">
+                                                <i class="fas fa-cog"></i>
+                                            </a>
+                                            <a class="delete" href="{{ url('recipe_delete', {'id': recipe.id}) }}" title="{{ 'action.delete'|trans }}">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        {% endif %}
+                                    {% endif %}
                                 </div>
                             </div>
                             <p class="caption">{{ recipe.title }}</p>
