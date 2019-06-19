@@ -294,6 +294,10 @@
                 <source>label.name</source>
                 <target>podaj składnik</target>
             </trans-unit>
+            <trans-unit id="message.empty_list">
+                <source>message.empty_list</source>
+                <target>Brak wyników</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

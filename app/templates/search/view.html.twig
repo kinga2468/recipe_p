@@ -22,17 +22,17 @@
                                             <div class="icon">{{ item.time }}</div>
                                             <i class="fas fa-user"></i>
                                             <div class="icon">{{ item.peopleAmount }}</div>
+                                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                                {% if is_granted('ROLE_ADMIN') or item.author.id == app.user.id %}
+                                                    <a class="edit" href="{{ url('recipe_edit', {'id': item.id}) }}" title="{{ 'action.edit'|trans }}">
+                                                        <i class="fas fa-cog"></i>
+                                                    </a>
+                                                    <a class="delete" href="{{ url('recipe_delete', {'id': item.id}) }}" title="{{ 'action.delete'|trans }}">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
+                                                {% endif %}
+                                            {% endif %}
                                         </div>
-                                        {#{% if is_granted('ROLE_ADMIN')%}#}
-                                        {#<div class="icons_edit">#}
-                                        {#<a class="icon cog" href="{{ url('recipe_edit', {'id': item.id}) }}" title="{{ 'edit'|trans }}">#}
-                                        {#<i class="fas fa-cog"></i>#}
-                                        {#</a>#}
-                                        {#<a class="icon trash" href="{{ url('recipe_delete', {'id': item.id}) }}" title="{{ 'delete'|trans }}">#}
-                                        {#<i class="fas fa-trash-alt"></i>#}
-                                        {#</a>#}
-                                        {#</div>#}
-                                        {#{% endif %}#}
                                     </div>
                                 </div>
                                 <p class="caption">{{ item.title }}</p>

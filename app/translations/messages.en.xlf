@@ -295,6 +295,10 @@
                 <source>label.name</source>
                 <target>Add ingredient</target>
             </trans-unit>
+            <trans-unit id="message.empty_list">
+                <source>message.empty_list</source>
+                <target>Empty list</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
