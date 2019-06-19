@@ -32,11 +32,20 @@
       <file leaf-file-name="SearchController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/Controller/SearchController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="231">
+              <caret line="138" column="7" lean-forward="true" selection-start-line="138" selection-start-column="7" selection-end-line="138" selection-end-column="7" />
               <folding>
                 <element signature="e#64#104#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Recipe.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/Entity/Recipe.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="128">
+              <caret line="235" column="10" selection-start-line="235" selection-start-column="7" selection-end-line="235" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -46,15 +55,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/public/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="124" column="11" selection-start-line="124" selection-start-column="11" selection-end-line="124" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -72,7 +72,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>crea</find>
       <find>file</find>
       <find>setphot</find>
       <find>photo</find>
@@ -102,6 +101,7 @@
       <find>title</find>
       <find>tag</find>
       <find>name</find>
+      <find>get</find>
     </findStrings>
     <replaceStrings>
       <replace>Names</replace>
@@ -166,8 +166,6 @@
         <option value="$PROJECT_DIR$/app/src/Migrations/Version20190422153800.php" />
         <option value="$PROJECT_DIR$/app/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Controller/MainController.php" />
-        <option value="$PROJECT_DIR$/app/translations/messages.en.xlf" />
-        <option value="$PROJECT_DIR$/app/translations/messages.pl.xlf" />
         <option value="$PROJECT_DIR$/app/src/Entity/MeasureHasIngredient.php" />
         <option value="$PROJECT_DIR$/app/src/Entity/Measure.php" />
         <option value="$PROJECT_DIR$/app/src/Entity/Ingredient.php" />
@@ -185,6 +183,8 @@
         <option value="$PROJECT_DIR$/app/templates/search/view.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/search/index.html.twig" />
         <option value="$PROJECT_DIR$/app/public/css/style.css" />
+        <option value="$PROJECT_DIR$/app/translations/messages.en.xlf" />
+        <option value="$PROJECT_DIR$/app/translations/messages.pl.xlf" />
         <option value="$PROJECT_DIR$/app/src/Controller/SearchController.php" />
       </list>
     </option>
@@ -551,12 +551,12 @@
       <workItem from="1560802174140" duration="1748000" />
       <workItem from="1560804118434" duration="98000" />
       <workItem from="1560869720330" duration="25944000" />
-      <workItem from="1560951813112" duration="6123000" />
+      <workItem from="1560951813112" duration="9272000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="294319000" />
+    <option name="totallyTimeSpent" value="297468000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -677,20 +677,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/translations/messages.en.xlf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="293" column="12" selection-start-line="293" selection-start-column="12" selection-end-line="296" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/translations/messages.pl.xlf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="294" column="38" selection-start-line="294" selection-start-column="38" selection-end-line="294" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Controller/MainController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-187">
@@ -756,13 +742,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Entity/Recipe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="228" column="5" selection-start-line="223" selection-start-column="28" selection-end-line="223" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/RecipeType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-691">
@@ -774,6 +753,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="27" column="11" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="11" />
+          <folding>
+            <element signature="e#6#35#0#PHP" expanded="true" />
+            <element signature="e#59#107#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -884,10 +867,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/translations/messages.en.xlf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="297" column="11" lean-forward="true" selection-start-line="297" selection-start-column="11" selection-end-line="300" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/translations/messages.pl.xlf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="298" column="36" selection-start-line="298" selection-start-column="36" selection-end-line="298" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Entity/Recipe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="235" column="10" selection-start-line="235" selection-start-column="7" selection-end-line="235" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Controller/SearchController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="231">
+          <caret line="138" column="7" lean-forward="true" selection-start-line="138" selection-start-column="7" selection-end-line="138" selection-end-column="7" />
           <folding>
             <element signature="e#64#104#0#PHP" expanded="true" />
           </folding>

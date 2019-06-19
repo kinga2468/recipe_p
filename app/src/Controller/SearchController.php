@@ -31,122 +31,64 @@ class SearchController extends AbstractController
     {
         $search = $request->get('search');
         $searches = explode(', ', $search);
-        $uniqueRecipes = [];
-//        dump($searches);
+
+        $listId = array();
+//        $list = array();
         if($search){
             foreach($searches as $ingredients){
-//                dump($ingredients);
                 $ingredientResult = $ingredientRepository->findRecipeByIngredient($ingredients)->getQuery()->getResult();
-//                dump($ingredientResult);
                 foreach ($ingredientResult as $ingredient){
-                    $uniqueRecipe = [];
+                    $uniqueRecipeId = [];
+                    foreach ($ingredient->getRecipes() as $recipe) {
+                        $recipeId = $recipe->getId();
+                        if(!in_array($recipeId, $uniqueRecipeId)){
+                            array_push($uniqueRecipeId, $recipeId);
+                        }
+                    }
+                    $listId[] = $uniqueRecipeId;
+                }
+            }
+            $uniqueRecipe = [];
+            foreach($searches as $ingredients){
+                $ingredientResult = $ingredientRepository->findRecipeByIngredient($ingredients)->getQuery()->getResult();
+                foreach ($ingredientResult as $ingredient){
                     foreach ($ingredient->getRecipes() as $recipe) {
                         if(!in_array($recipe, $uniqueRecipe)){
                             array_push($uniqueRecipe, $recipe);
                         }
                     }
-                    array_push($uniqueRecipes, $uniqueRecipe);
                 }
             }
-//            dump($uniqueRecipes);
+
+            $unique = [];
+            if(count($listId)>=2){
+                $intersect = call_user_func_array('array_intersect',$listId);
+                foreach ($intersect as $recipeId_1){
+                    foreach ($uniqueRecipe as $recipe_1){
+                        if($recipeId_1 == $recipe_1->getId()){
+                            if(!in_array($recipe_1, $unique)){
+                                array_push($unique, $recipe_1);
+                            }
+                        }
+                    }
+                }
+            }
+            else{
+                $unique = $uniqueRecipe;
+            }
         }
         else{
             $this->addFlash('warning','message.search_error');
-            $ingredientResult=[];
-            $uniqueRecipe=[];
+            $unique=[];
         }
-
-
-
-
-//        if($search){
-//            if(preg_match('/^\w+[\w]*$/', $search)){
-//                return $this->redirectToRoute('search_action', ['search'=>$search]);
-//            }
-//            else{
-//                $this->addFlash('warning','message.search_error');
-//            }
-//        }
 
         return $this->render(
             'search/view.html.twig',
             [
                 'search' => $search,
-                'ingredients' =>$ingredientResult,
-                'recipes' => $uniqueRecipe
+                'recipes'=> $unique,
             ]
         );
-    }
-//    public function index(Request $request) {
-//        if ($request->getMethod() == 'GET') {
-//            $title = $request->get('search');
-//            $em = $this->getDoctrine()->getManager();
-//            $qb = $em->getRepository('YCRYcrBundle:Ingredient')
-//                ->createQueryBuilder('i');
-//            $searches= explode(' ', $title);
-//
-//            foreach ($searches as $sk => $sv) {
-//                $cqb[]=$qb->expr()->like("CONCAT($sv, '')", "'%$sv%'");
-//            }
-//
-//            $qb->andWhere(call_user_func_array(array($qb->expr(),"orx"),$cqb));
-//
-//            $recipes = $qb->getResult();
-//        }else{
-//            $recipes=[];
-//        }
-//        dump($recipes);
-//        return $this->render(
-//            'search/index.html.twig',
-//            [
-//                'recipes' => $recipes
-//            ]
-//        );
-//    }
-
-    /**
-     * View action.
-     *
-     * @param string $search
-     * @param IngredientRepository $ingredientRepository
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @Route(
-     *     "/{search}",
-     *     name="search_action",
-     *     requirements={"search": "\w+[\w ]*"}
-     * )
-     *
-     */
-    public function view(string $search, IngredientRepository $ingredientRepository): Response
-    {
-//        dump($search);
-//        die();
-        $ingredientResult = $ingredientRepository->findRecipeByIngredient($search)->getQuery()->getResult();
-        $uniqueRecipe = [];
-//        dump($ingredientResult);
-//        die();
-
-        foreach ($ingredientResult as $ingredient){
-//            dump($ingredient);
-            foreach ($ingredient->getRecipes() as $recipe) {
-//                dump($recipe);
-                if(!in_array($recipe, $uniqueRecipe)){
-                    array_push($uniqueRecipe, $recipe);
-                }
-            }
-        }
-
-//        dump($ingredientResult);
-//        dump($uniqueRecipe);
-        return $this->render(
-            'search/view.html.twig',
-            [
-                'search' => $search,
-                'ingredients' =>$ingredientResult,
-                'recipes' => $uniqueRecipe
-            ]
-        );
-
     }
 
 
