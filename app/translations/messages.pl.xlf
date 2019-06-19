@@ -306,6 +306,10 @@
                 <source>label.surname</source>
                 <target>Nazwisko</target>
             </trans-unit>
+            <trans-unit id="action.editUserData">
+                <source>action.editUserData</source>
+                <target>edytuj imię, nazwisko</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
