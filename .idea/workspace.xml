@@ -29,72 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Measure.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Entity/Measure.php">
+      <file leaf-file-name="IngredientRepository.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/Repository/IngredientRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="40" column="22" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="22" />
-              <folding>
-                <element signature="e#6#32#0#PHP" expanded="true" />
-                <element signature="e#56#104#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ingredient.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Entity/Ingredient.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
-              <folding>
-                <element signature="e#6#35#0#PHP" expanded="true" />
-                <element signature="e#59#107#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Version20190620151026.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190620151026.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102" />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Version20190620151453.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190620151453.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="Version20190620155348.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190620155348.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-255" />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IngredientMeasure.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Entity/IngredientMeasure.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="14" selection-end-line="99" />
-              <folding>
-                <element signature="e#6#42#0#PHP" expanded="true" />
-                <element signature="e#66#114#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Recipe.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Entity/Recipe.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" selection-start-line="7" selection-end-line="12" selection-end-column="54" />
-              <folding>
-                <element signature="e#56#88#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="34">
+              <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -103,20 +42,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>userda</find>
-      <find>data</find>
-      <find>user</find>
-      <find>User</find>
-      <find>comment_edit</find>
-      <find>userdata</find>
-      <find>viewpane</find>
-      <find>user_editUserData</find>
-      <find>return $this-&gt;redirectToRoute</find>
-      <find>użytkowni</find>
-      <find>edytuj dane</find>
       <find>użytkow</find>
       <find>user_editRole</find>
-      <find>strona</find>
+      <find />
       <find>strona</find>
       <find>delete</find>
       <find>dostę</find>
@@ -129,10 +57,21 @@
       <find>section_title</find>
       <find>add_</find>
       <find>icon</find>
-      <find>measu</find>
       <find>ingredient</find>
-      <find>manytomany</find>
       <find>manyto</find>
+      <find>getmeasure</find>
+      <find>get</find>
+      <find>measures</find>
+      <find>manytomany</find>
+      <find>Comments</find>
+      <find>measure</find>
+      <find>Comment</find>
+      <find>comment</find>
+      <find>onetomany</find>
+      <find>getre</find>
+      <find>recipe</find>
+      <find>measu</find>
+      <find>meas</find>
     </findStrings>
     <replaceStrings>
       <replace>Names</replace>
@@ -162,16 +101,14 @@
       <replace>userData</replace>
       <replace>tag</replace>
       <replace>Ingredient</replace>
+      <replace>IngredientMeasure</replace>
       <replace>ingredient</replace>
+      <replace>ingredientMeasure</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/Form/UserTypeData.php" />
-        <option value="$PROJECT_DIR$/app/templates/recipe/view.html.twig" />
-        <option value="$PROJECT_DIR$/app/templates/search/view.html.twig" />
-        <option value="$PROJECT_DIR$/app/templates/user/userData2.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/user/editData.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/app/src/Entity/UserData.php" />
@@ -187,7 +124,6 @@
         <option value="$PROJECT_DIR$/app/templates/recipe/edit.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Form/PhotoType.php" />
         <option value="$PROJECT_DIR$/app/src/Form/RecipeEditType.php" />
-        <option value="$PROJECT_DIR$/app/src/Controller/RecipeController.php" />
         <option value="$PROJECT_DIR$/app/src/Form/RecipePhotoType.php" />
         <option value="$PROJECT_DIR$/app/templates/recipe/index.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/user/view.html.twig" />
@@ -218,7 +154,12 @@
         <option value="$PROJECT_DIR$/app/.env" />
         <option value="$PROJECT_DIR$/app/src/Entity/Measure.php" />
         <option value="$PROJECT_DIR$/app/src/Entity/IngredientMeasure.php" />
+        <option value="$PROJECT_DIR$/app/src/Migrations/Version20190620155348.php" />
+        <option value="$PROJECT_DIR$/app/src/Controller/RecipeController.php" />
         <option value="$PROJECT_DIR$/app/src/Entity/Ingredient.php" />
+        <option value="$PROJECT_DIR$/app/src/Form/IngredientType.php" />
+        <option value="$PROJECT_DIR$/app/src/Migrations/Version20190620151026.php" />
+        <option value="$PROJECT_DIR$/app/src/Migrations/Version20190620151453.php" />
       </list>
     </option>
   </component>
@@ -414,13 +355,6 @@
               <item name="recipe_p" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Migrations" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="recipe_p" type="b2602c69:ProjectViewProjectNode" />
-              <item name="recipe_p" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Repository" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -605,12 +539,12 @@
       <workItem from="1560804118434" duration="98000" />
       <workItem from="1560869720330" duration="25944000" />
       <workItem from="1560951813112" duration="26931000" />
-      <workItem from="1561028787314" duration="13249000" />
+      <workItem from="1561028787314" duration="16669000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="328376000" />
+    <option name="totallyTimeSpent" value="331796000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -622,7 +556,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <layout>
       <window_info anchor="right" id="Key Promoter X" order="3" weight="0.3295302" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32909605" />
@@ -682,25 +616,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/templates/user/editData.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/user/new.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Entity/Photo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-765" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5865">
@@ -775,16 +690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Controller/RecipeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="247" column="9" selection-start-line="243" selection-start-column="8" selection-end-line="247" selection-end-column="9" />
-          <folding>
-            <element signature="e#64#90#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Controller/SearchController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1152" />
@@ -831,20 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Repository/IngredientRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="87" column="5" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Controller/IngredientController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1142">
-          <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/tag/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -877,13 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Form/IngredientType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -965,38 +849,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Entity/Comment.php">
+    <entry file="file://$PROJECT_DIR$/app/src/Form/RecipeType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="172" column="5" lean-forward="true" selection-start-line="164" selection-start-column="4" selection-end-line="172" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Entity/Recipe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" selection-start-line="7" selection-end-line="12" selection-end-column="54" />
-          <folding>
-            <element signature="e#56#88#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Entity/IngredientMeasure.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="14" selection-end-line="99" />
-          <folding>
-            <element signature="e#6#42#0#PHP" expanded="true" />
-            <element signature="e#66#114#0#PHP" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-1377" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Entity/Measure.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="22" />
+        <state relative-caret-position="255">
+          <caret line="139" column="5" selection-start-line="114" selection-start-column="4" selection-end-line="139" selection-end-column="5" />
           <folding>
             <element signature="e#6#32#0#PHP" expanded="true" />
             <element signature="e#56#104#0#PHP" expanded="true" />
@@ -1004,10 +865,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Entity/Comment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1657">
+          <caret line="154" column="29" selection-start-line="154" selection-start-column="23" selection-end-line="154" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Entity/IngredientMeasure.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+          <folding>
+            <element signature="e#6#42#0#PHP" expanded="true" />
+            <element signature="e#66#114#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Controller/IngredientController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="56" column="5" selection-start-line="56" selection-start-column="5" selection-end-line="56" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Controller/RecipeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Entity/Recipe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="193" column="52" selection-start-line="193" selection-start-column="50" selection-end-line="193" selection-end-column="52" />
+          <folding>
+            <element signature="e#56#88#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Entity/Ingredient.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        <state relative-caret-position="155">
+          <caret line="53" column="47" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
           <folding>
             <element signature="e#6#35#0#PHP" expanded="true" />
             <element signature="e#59#107#0#PHP" expanded="true" />
@@ -1015,17 +918,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190620151026.php">
+    <entry file="file://$PROJECT_DIR$/app/src/Form/IngredientType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102" />
+        <state relative-caret-position="68">
+          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+          <folding>
+            <element signature="e#56#82#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190619190030.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190620151453.php">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190620155348.php">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190620162532.php">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-255" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190620151026.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Repository/IngredientRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+        </state>
       </provider>
     </entry>
   </component>
