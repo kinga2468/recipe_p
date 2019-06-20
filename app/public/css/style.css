@@ -112,7 +112,7 @@ h1{text-align: center; font-size: 40px;}
 .ingredients{list-style: none;}
 .ingredient_add p{padding-top: calc(.375rem + 1px); padding-bottom: calc(.375rem + 1px); margin-bottom: 0; font-size: inherit; line-height: 1.5;    font-weight: bold;padding-right: 15px; padding-left: 15px;}
 /*.ingredient_add input{float:left; margin-left:68px;}*/
-.add_ingredient_link{cursor: pointer; position: absolute; top:505px; left:270px;}
+.add_ingredient_link{cursor: pointer; position: absolute; top:429px; left:270px;}
 .delete_ingredient_link{
     float: left; cursor: pointer;
     position: relative; top:10px; right:190px;

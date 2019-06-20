@@ -1,6 +1,6 @@
 <?php
 /**
- * Recipe type.
+ * RecipeEdit type.
  */
 
 namespace App\Form;
@@ -21,9 +21,9 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\CallbackTransformer;
 
 /**
- * Class RecipeType.
+ * Class RecipeEditType.
  */
-class RecipeType extends AbstractType
+class RecipeEditType extends AbstractType
 {
     /**
      * Ingredients data transformer.
@@ -47,8 +47,6 @@ class RecipeType extends AbstractType
     {
         $this->tagsDataTransformer = $tagsDataTransformer;
         $this->ingredientDataTransformer = $ingredientDataTransformer;
-
-
     }
 
     /**
@@ -101,6 +99,7 @@ class RecipeType extends AbstractType
                 'scale' => 0,
             ]
         );
+
         $builder->add('ingredient', CollectionType::class, [
             'entry_type' => IngredientType::class,
             'entry_options' => ['label' => false],
@@ -111,15 +110,6 @@ class RecipeType extends AbstractType
         ]);
         $builder->get('ingredient')->addModelTransformer(
             $this->ingredientDataTransformer
-        );
-
-        $builder->add(
-            'photo',
-            FileType::class,
-            [
-                'label' => 'label.photo',
-                'data_class' => null,
-            ]
         );
 
         $builder->add(
@@ -160,6 +150,6 @@ class RecipeType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'recipe';
+        return 'recipeEdit';
     }
 }

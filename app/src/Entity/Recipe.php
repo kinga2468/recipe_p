@@ -36,7 +36,7 @@ class Recipe
      *
      * @constant int NUMBER_OF_ITEMS_MATCHING
      */
-    const NUMBER_OF_ITEMS_MATCHING = 3;
+    const NUMBER_OF_ITEMS_MATCHING = 9;
     /**
      * Use constants to define configuration options that rarely change instead
      * of specifying them in app/config/config.yml.

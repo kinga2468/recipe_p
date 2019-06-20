@@ -21,6 +21,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\RecipeType;
+use App\Form\RecipeEditType;
+use App\Form\RecipePhotoType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
@@ -193,14 +195,14 @@ class RecipeController extends AbstractController
 
 
 
-        $form = $this->createForm(RecipeType::class, $recipe, ['method' => 'PUT']);
+        $form = $this->createForm(RecipeEditType::class, $recipe, ['method' => 'PUT']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $recipePhoto = $form->get('photo')->getData();
-            if($recipePhoto!=null){
-                $recipe->setPhoto($recipePhoto);
-            }
+//            $recipePhoto = $form->get('photo')->getData();
+//            if($recipePhoto!=null){
+//                $recipe->setPhoto($recipePhoto);
+//            }
 
             $repository->save($recipe);
 
@@ -211,6 +213,58 @@ class RecipeController extends AbstractController
 
         return $this->render(
             'recipe/edit.html.twig',
+            [
+                'form' => $form->createView(),
+                'recipe' => $recipe,
+            ]
+        );
+    }
+
+    /**
+     * Edit action.
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+     * @param \App\Entity\Recipe                      $recipe   Recipe entity
+     * @param \App\Repository\RecipeRepository        $repository Recipe repository
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @Route(
+     *     "/{id}/editPhoto",
+     *     methods={"GET", "PUT"},
+     *     requirements={"id": "[1-9]\d*"},
+     *     name="recipe_editPhoto",
+     * )
+     */
+    public function editPhoto($id, Request $request, Recipe $recipe, RecipeRepository $repository, EntityManagerInterface $entityManager): Response
+    {
+        if ($recipe->getAuthor() !== $this->getUser() and $this->isGranted('ROLE_ADMIN')==false){
+            $this->addFlash('warning', 'message.item_not_found');
+
+            return $this->redirectToRoute('recipe_index');
+        }
+
+        $form = $this->createForm(RecipePhotoType::class, $recipe, ['method' => 'PUT']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+//            $recipePhoto = $form->get('photo')->getData();
+//            if($recipePhoto!=null){
+//                $recipe->setPhoto($recipePhoto);
+//            }
+
+            $repository->save($recipe);
+
+            $this->addFlash('success', 'message.updated_successfully');
+
+            return $this->redirectToRoute('recipe_index');
+        }
+
+        return $this->render(
+            'recipe/editPhoto.html.twig',
             [
                 'form' => $form->createView(),
                 'recipe' => $recipe,

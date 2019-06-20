@@ -87,6 +87,19 @@
                                     <div class="icon">{{ recipe.time }}</div>
                                     <i class="fas fa-user"></i>
                                     <div class="icon">{{ recipe.peopleAmount }}</div>
+                                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                        {% if is_granted('ROLE_ADMIN') or item.author.id == app.user.id %}
+                                            <a class="edit" href="{{ url('recipe_edit', {'id': recipe.id}) }}" title="{{ 'action.edit'|trans }}">
+                                                <i class="fas fa-cog"></i>
+                                            </a>
+                                            <a class="edit" href="{{ url('recipe_editPhoto', {'id': recipe.id}) }}" title="{{ 'action.editPhoto'|trans }}">
+                                                <i class="fas fa-image"></i>
+                                            </a>
+                                            <a class="delete" href="{{ url('recipe_delete', {'id': recipe.id}) }}" title="{{ 'action.delete'|trans }}">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        {% endif %}
+                                    {% endif %}
                                 </div>
                             </div>
                             <p class="caption">{{ recipe.title }}</p>

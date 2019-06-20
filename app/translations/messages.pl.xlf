@@ -310,6 +310,18 @@
                 <source>action.editUserData</source>
                 <target>edytuj imię, nazwisko</target>
             </trans-unit>
+            <trans-unit id="action.editPhoto">
+                <source>action.editPhoto</source>
+                <target>edytuj zdjęcie</target>
+            </trans-unit>
+            <trans-unit id="title.recipe_editPhoto">
+                <source>title.recipe_editPhoto</source>
+                <target>Edytowanie zdjęcia przepisu: </target>
+            </trans-unit>
+            <trans-unit id="title.tag_view">
+                <source>title.tag_view</source>
+                <target>Przepisy zawierające tag</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

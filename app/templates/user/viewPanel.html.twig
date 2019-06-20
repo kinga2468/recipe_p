@@ -72,6 +72,9 @@
                                             <a class="edit" href="{{ url('recipe_edit', {'id': recipe.id}) }}" title="{{ 'action.edit'|trans }}">
                                                 <i class="fas fa-cog"></i>
                                             </a>
+                                            <a class="edit" href="{{ url('recipe_editPhoto', {'id': recipe.id}) }}" title="{{ 'action.editPhoto'|trans }}">
+                                                <i class="fas fa-image"></i>
+                                            </a>
                                             <a class="delete" href="{{ url('recipe_delete', {'id': recipe.id}) }}" title="{{ 'action.delete'|trans }}">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>

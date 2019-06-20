@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'main.title'|trans }}{% endblock %}
+{% block title %}{{ 'menu.home'|trans }}{% endblock %}
 
 {% block body %}
     {% include 'default/_flash_messages.html.twig' %}
@@ -29,6 +29,9 @@
                                     {% if is_granted('ROLE_ADMIN') or item.author.id == app.user.id %}
                                         <a class="edit" href="{{ url('recipe_edit', {'id': item.id}) }}" title="{{ 'action.edit'|trans }}">
                                             <i class="fas fa-cog"></i>
+                                        </a>
+                                        <a class="edit" href="{{ url('recipe_editPhoto', {'id': item.id}) }}" title="{{ 'action.editPhoto'|trans }}">
+                                            <i class="fas fa-image"></i>
                                         </a>
                                         <a class="delete" href="{{ url('recipe_delete', {'id': item.id}) }}" title="{{ 'action.delete'|trans }}">
                                             <i class="fas fa-trash-alt"></i>
