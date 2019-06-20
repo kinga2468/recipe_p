@@ -5,33 +5,23 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.tag_list'|trans }}</h1>
-    {% if pagination is defined and pagination|length %}
-
-        <div class="navigation text-center">
-            {{ knp_pagination_render(pagination) }}
-        </div>
-
+    {% include 'default/_flash_messages.html.twig' %}
+    <div class="section_title">
+        <h1>{{ 'title.tag_list'|trans }}</h1>
+    </div>
+    {% if tags is defined and tags|length %}
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'g.id') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'g.createdAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'g.updatedAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'g.title') }}</th>
+                <th>{{ 'label.id'|trans }}</th>
+                <th>{{ 'label.title'|trans }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
             <tbody>
-
-            <a href="{{ url('tag_new') }}" title="{{ 'action.add'|trans }}">
-                {{ 'action.add'|trans }}
-            </a>
-            {% for tag in pagination %}
+            {% for tag in tags %}
                 <tr>
                     <td>{{ tag.id }}</td>
-                    <td>{{ tag.createdAt|localizeddate }}</td>
-                    <td>{{ tag.updatedAt|localizeddate }}</td>
                     <td>{{ tag.title }}</td>
                     <td>
                         <a href="{{ url('tag_view', {id: tag.id}) }}" title="{{ 'action.view'|trans }}">
@@ -48,17 +38,12 @@
             {% endfor %}
             </tbody>
         </table>
-
         <div class="navigation text-center">
-            {{ knp_pagination_render(pagination) }}
+            {{ knp_pagination_render(tags) }}
         </div>
-
     {% else %}
         <p>
-            {% include 'default/_single_flash_message.html.twig' with {
-                type: 'warning',
-                message: 'message.empty_list'|trans
-            } %}
+            {{ 'message.empty_list'|trans }}
         </p>
     {% endif %}
 

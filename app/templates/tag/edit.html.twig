@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.tag_edit'|trans({'%id%': tag.id|default('')}) }}</h1>
+    <div class="section_title">
+        <h1>{{ 'title.tag_edit'|trans }}</h1>
+    </div>
     {{ form_start(form, { method: 'PUT', action: url('tag_edit', {id: tag.id}) }) }}
     {{ form_widget(form) }}
     <div class="form-group row float-sm-right">

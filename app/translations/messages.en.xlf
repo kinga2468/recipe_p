@@ -323,6 +323,18 @@
                 <source>title.tag_view</source>
                 <target>Tag view</target>
             </trans-unit>
+            <trans-unit id="title.tag_list">
+                <source>title.tag_list</source>
+                <target>Tag list</target>
+            </trans-unit>
+            <trans-unit id="title.tag_edit">
+                <source>title.tag_edit</source>
+                <target>Edit tag</target>
+            </trans-unit>
+            <trans-unit id="title.tag_delete">
+                <source>title.tag_delete</source>
+                <target>Delete tag</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
