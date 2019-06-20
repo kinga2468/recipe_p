@@ -334,6 +334,30 @@
                 <source>title.tag_delete</source>
                 <target>Usuń tag: </target>
             </trans-unit>
+            <trans-unit id="label.IngredietName">
+                <source>label.IngredietName</source>
+                <target>Składnik</target>
+            </trans-unit>
+            <trans-unit id="title.ingredient_list">
+                <source>title.ingredient_list</source>
+                <target>Lista składników</target>
+            </trans-unit>
+            <trans-unit id="title.ingredient_edit">
+                <source>title.ingredient_edit</source>
+                <target>Edytowanie składnika</target>
+            </trans-unit>
+            <trans-unit id="title.ingredient_delete">
+                <source>title.ingredient_delete</source>
+                <target>Usuń składnik: </target>
+            </trans-unit>
+            <trans-unit id="ingredient_index">
+                <source>ingredient_index</source>
+                <target>Zarządzaj składnikami</target>
+            </trans-unit>
+            <trans-unit id="tag_index">
+                <source>tag_index</source>
+                <target>Zarządzaj tagami</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

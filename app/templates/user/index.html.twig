@@ -9,11 +9,22 @@
     {% include 'default/_flash_messages.html.twig' %}
 
     <div class="admin_panel_button">
-        <a href="{{ url('tag_index') }}" title="{{ 'tag_index'|trans }}">
-            {{ 'tag_index'|trans }}
-        </a>
+        <div class="add_recipe">
+            <p>
+                <a href="{{ url('tag_index') }}" title="{{ 'tag_index'|trans }}">
+                    {{ 'tag_index'|trans }}
+                </a>
+            </p>
+        </div>
+        <div class="add_recipe">
+            <p>
+                <a href="{{ url('ingredient_index') }}" title="{{ 'ingredient_index'|trans }}">
+                    {{ 'ingredient_index'|trans }}
+                </a>
+            </p>
+        </div>
     </div>
-    
+
     <div class="section_title">
         <h1>{{ 'title.user_list'|trans }}</h1>
     </div>

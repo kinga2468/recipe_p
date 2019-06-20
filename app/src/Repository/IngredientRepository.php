@@ -72,4 +72,18 @@ class IngredientRepository extends ServiceEntityRepository
             ->orderBy("LOCATE(:pos, i.name), i.name")
             ->setParameter('pos', $search);
     }
+
+    /**
+     * Delete record.
+     *
+     * @param \App\Entity\Ingredient $ingredient Ingredient entity
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function delete(Ingredient $ingredient): void
+    {
+        $this->_em->remove($ingredient);
+        $this->_em->flush($ingredient);
+    }
 }

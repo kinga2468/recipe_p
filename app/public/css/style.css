@@ -41,7 +41,8 @@ footer p{text-align:center; padding:8px; margin-bottom: 0;}
 .last_recipe{float:left; }
 .last_recipe a{color:black;}
 .photo_border:hover{opacity:0.9;}
-.icons{color:black; background-color: #61969E; position: absolute; top:2%; left:10%; }
+/*.fas{font-size: 5%;}*/
+.icons{color:black; background-color: #61969E; position: absolute; top:2%; left:10%;}
 .icons .fas{float: left; padding:6px 2px 6px 9px; font-size: 90%;}
 .icons .fas:last-child:last-child:hover{color: #f6f0ea;}
 .icons .fas:last-child{padding-right:9px; }
@@ -55,7 +56,7 @@ footer p{text-align:center; padding:8px; margin-bottom: 0;}
 .icon.trash:hover{color: #f6f0ea;}
 .icons_edit .fas{font-size: 20px;}
 
-.section_title{width:100%; margin:0 0 30px 0; padding-top:20px;}
+.section_title{width:100%; margin:0 0 30px 0; padding-top:20px; clear: both;}
 h1{text-align: center; font-size: 40px;}
 .page-item.active .page-link{background-color: #61969E; border-color: #61969E;}
 .page-link{color:#61969E;}
@@ -69,6 +70,8 @@ h1{text-align: center; font-size: 40px;}
 .add_recipe:hover{opacity: 0.9;}
 .add_recipe p{text-align: center; margin:5px;}
 .add_recipe a{color:black; }
+.admin_panel_button .add_recipe{width:44%; float: left; margin:3%;}
+.admin_panel_button{width:40%; margin:0 auto; background-color: red;}
 
 .popular_tags{clear:both; width:100%;}
 .popular_tags p{margin-bottom: 5px; margin-top: 20px;}
