@@ -49,9 +49,20 @@ class Ingredient
      */
     private $recipes;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Measure", inversedBy="ingredients")
+     */
+    private $measures;
+
+    /**
+     * @ORM\OneToMany(targetEntity="IngredientMeasure", mappedBy="ingredient")
+     */
+    private $ingredientMeasure;
+
     public function __construct()
     {
         $this->recipes = new ArrayCollection();
+        $this->measures = new ArrayCollection();
     }
 
     /**
@@ -110,6 +121,32 @@ class Ingredient
         if ($this->recipes->contains($recipe)) {
             $this->recipes->removeElement($recipe);
             $recipe->removeIngredient($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Measure[]
+     */
+    public function getMeasures(): Collection
+    {
+        return $this->measures;
+    }
+
+    public function addMeasure(Measure $measure): self
+    {
+        if (!$this->measures->contains($measure)) {
+            $this->measures[] = $measure;
+        }
+
+        return $this;
+    }
+
+    public function removeMeasure(Measure $measure): self
+    {
+        if ($this->measures->contains($measure)) {
+            $this->measures->removeElement($measure);
         }
 
         return $this;
