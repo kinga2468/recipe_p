@@ -84,19 +84,19 @@ class RecipeType extends AbstractType
         );
 
         $builder->add(
-            'time',
+            'peopleAmount',
             NumberType::class,
             [
-                'label' => 'label.time',
+                'label' => 'label.peopleAmount',
                 'required' => true,
                 'scale' => 0,
             ]
         );
         $builder->add(
-            'peopleAmount',
+            'time',
             NumberType::class,
             [
-                'label' => 'label.peopleAmount',
+                'label' => 'label.time',
                 'required' => true,
                 'scale' => 0,
             ]
@@ -108,6 +108,7 @@ class RecipeType extends AbstractType
             'by_reference' => false,
             'allow_delete' => true,
             'label'=> false,
+//            'required' =>true,
         ]);
         $builder->get('ingredient')->addModelTransformer(
             $this->ingredientDataTransformer

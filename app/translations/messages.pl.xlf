@@ -36,7 +36,7 @@
             </trans-unit>
             <trans-unit id="ingredients.search">
                 <source>ingredients.search</source>
-                <target>Podaj składnik...</target>
+                <target>Podaj składniki po przecinku i spacji...</target>
             </trans-unit>
             <trans-unit id="last_recipe_headline">
                 <source>last_recipe_headline</source>
@@ -361,6 +361,10 @@
             <trans-unit id="title.user_new">
                 <source>title.user_new</source>
                 <target>Rejestracja</target>
+            </trans-unit>
+            <trans-unit id="message.should_have_one_ingredient">
+                <source>message.should_have_one_ingredient</source>
+                <target>Przepis musi mieć co najmniej jeden składnik</target>
             </trans-unit>
         </body>
     </file>

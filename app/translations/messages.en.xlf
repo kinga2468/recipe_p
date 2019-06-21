@@ -363,6 +363,10 @@
                 <source>title.user_new</source>
                 <target>Registration</target>
             </trans-unit>
+            <trans-unit id="message.should_have_one_ingredient">
+                <source>message.should_have_one_ingredient</source>
+                <target>Should have at least one ingredient</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

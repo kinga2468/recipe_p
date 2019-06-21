@@ -121,7 +121,7 @@ class Recipe
     /**
      *  Time
      *
-     * @var string
+     * @var integer
      * @Assert\NotBlank
      * @ORM\Column(
      *     type="integer"
@@ -129,8 +129,8 @@ class Recipe
      * @Assert\Range(
      *      min = 1,
      *      max = 240,
-     *      minMessage = "Time must be more than {{ limit }} min",
-     *      maxMessage = "Time must be less than {{ limit }} min"
+     *      minMessage = "Ta wartość musi być mniejsza niż {{ limit }} min",
+     *      maxMessage = "Ta wartość musi być większa niż {{ limit }} min"
      * )
      */
     private $time;
@@ -138,18 +138,16 @@ class Recipe
     /**
      *  People amount
      *
-     * @var string
-     *
+     * @var integer
+     * @Assert\NotBlank
      * @ORM\Column(
      *     type="integer"
      * )
-     * @Assert\NotBlank
-     *
      * @Assert\Range(
      *      min = 1,
-     *      max = 6,
-     *      minMessage = "People amount must be more than {{ limit }}",
-     *      maxMessage = "People amount be less than {{ limit }}"
+     *      max = 10,
+     *      minMessage = "Ta wartość musi być mniejsza niż {{ limit }} min",
+     *      maxMessage = "Ta wartość musi być większa niż {{ limit }} min"
      * )
      */
     private $people_amount;
@@ -222,6 +220,7 @@ class Recipe
      * @var array
      * @ORM\ManyToMany(targetEntity="App\Entity\Ingredient", inversedBy="recipes", orphanRemoval=true, cascade={"persist"})
      * @ORM\JoinTable(name="recipess_ingredients")
+     * @Assert\NotBlank
      */
     private $ingredient;
 

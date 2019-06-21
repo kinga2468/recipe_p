@@ -7,6 +7,7 @@ namespace App\Form\DataTransformer;
 
 use App\Entity\Ingredient;
 use App\Repository\IngredientRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\DataTransformerInterface;
 
 /**
@@ -67,19 +68,26 @@ class IngredientDataTransformer implements DataTransformerInterface
      */
     public function reverseTransform($value): array
     {
-        foreach ($value as $ingredientName) {
-            $ingredientName = $ingredientName->getName();
-            if ('' !== trim($ingredientName)) {
-                $ingredient = $this->repository->findOneByName(strtolower($ingredientName));
-                if (null == $ingredient) {
-                    $ingredient = new Ingredient();
-                    $ingredient->setName($ingredientName);
-                    $this->repository->save($ingredient);
+//        dump($value);
+//        die();
+//        if($value != null){
+            foreach ($value as $ingredientName) {
+                $ingredientName = $ingredientName->getName();
+                if ('' !== trim($ingredientName)) {
+                    $ingredient = $this->repository->findOneByName(strtolower($ingredientName));
+                    if (null == $ingredient) {
+                        $ingredient = new Ingredient();
+                        $ingredient->setName($ingredientName);
+                        $this->repository->save($ingredient);
+                    }
+                    $ingredients[] = $ingredient;
                 }
-                $ingredients[] = $ingredient;
             }
-        }
+            return $ingredients;
+//        }
+//        else{
+//            return [];
+//        }
 
-        return $ingredients;
     }
 }
