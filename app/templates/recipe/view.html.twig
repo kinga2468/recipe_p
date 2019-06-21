@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.recipe_view'|trans({'%id%': recipe.id|default('')}) }}
+    {{ recipe.title }}
 {% endblock %}
 
 {% block body %}

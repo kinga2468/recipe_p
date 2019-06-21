@@ -358,6 +358,10 @@
                 <source>tag_index</source>
                 <target>Zarządzaj tagami</target>
             </trans-unit>
+            <trans-unit id="title.user_new">
+                <source>title.user_new</source>
+                <target>Rejestracja</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

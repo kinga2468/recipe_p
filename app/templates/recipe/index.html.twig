@@ -6,9 +6,8 @@
 
 {% block body %}
     {% include 'default/_flash_messages.html.twig' %}
-    {% if pagination is defined and pagination|length %}
-
-        <div class="containter index_recipe">
+    <div class="containter index_recipe">
+        {% if pagination is defined and pagination|length %}
             <div class="col-md-9 last_recipe">
                 <div class="row">
                     {% for item in pagination %}
@@ -43,12 +42,16 @@
                         </div>
                     {% endfor %}
                 </div>
-
                 <div class="navigation text-center">
                     {{ knp_pagination_render(pagination) }}
                 </div>
-
             </div>
+        {% else %}
+            {% include 'default/_single_flash_message.html.twig' with {
+                type: 'warning',
+                message: 'message.empty_list'|trans
+            } %}
+        {% endif %}
             <div class="col-md-3 aside">
                 <div class="row">
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
@@ -76,12 +79,6 @@
                 </div>
             </div>
         </div>
-    {% else %}
-        {% include 'default/_single_flash_message.html.twig' with {
-            type: 'warning',
-            message: 'message.empty_list'|trans
-        } %}
-    {% endif %}
     <footer>
         <p>{{ 'footer.text'|trans }}</p>
     </footer>

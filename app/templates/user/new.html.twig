@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.user_new'|trans }}</h1>
+    <div class="section_title">
+        <h1>{{ 'title.user_new'|trans }}</h1>
+    </div>
     {{ form_start(form, { method: 'POST', action: url('user_new') }) }}
     {{ form_widget(form) }}
     <div class="form-group row float-sm-right">

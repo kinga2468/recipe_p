@@ -359,6 +359,10 @@
                 <source>tag_index</source>
                 <target>Manage tags</target>
             </trans-unit>
+            <trans-unit id="title.user_new">
+                <source>title.user_new</source>
+                <target>Registration</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
